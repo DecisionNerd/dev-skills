@@ -1,13 +1,12 @@
 # Compute deployments
 
-**Project shape** (website, CLI, Python package, monorepo) answers *what you build*.  
-**Compute** answers *where a runnable unit executes*.
+**Hosts for deploy units you decided to run.** Place concerns first — [What runs where](../../architecture/what-runs-where.md) — then pick a platform. This catalog is part of [Architecture](../../architecture/index.md), not a rival “track” to [project shapes](../index.md).
 
 Pick a target because constraints demand it — not because it’s fashionable. Pair with `kiss` and `repos architecture` before adding a second cloud.
 
 ```mermaid
 flowchart TD
-  S[Project shape path] --> U[Name deploy unit]
+  P[What runs where] --> U[Name deploy unit]
   U --> C{Constraints}
   C -->|static / edge site| V[Vercel / Cloudflare / Pages]
   C -->|event / spike| L[Serverless]
@@ -37,13 +36,14 @@ flowchart TD
 
 ## Reading order
 
-1. Finish (or skim) your [project shape](../index.md).
+1. Skim [What runs where](../../architecture/what-runs-where.md) and your [lifecycle phase](../../flow/index.md).
 2. Open the compute page that matches constraints.
 3. Draw: [KISS](../../practices/kiss.md) · [Repos](../../practices/repos.md) · [Ship](../../strategies/05-ship.md) · [Observe It](../../practices/observe-it.md) · [Agent Slap](../../practices/agent-slap.md) if deploy agents thrash.
 
 ## Anti-patterns
 
 - “Kubernetes for a single static site”
+- Host shopping before placement
 - Copy-pasting cloud keys into GitHub Secrets after ESC is available
 - Deploying every monorepo package because one library changed
 - Three hosts (Vercel + Fly + raw EC2) with no ownership map

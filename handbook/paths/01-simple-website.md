@@ -22,8 +22,8 @@ If you’re reaching for those, either you graduated early — jump to [Path 04]
 
 ## Reading order
 
-1. Language: [Language selection](../concepts/09-language-selection.md) (usually TypeScript for web)
-2. Framework: [Web framework selection](../concepts/10-web-framework-selection.md) — Next/React on Vercel for apps; Starlight for docs
+1. Lifecycle: know you’re in [Discover](../flow/01-discover.md) / [Deliver](../flow/02-deliver.md) (or later) — [How work flows](../flow/index.md)
+2. Architecture: [Architecture](../architecture/index.md) · [Language](../concepts/09-language-selection.md) (usually TypeScript) · [Framework](../concepts/10-web-framework-selection.md) · [What runs where](../architecture/what-runs-where.md) if hosting is unclear
 3. Concepts: [This is Fine](../concepts/01-this-is-fine-stance.md) · [Smallest Next Step](../concepts/03-smallest-next-step.md) · [Vision-Tied Goals](../concepts/08-vision-tied-goals.md) · [Evidence over Vibes](../concepts/04-evidence-over-vibes.md)
 4. Orientation: [Vision](../orientation/01-vision-and-why.md) · [Situation](../orientation/02-situation-assessment.md)
 5. Strategies: [Orient](../strategies/01-orient.md) → [Craft and Harden](../strategies/04-craft-and-harden.md) → [Ship](../strategies/05-ship.md) (light) → [Tidy](../strategies/07-tidy-and-recover.md) as needed

@@ -12,7 +12,7 @@ Continuous delivery keeps software releasable; progressive delivery (canaries, f
 
 ## When to use it
 
-When the situation matches the one-liner above and [Orientation](../orientation/index.md) (or your [project path](../paths/index.md)) says this is the fire to touch now.
+When the situation matches the one-liner above and [Orientation](../orientation/index.md) (or [Deliver](../flow/02-deliver.md) / [Operate](../flow/03-operate.md)) says this is the fire to touch now.
 
 ## Do
 

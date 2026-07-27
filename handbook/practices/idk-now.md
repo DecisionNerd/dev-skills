@@ -12,7 +12,7 @@ Under uncertainty, generating options without a goal increases thrash. Product a
 
 ## When to use it
 
-When the situation matches the one-liner above and [Orientation](../orientation/index.md) (or your [project path](../paths/index.md)) says this is the fire to touch now.
+When the situation matches the one-liner above and [Orientation](../orientation/index.md) (or your [lifecycle](../flow/index.md) / [Architecture](../architecture/index.md) bet) says this is the fire to touch now.
 
 ## Do
 

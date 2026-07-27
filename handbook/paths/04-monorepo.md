@@ -21,10 +21,12 @@ Simple is not “few files.” Simple is:
 
 ## Reading order
 
-1. Orientation + [Skill Universe](../orientation/03-skill-universe.md)
-2. Concepts: [Agent Agency](../concepts/05-agent-agency.md) · [Stop Conditions](../concepts/07-stop-conditions.md) · [Work Ownership](../concepts/06-work-ownership.md) · all prior concepts
-3. Strategies: full set, especially [Track Work](../strategies/02-track-work.md) · [Ship](../strategies/05-ship.md) · [Agent Hygiene](../strategies/06-agent-hygiene.md) · [Diagnose and Fix](../strategies/03-diagnose-and-fix.md)
-4. Practices to emphasize: [Repos](../practices/repos.md) · [KISS](../practices/kiss.md) · [Milestones](../practices/milestones.md) · [Stage It](../practices/stage-it.md) · [Ship It](../practices/ship-it.md) · [Observe It](../practices/observe-it.md) · [Sub-Agents](../practices/sub-agents.md) (explore only) · [Agent Slap](../practices/agent-slap.md) · [Tidy Up](../practices/tidy-up.md)
+1. Lifecycle: [How work flows](../flow/index.md) — often [Deliver](../flow/02-deliver.md) through [Maintain](../flow/04-maintain.md)
+2. Architecture: [Architecture](../architecture/index.md) · [What runs where](../architecture/what-runs-where.md) · [Compute](compute/index.md) per deploy unit
+3. Orientation + [Skill Universe](../orientation/03-skill-universe.md)
+4. Concepts: [Agent Agency](../concepts/05-agent-agency.md) · [Stop Conditions](../concepts/07-stop-conditions.md) · [Work Ownership](../concepts/06-work-ownership.md) · all prior concepts
+5. Strategies: full set, especially [Track Work](../strategies/02-track-work.md) · [Ship](../strategies/05-ship.md) · [Agent Hygiene](../strategies/06-agent-hygiene.md) · [Diagnose and Fix](../strategies/03-diagnose-and-fix.md)
+6. Practices to emphasize: [Repos](../practices/repos.md) · [KISS](../practices/kiss.md) · [Milestones](../practices/milestones.md) · [Stage It](../practices/stage-it.md) · [Ship It](../practices/ship-it.md) · [Observe It](../practices/observe-it.md) · [Sub-Agents](../practices/sub-agents.md) (explore only) · [Agent Slap](../practices/agent-slap.md) · [Tidy Up](../practices/tidy-up.md)
 
 Companions: DocSlime for real product docs when multiple audiences exist; ProductFeeling/Impeccable for user-facing surfaces inside the monorepo.
 

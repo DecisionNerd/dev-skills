@@ -1,6 +1,6 @@
 # Continue learning
 
-This handbook is a stance and a map, not the whole library. Prefer the [project paths](paths/index.md) before collecting more tabs.
+This handbook is a stance and a map, not the whole library. Prefer [How work flows](flow/index.md) and [Architecture](architecture/index.md) before collecting more tabs.
 
 ## Companion skill ecosystems
 
@@ -14,6 +14,7 @@ This handbook is a stance and a map, not the whole library. Prefer the [project 
 
 ## Themes to study outside the meme
 
+- [How work flows](flow/index.md) — Discover → Deliver → Operate → Maintain → Retire
 - Habit and return design (without compulsion)
 - Incident response and blameless postmortems
 - Trunk-based development and small batches

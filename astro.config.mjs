@@ -34,11 +34,29 @@ export default defineConfig({
 					label: "The 'This is Fine' Guide",
 					items: [
 						{ label: 'Handbook home', slug: 'handbook' },
-						{
-							label: 'Project paths',
-							items: [{ autogenerate: { directory: 'handbook/paths' } }],
-						},
 						{ label: 'Why it works', slug: 'handbook/why-it-works' },
+						{
+							label: 'Lifecycle',
+							items: [{ autogenerate: { directory: 'handbook/flow' } }],
+						},
+						{
+							label: 'Architecture',
+							items: [{ autogenerate: { directory: 'handbook/architecture' } }],
+						},
+						{
+							label: 'Project shapes',
+							items: [
+								{ label: 'Shapes overview', slug: 'handbook/paths' },
+								{ label: 'Simple website', slug: 'handbook/paths/simple-website' },
+								{ label: 'CLI', slug: 'handbook/paths/cli' },
+								{ label: 'Python package', slug: 'handbook/paths/python-package' },
+								{ label: 'Monorepo', slug: 'handbook/paths/monorepo' },
+							],
+						},
+						{
+							label: 'Compute hosts',
+							items: [{ autogenerate: { directory: 'handbook/paths/compute' } }],
+						},
 						{
 							label: 'Orientation',
 							items: [{ autogenerate: { directory: 'handbook/orientation' } }],
@@ -55,6 +73,7 @@ export default defineConfig({
 							label: 'Practices',
 							items: [{ autogenerate: { directory: 'handbook/practices' } }],
 						},
+						{ label: 'Sources', slug: 'handbook/sources' },
 						{ label: 'Continue learning', slug: 'handbook/continue-learning' },
 					],
 				},

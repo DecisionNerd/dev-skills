@@ -2,9 +2,9 @@
 
 A strategy is a building goal with reasoning behind it — not a bag of skill names. Read **What it is** and **Why it works** even if you already know the practices; the reasoning tells you when to break the pattern.
 
-Most sessions need **one** strategy. Running all seven at once is usually a sign you skipped [Orientation](../orientation/index.md) — or skipped your [project path](../paths/index.md).
+Most sessions need **one** strategy. Running all seven at once is usually a sign you skipped [Orientation](../orientation/index.md) — or skipped your [lifecycle](../flow/index.md) / [project shape](../paths/index.md).
 
-**Prerequisite:** [Orientation](../orientation/index.md). Vocabulary: [Concepts](../concepts/index.md). **Reading order by shape:** [Paths](../paths/index.md).
+**Prerequisite:** [Orientation](../orientation/index.md). Vocabulary: [Concepts](../concepts/index.md). **Lifecycle:** [How work flows](../flow/index.md). **Architecture / shape:** [Architecture](../architecture/index.md) · [Paths](../paths/index.md).
 
 | Path | Draw these strategies first |
 | --- | --- |

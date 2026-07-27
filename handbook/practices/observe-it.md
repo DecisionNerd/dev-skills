@@ -30,7 +30,7 @@ When prod/staging is silent, quality is drifting, or readiness needs live eviden
 
 ## Related concepts
 
-[04-evidence-over-vibes](../concepts/04-evidence-over-vibes.md), [11-quality-regimes](../concepts/11-quality-regimes.md)
+[04-evidence-over-vibes](../concepts/04-evidence-over-vibes.md), [11-quality-regimes](../concepts/11-quality-regimes.md), [Operate](../flow/03-operate.md)
 
 ## Further reading
 

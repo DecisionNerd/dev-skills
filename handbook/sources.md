@@ -1,6 +1,33 @@
 # Sources & grounding
 
-Authoritative, current references that ground this handbook’s practices (TTPs) and skills. Prefer primary docs and research over blogs. Update this page when house defaults or industry baselines change.
+Authoritative, current references that ground this handbook’s practices (TTPs), skills, and lifecycle/architecture narrative. Prefer primary docs and research over blogs. Update this page when house defaults or industry baselines change.
+
+## Software lifecycle & service operation
+
+| Source | Use for |
+| --- | --- |
+| [ISO/IEC/IEEE 12207:2017 overview (IEEE)](https://ieeexplore.ieee.org/document/8067765) | Canonical software life cycle processes: requirements, implementation, **operation**, **maintenance**, **disposal**, **transition** |
+| [ITIL — IT service management](https://www.axelos.com/certifications/itil-service-management) | Transition into service, operation, continual improvement vocabulary |
+| [Microsoft Learn — DevOps / ALM](https://learn.microsoft.com/en-us/devops/plan/what-is-devops) | Plan → Develop → Deliver → Operate beat |
+| [How work flows (handbook)](flow/index.md) | House phases: Discover → Deliver → Operate → Maintain → Retire |
+
+## Discovery, fidelity & MVP
+
+| Source | Use for |
+| --- | --- |
+| [Alberto Savoia — Pretotype It](https://www.pretotyping.org/) | Pretotyping vs prototyping; falsify interest early |
+| [Teresa Torres — Continuous Discovery Habits](https://www.producttalk.org/continuous-discovery-habits/) | Dual-track discovery; opportunity framing |
+| [Eric Ries — Lean Startup (MVP)](http://theleanstartup.com/principles) | Build–measure–learn; thinnest real product to learn |
+| [Discover (handbook)](flow/01-discover.md) | Fidelity ladder + spec altitude |
+
+## Architecture, placement & buy-vs-build
+
+| Source | Use for |
+| --- | --- |
+| [Martin Fowler — Strangler Fig Application](https://martinfowler.com/bliki/StranglerFigApplication.html) | Incremental replace / retire patterns |
+| [Architecture Decision Records](https://adr.github.io/) | Archive decisions so wheels aren’t reinvented |
+| [Architecture (handbook)](architecture/index.md) · [What runs where](architecture/what-runs-where.md) | Shape, language, framework, placement, hosts |
+| [Maintain (handbook)](flow/04-maintain.md) | Refactor vs buy/vendor/OSS; LLM-era cost asymmetry |
 
 ## Delivery performance & batch size
 

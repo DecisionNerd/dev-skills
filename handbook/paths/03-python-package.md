@@ -21,10 +21,11 @@ Assumes [Path 01](01-simple-website.md) / [Path 02](02-cli.md) habits: vision, t
 
 ## Reading order
 
-1. Confirm [language defaults](../concepts/09-language-selection.md) (Python is already the pick).
-2. Concepts: [Smallest Next Step](../concepts/03-smallest-next-step.md) · [Evidence over Vibes](../concepts/04-evidence-over-vibes.md) · [Stop Conditions](../concepts/07-stop-conditions.md) · [Vision-Tied Goals](../concepts/08-vision-tied-goals.md)
-3. Strategies: [Orient](../strategies/01-orient.md) · [Track Work](../strategies/02-track-work.md) · [Craft and Harden](../strategies/04-craft-and-harden.md) · [Ship](../strategies/05-ship.md) · [Diagnose and Fix](../strategies/03-diagnose-and-fix.md) when imports break
-4. Practices: [Research It](../practices/research-it.md) · [Test It](../practices/test-it.md) · [KISS](../practices/kiss.md) · [Document It](../practices/document-it.md) · [Repos](../practices/repos.md) (`ci`, release workflow) · [Check Readiness](../practices/check-readiness.md) · [Issues](../practices/issues.md) / [Pulls](../practices/pulls.md) · [Merge It](../practices/merge-it.md)
+1. Lifecycle: [How work flows](../flow/index.md) — usually [Deliver](../flow/02-deliver.md) / [Maintain](../flow/04-maintain.md)
+2. Architecture: [Architecture](../architecture/index.md) · [language defaults](../concepts/09-language-selection.md) (Python is already the pick)
+3. Concepts: [Smallest Next Step](../concepts/03-smallest-next-step.md) · [Evidence over Vibes](../concepts/04-evidence-over-vibes.md) · [Stop Conditions](../concepts/07-stop-conditions.md) · [Vision-Tied Goals](../concepts/08-vision-tied-goals.md)
+4. Strategies: [Orient](../strategies/01-orient.md) · [Track Work](../strategies/02-track-work.md) · [Craft and Harden](../strategies/04-craft-and-harden.md) · [Ship](../strategies/05-ship.md) · [Diagnose and Fix](../strategies/03-diagnose-and-fix.md) when imports break
+5. Practices: [Research It](../practices/research-it.md) · [Test It](../practices/test-it.md) · [KISS](../practices/kiss.md) · [Document It](../practices/document-it.md) · [Repos](../practices/repos.md) (`ci`, release workflow) · [Check Readiness](../practices/check-readiness.md) · [Issues](../practices/issues.md) / [Pulls](../practices/pulls.md) · [Merge It](../practices/merge-it.md)
 
 Treat **agents and other packages** as users: stable public API, typed where it helps, no surprise side effects on import.
 

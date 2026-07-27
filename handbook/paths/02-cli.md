@@ -21,9 +21,11 @@ Assumes you can already ship a thin change ([Path 01](01-simple-website.md) habi
 
 ## Reading order
 
-1. Concepts: prior path + [Stop Conditions](../concepts/07-stop-conditions.md) · [Work Ownership](../concepts/06-work-ownership.md) · [Skills as Named Cuts](../concepts/02-skills-as-named-cuts.md)
-2. Strategies: [Orient](../strategies/01-orient.md) · [Track Work](../strategies/02-track-work.md) · [Diagnose and Fix](../strategies/03-diagnose-and-fix.md) · [Craft and Harden](../strategies/04-craft-and-harden.md) · [Ship](../strategies/05-ship.md)
-3. Practices to emphasize: [Test It](../practices/test-it.md) · [Research It](../practices/research-it.md) · [Issues](../practices/issues.md) · [Recon Issue](../practices/recon-issue.md) · [Check Readiness](../practices/check-readiness.md) · [Repos](../practices/repos.md) (`ci harden` lightly) · [Document It](../practices/document-it.md) · [Observe It](../practices/observe-it.md) only for crash/telemetry you will actually read
+1. Lifecycle: [How work flows](../flow/index.md) — usually [Deliver](../flow/02-deliver.md) / [Operate](../flow/03-operate.md)
+2. Architecture: [Architecture](../architecture/index.md) · [Language](../concepts/09-language-selection.md)
+3. Concepts: prior shape + [Stop Conditions](../concepts/07-stop-conditions.md) · [Work Ownership](../concepts/06-work-ownership.md) · [Skills as Named Cuts](../concepts/02-skills-as-named-cuts.md)
+4. Strategies: [Orient](../strategies/01-orient.md) · [Track Work](../strategies/02-track-work.md) · [Diagnose and Fix](../strategies/03-diagnose-and-fix.md) · [Craft and Harden](../strategies/04-craft-and-harden.md) · [Ship](../strategies/05-ship.md)
+5. Practices to emphasize: [Test It](../practices/test-it.md) · [Research It](../practices/research-it.md) · [Issues](../practices/issues.md) · [Recon Issue](../practices/recon-issue.md) · [Check Readiness](../practices/check-readiness.md) · [Repos](../practices/repos.md) (`ci harden` lightly) · [Document It](../practices/document-it.md) · [Observe It](../practices/observe-it.md) only for crash/telemetry you will actually read
 
 Agent experience matters: treat the CLI as something **coding agents** will invoke — clear help, stable flags, non-zero on failure ([experience](../orientation/index.md) mindset; DocSlime `experience/` if you keep docs).
 

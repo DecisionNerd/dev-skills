@@ -1,6 +1,6 @@
 # Language selection
 
-Pick a language the way you pick a knife: **defaults first**, exceptions only when the cutting board demands it. Do not collect runtimes for sport. Pair with [KISS](../practices/kiss.md) and [Vision-Tied Goals](08-vision-tied-goals.md).
+**Architecture chooser** — part of [Architecture](../architecture/index.md). Pick a language the way you pick a knife: **defaults first**, exceptions only when the cutting board demands it. Do not collect runtimes for sport. Pair with [KISS](../practices/kiss.md) and [Vision-Tied Goals](08-vision-tied-goals.md).
 
 ## Default languages
 
@@ -62,7 +62,7 @@ Match [compute](../paths/compute/index.md) to the language you picked (e.g. TS �
 
 ## Where it shows up
 
-- [Project paths](../paths/index.md) — choose shape after (or with) language
+- [Architecture](../architecture/index.md) · [Project shapes](../paths/index.md) · [What runs where](../architecture/what-runs-where.md)
 - [Python package](../paths/03-python-package.md) · [CLI](../paths/02-cli.md) · [Simple website](../paths/01-simple-website.md)
 - Practices: [KISS](../practices/kiss.md) · [Research It](../practices/research-it.md) · [Repos](../practices/repos.md) `architecture`
 

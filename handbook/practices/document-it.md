@@ -30,7 +30,7 @@ Right after work that invalidates docs; when onboarding/ops/API notes drift; whe
 
 ## Related concepts
 
-[13-quality-trace](../concepts/13-quality-trace.md), [03-smallest-next-step](../concepts/03-smallest-next-step.md), [04-evidence-over-vibes](../concepts/04-evidence-over-vibes.md), [12-bugs-and-debt](../concepts/12-bugs-and-debt.md)
+[13-quality-trace](../concepts/13-quality-trace.md), [03-smallest-next-step](../concepts/03-smallest-next-step.md), [04-evidence-over-vibes](../concepts/04-evidence-over-vibes.md), [12-bugs-and-debt](../concepts/12-bugs-and-debt.md), [Discover — spec altitude](../flow/01-discover.md), [Retire — archive](../flow/05-retire.md)
 
 ## Further reading
 

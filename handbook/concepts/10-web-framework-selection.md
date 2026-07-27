@@ -1,6 +1,6 @@
 # Web framework selection
 
-For **web UI and docs sites**, pick frameworks the way you pick languages: **defaults first**. Pair with [Language selection](09-language-selection.md) (almost always TypeScript here), [KISS](../practices/kiss.md), and [Compute — Vercel](../paths/compute/vercel.md) when the app is Next.js.
+**Architecture chooser** — part of [Architecture](../architecture/index.md). For **web UI and docs sites**, pick frameworks the way you pick languages: **defaults first**. Pair with [Language selection](09-language-selection.md) (almost always TypeScript here), [KISS](../practices/kiss.md), [What runs where](../architecture/what-runs-where.md), and [Compute — Vercel](../paths/compute/vercel.md) when the app is Next.js.
 
 ## Defaults
 

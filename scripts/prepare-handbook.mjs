@@ -109,6 +109,39 @@ const ORDER = {
 	'continue-learning.md': 99,
 };
 
+function orderFor(rel) {
+	if (ORDER[rel] !== undefined) return ORDER[rel];
+	if (rel.startsWith('flow/')) {
+		if (rel.endsWith('index.md')) return 2;
+		return 2 + (parseInt(path.basename(rel), 10) || 5);
+	}
+	if (rel.startsWith('architecture/')) {
+		if (rel.endsWith('index.md')) return 8;
+		return 9;
+	}
+	if (rel.startsWith('paths/compute/')) {
+		if (rel.endsWith('index.md')) return 18;
+		return 19;
+	}
+	if (rel.startsWith('paths/')) {
+		if (rel.endsWith('index.md')) return 10;
+		return 10 + (parseInt(path.basename(rel), 10) || 5);
+	}
+	if (rel.startsWith('orientation/')) {
+		return 25 + (parseInt(path.basename(rel), 10) || 5);
+	}
+	if (rel.startsWith('concepts/')) {
+		return 30 + (parseInt(path.basename(rel), 10) || 5);
+	}
+	if (rel.startsWith('strategies/')) {
+		return 50 + (parseInt(path.basename(rel), 10) || 5);
+	}
+	if (rel.startsWith('practices/')) {
+		return 60;
+	}
+	return 70;
+}
+
 fs.rmSync(STAGING, { recursive: true, force: true });
 const stagingOut = path.join(STAGING, 'handbook');
 fs.mkdirSync(stagingOut, { recursive: true });
@@ -122,19 +155,7 @@ for (const rel of files) {
 	body = body.replace(/^#\s+.+\n+/, '');
 	const sourceRelDir = path.posix.dirname(rel);
 	body = rewriteLinks(body, sourceRelDir === '.' ? '' : sourceRelDir);
-	const order =
-		ORDER[rel] ??
-		(rel.startsWith('paths/')
-			? 5 + (parseInt(path.basename(rel), 10) || 0)
-			: rel.startsWith('orientation/')
-				? 10 + (parseInt(path.basename(rel), 10) || 5)
-				: rel.startsWith('concepts/')
-					? 20 + (parseInt(path.basename(rel), 10) || 5)
-					: rel.startsWith('strategies/')
-					? 30 + (parseInt(path.basename(rel), 10) || 5)
-					: rel.startsWith('practices/')
-						? 40
-						: 50);
+	const order = orderFor(rel);
 	const out = outRel(rel);
 	const dest = path.join(stagingOut, out);
 	fs.mkdirSync(path.dirname(dest), { recursive: true });

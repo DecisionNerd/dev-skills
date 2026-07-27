@@ -6,24 +6,32 @@
 
 ## What’s Inside
 
-**Start here — by project shape & compute**
-
-1. [Project paths](paths/index.md) — how to read this book as you grow
-2. [Language selection](concepts/09-language-selection.md) — Python, TypeScript/Node, Rust (Kotlin / Swift / Godot when earned)
-3. [Web framework selection](concepts/10-web-framework-selection.md) — React + Next.js on Vercel; Astro Starlight for docs
-4. [Quality regimes](concepts/11-quality-regimes.md) — compute ≠ product UX ≠ generative/evals
-5. [Bugs & debt](concepts/12-bugs-and-debt.md) — a bug is a bug; debt types
-6. [Quality trace](concepts/13-quality-trace.md) — DocSlime + lightweight BDD
-7. [Path 01 — Simple website](paths/01-simple-website.md)
-8. [Path 02 — CLI](paths/02-cli.md)
-9. [Path 03 — Python package](paths/03-python-package.md)
-10. [Path 04 — Multi-language monorepo](paths/04-monorepo.md)
-11. [Compute deployments](paths/compute/index.md) — serverless, Docker, Kubernetes, Vercel, Cloudflare, AWS/GCP/Fly
-
-**Reference deck** (draw cards as the path says)
+**1. Stance**
 
 - [Why it Works](why-it-works.md)
 - [Orientation](orientation/index.md)
+
+**2. Lifecycle — how work flows**
+
+[Discover → Deliver → Operate → Maintain → Retire](flow/index.md)
+
+- [Discover](flow/01-discover.md) — discovery, fidelity, spec altitude
+- [Deliver](flow/02-deliver.md) — build, integrate, ship plays
+- [Operate](flow/03-operate.md) — ops, observability, feedback
+- [Maintain](flow/04-maintain.md) — refactor, buy/vendor, LLM-era cost
+- [Retire](flow/05-retire.md) — deprecate, transition, archive
+
+**3. Architecture — when you need a bet**
+
+[Architecture hub](architecture/index.md) — shape → language → framework → [what runs where](architecture/what-runs-where.md) → [compute hosts](paths/compute/index.md)
+
+- [Project shapes](paths/index.md) — website → CLI → package → monorepo
+- [Language selection](concepts/09-language-selection.md)
+- [Web framework selection](concepts/10-web-framework-selection.md)
+- [Quality regimes](concepts/11-quality-regimes.md) · [Bugs & debt](concepts/12-bugs-and-debt.md) · [Quality trace](concepts/13-quality-trace.md)
+
+**4. Reference deck** (draw cards as the flow or shape says)
+
 - [Strategies](strategies/index.md)
 - [Practices (TTPs)](practices/index.md)
 - [Concepts (deep dives)](concepts/index.md)
@@ -34,29 +42,28 @@
 
 Software is always somewhat on fire: half-finished branches, flaky CI, a prod mystery, an agent rewriting the same file, a vision nobody wrote down. The meme is not denial. **This is fine** means *I will not add more fire while I drink this coffee.* You survey the room, name what’s burning, pick one achievable move that serves why the project exists, then act with a named skill — not vibes, not a bigger swarm.
 
-This handbook is the field guide for that stance. It sits on the [DecisionNerd/dev-skills](https://github.com/DecisionNerd/dev-skills) pack and points outward to DocSlime, ProductFeeling, Impeccable, and whatever is vendored in your repo. The skills are the named cuts; the vision is the dish; evidence is how you taste as you go — [quality regimes](concepts/11-quality-regimes.md) say which tasting method fits, and the [quality trace](concepts/13-quality-trace.md) (DocSlime + BDD) keeps documentation and proof on the same plate.
+This handbook is the field guide for that stance. It sits on the [DecisionNerd/dev-skills](https://github.com/DecisionNerd/dev-skills) pack and points outward to DocSlime, ProductFeeling, Impeccable, and whatever is vendored in your repo. The skills are the named cuts; the vision is the dish; evidence is how you taste as you go — [quality regimes](concepts/11-quality-regimes.md) say which tasting method fits, and the [quality trace](concepts/13-quality-trace.md) keeps documentation and proof on the same plate.
 
-**New here?** Don’t alphabetize the practice deck. Pick a [project path](paths/index.md) and follow its reading order. A first website should not open with monorepo ESC secrets; a monorepo should not pretend it’s still a single static page.
+**New here?** Read [How work flows](flow/index.md), then open [Architecture](architecture/index.md) only when shape/stack/placement is the fire. Don’t alphabetize the practice deck on day one.
 
 ## How to use this handbook
 
-### Path C — Progressive projects (recommended)
+### One reading order
+
+1. **Orient** — [Why it Works](why-it-works.md) + [Orientation](orientation/index.md) (coffee, not panic).
+2. **Lifecycle** — [Discover → … → Retire](flow/index.md). Know where you are in the life of the system.
+3. **Architecture** — [Architecture](architecture/index.md) when you must choose shape, language, framework, placement, or host.
+4. **Reference** — strategies / practices / skills as a modular deck; the flow and shape pages say which cards to draw.
 
 ```mermaid
-flowchart LR
-  W[Simple website] --> L[CLI]
-  L --> P[Python package]
-  P --> M[Monorepo]
+flowchart TD
+  Stance[Stance] --> Life[Lifecycle]
+  Life --> Arch[Architecture]
+  Arch --> Deck[Reference deck]
+  Life -->|feedback| Life
 ```
 
-Also pick **where it runs** when you have a deploy unit: [Compute](paths/compute/index.md).
-
-1. Open [Project paths](paths/index.md) and choose the shape you are actually building.
-2. Do that path’s **reading order** and **starter DAG**.
-3. Graduate only when the path’s criteria say so — or when `kiss` says complexity is earned.
-4. Use strategies/practices as a modular deck; the path tells you which cards to draw first.
-
-### Path A — With DecisionNerd skills
+### Skills quick map (when you have DecisionNerd skills)
 
 | To… | Run |
 |------|-----|
@@ -71,22 +78,6 @@ Also pick **where it runs** when you have a deploy unit: [Compute](paths/compute
 | Agent thrash | `agents slap` |
 | Clutter | `tidy-up scan` |
 | Companions | ProductFeeling · Impeccable · DocSlime |
-
-### Path B — Text only / modular deck
-
-1. [Orient](orientation/index.md).
-2. Pick a [strategy](strategies/index.md).
-3. Draw [practices](practices/index.md); open [concepts](concepts/index.md) for mechanisms.
-4. Apply; collect evidence; loop.
-
-```mermaid
-flowchart TD
-  O[Orientation] --> V[Vision + achievable goal]
-  V --> S[Strategy]
-  S --> P[Practice / skill]
-  P --> E[Evidence]
-  E -->|Insight loop| O
-```
 
 ### The coffee test
 

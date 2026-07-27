@@ -12,7 +12,7 @@ Fowler’s refactoring is behavior-preserving micro-steps under test. Valid for 
 
 ## When to use it
 
-When the situation matches the one-liner above and [Orientation](../orientation/index.md) (or your [project path](../paths/index.md)) says this is the fire to touch now.
+When the situation matches the one-liner above and [Orientation](../orientation/index.md) (or [Maintain](../flow/04-maintain.md) / your [project shape](../paths/index.md)) says this is the fire to touch now.
 
 ## Do
 
@@ -28,7 +28,7 @@ When the situation matches the one-liner above and [Orientation](../orientation/
 
 ## Related concepts
 
-[04-evidence-over-vibes](../concepts/04-evidence-over-vibes.md), [03-smallest-next-step](../concepts/03-smallest-next-step.md), [12-bugs-and-debt](../concepts/12-bugs-and-debt.md)
+[04-evidence-over-vibes](../concepts/04-evidence-over-vibes.md), [03-smallest-next-step](../concepts/03-smallest-next-step.md), [12-bugs-and-debt](../concepts/12-bugs-and-debt.md), [Maintain](../flow/04-maintain.md)
 
 ## Further reading
 

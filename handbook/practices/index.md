@@ -2,7 +2,7 @@
 
 A practice is the handbook’s smallest unit: one recurring building situation, the mechanism at stake, and the skill-shaped pattern that tends to resolve it. Modular — apply without reading every strategy — but most share the [concepts](../concepts/index.md).
 
-**Don’t start here alphabetically.** Follow a [project path](../paths/index.md), then return for cards you need. Each card’s **Why it works** / **Further reading** cite sources listed in [Sources & grounding](../sources.md).
+**Don’t start here alphabetically.** Follow the [lifecycle](../flow/index.md) and a [project shape](../paths/index.md) (via [Architecture](../architecture/index.md)), then return for cards you need. Each card’s **Why it works** / **Further reading** cite sources listed in [Sources & grounding](../sources.md).
 
 Browse this index when you know the pattern; browse a [strategy](../strategies/index.md) when you know the goal.
 

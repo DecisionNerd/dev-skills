@@ -26,9 +26,9 @@ Working definitions live in [Concepts](concepts/index.md). Know *why the project
 
 **Process theater.** Checklists without taste: every PR has a template, nothing has a vision.
 
-**AI thrash (now).** Cheap tokens make it easy to *look* busy. Without stop conditions, tool allowlists, and vision-tied goals, agents rearrange the smoke.
+**AI thrash (now).** Cheap tokens make it easy to *look* busy. **Mediocre code is almost free; good engineering is still expensive.** Without stop conditions, tool allowlists, and vision-tied goals, agents rearrange the smoke — see [Maintain](flow/04-maintain.md).
 
-**Where this guide sits.** Orientation → strategy → practice → evidence. DecisionNerd skills for GitHub/craft/ops/agents; DocSlime for product docs; ProductFeeling for how the product should *feel*; Impeccable for UI craft. The meme on the cover is the stance: sit upright, hold the coffee, name the fire, move once.
+**Where this guide sits.** [Lifecycle](flow/index.md) (Discover → Retire) → [Architecture](architecture/index.md) when you need a bet → strategy → practice → evidence. DecisionNerd skills for GitHub/craft/ops/agents; DocSlime for product docs; ProductFeeling for how the product should *feel*; Impeccable for UI craft. The meme on the cover is the stance: sit upright, hold the coffee, name the fire, move once.
 
 ## Art and science
 
@@ -41,6 +41,8 @@ Grounded clarity, not vibes. That’s the whole point of [This is Fine (stance)]
 
 ## Further reading
 
+- [How work flows](flow/index.md) — Discover → Deliver → Operate → Maintain → Retire
+- [Architecture](architecture/index.md) — shape, language, framework, placement, hosts
 - [Sources & grounding](sources.md) — full bibliography for every practice TTP
 - [Quality regimes](concepts/11-quality-regimes.md) — which evidence closes which system shape
 - [Bugs & debt](concepts/12-bugs-and-debt.md) — experience bugs and debt types
