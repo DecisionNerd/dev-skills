@@ -13,11 +13,19 @@ argument-hint: "[path|symbol|module...]"
 
 Improve the code’s shape while **preserving behavior**. If behavior must change, stop and use `fix-it` (or implement the feature explicitly) instead of hiding changes inside a “refactor.”
 
+Paying down **development / architecture debt** (`handbook/concepts/12-bugs-and-debt.md`) is a valid reason to refactor — still keep steps behavior-preserving and evidence-backed.
+
 ## When to use
 
 - “Refactor it”, extract function/module, rename for clarity, decompose god-file
 - Prep for a feature when structure blocks a clean change
 - After `diagnose-bug` when the bug fix is done and structure still hurts
+
+## When NOT to use
+
+- Product behavior change → `fix-it`
+- Disk/worktree clutter → `tidy-up`
+- Docs-only cleanup → `document-it` / DocSlime `kiss`
 
 ## Workflow
 
@@ -67,3 +75,11 @@ Improve the code’s shape while **preserving behavior**. If behavior must chang
 **Follow-Up Prompt**
 Do you want me to test-it, document-it, or open a PR?
 ```
+
+## Grounding
+
+This skill’s TTPs are grounded in current engineering baselines (DORA, GitHub Docs, Fowler/Beck, Google SRE & SWE book, OpenTelemetry, OWASP LLM / NIST AI RMF, Diátaxis — see handbook `sources.md`).
+
+Fowler refactoring = behavior-preserving micro-steps under test; Beck: passes tests first. Characterization tests before structural change.
+
+Handbook card: `handbook/practices/refactor-it.md`.

@@ -1,6 +1,6 @@
 ---
 title: Refactor It
-description: "Safely refactor code to improve structure, clarity, or testability without changing intended behavior. Use when the user says \"refactor it\", asks to clean up a module, extract helpers, reduce duplication, or prepare code for a feature — not for product behavior changes (use fix-it) or pure test adds (use test-it). Prefer small steps with tests green between steps."
+description: "Safely refactor code to improve structure, clarity, or testability without changing intended behavior. Use when the user says \"refactor it\", asks to clean up a module, extract helpers, reduce duplication, or prepare code for a feature — not for product behavior changes (use fix-it), disk clutter (tidy-up), or pure test adds (use test-it). Prefer small steps with tests green between steps."
 sidebar:
   order: 4
 ---

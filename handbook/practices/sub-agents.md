@@ -4,20 +4,20 @@ Parent orchestrates; bounded parallel explore / sequential mutate.
 
 ## What it is
 
-Parent orchestrates; bounded parallel explore / sequential mutate. In this guide, practices are skill-mapped TTPs: they tell you *when*, *why*, and *which command* — not a second copy of the full skill text. Open the skill when you execute.
+Parent orchestrates; bounded parallel explore / sequential mutate. This practice is a skill-mapped TTP: *when*, *why*, and *which command*—not a full copy of the skill. Open the skill to execute.
 
 ## Why it works
 
-Named practices beat improvised chat workflows under load. They encode stop conditions and handoffs so you don’t invent process while the room burns.
+Parallelism helps exploration; overlapping writers create conflicts. Anthropic’s agent patterns favor orchestration with clear roles; OWASP warns against excessive agency—bound tools and ownership per child.
 
 ## When to use it
 
-When the situation matches the one-liner above and [Orientation](../orientation/index.md) says this fire (or smoke) is the one to touch now.
+When the situation matches the one-liner above and [Orientation](../orientation/index.md) (or your [project path](../paths/index.md)) says this is the fire to touch now.
 
 ## Do
 
 - Invoke the skill; follow its safety rules
-- Keep one write owner; collect evidence
+- Keep one write owner; collect evidence before claiming done
 - Hand off to the next practice instead of boiling the ocean
 
 ## Don't
@@ -30,6 +30,13 @@ When the situation matches the one-liner above and [Orientation](../orientation/
 
 [05-agent-agency](../concepts/05-agent-agency.md), [06-work-ownership](../concepts/06-work-ownership.md)
 
+## Further reading
+
+- [Anthropic — Building effective agents](https://www.anthropic.com/engineering/building-effective-agents)
+- [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+
+See also the handbook [Sources & grounding](../sources.md) bibliography.
+
 ## Agent skill
 
-`agents sub | sub-agents`
+`agents sub` · `sub-agents`

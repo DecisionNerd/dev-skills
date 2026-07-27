@@ -36,7 +36,7 @@ Stay brief. Cap file reads: README + one vision/product doc + AGENTS if present 
 
 - Offer choices, not essays.
 - If the user says “just ship something”: bias toward `check-readiness` / `pulls` / `stage-it` / `ship-it` / Impeccable polish of an existing surface — not greenfield DocSlime.
-- If vision is missing and the project is product-shaped: suggest DocSlime init or ProductFeeling init as *one* path, not a docs rabbit hole, unless they choose clarity-first.
+- If vision is missing and the project is product-shaped: offer DocSlime init or ProductFeeling *only if* durable product altitude is the real gap — not as a default rabbit hole. Prefer surgical `document-it` / a vision statement in-chat when that unblocks.
 - If the surface is UI and the goal is feel/craft: ProductFeeling (emotion) → Impeccable (craft), not random `fix-it`.
 - If the repo is dirty with agent debris: `tidy-up scan` or `agents slap` before strategy theater.
 

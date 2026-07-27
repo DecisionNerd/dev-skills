@@ -1,26 +1,39 @@
 ---
 name: fix-it
-description: Create an implementation-ready repair plan from troubleshooting evidence, live-app diagnoses, failing URLs, screenshots, logs, data-plane findings, or clearly reported product breakage. Use when the user asks to "fix it", "plan this fix", "plan the repair", or after troubleshoot-app or diagnose-bug when they want a plan before implementation — especially in the lifecycle troubleshoot to fix-it to check-readiness to merge-it.
+description: >
+  Create an implementation-ready repair plan from diagnosis evidence — live-app
+  (troubleshoot-app), backend/algo (diagnose-bug), failing URLs, logs, data-plane
+  findings, or clearly reported breakage. Use when the user asks to "fix it",
+  "plan this fix", or wants a plan before implementation — especially diagnose →
+  fix-it → check-readiness → merge-it. Not for behavior-preserving structure work
+  (refactor-it) or greenfield features without a failing contract.
 ---
 
 # Fix It
 
 ## Goal
 
-Turn a troubleshooting diagnosis into a decision-complete implementation plan that another Codex instance or engineer can execute confidently. This skill is the planning bridge between live diagnosis and code work.
+Turn a diagnosis into a decision-complete implementation plan that another agent or engineer can execute confidently. Bridge between diagnosis (`troubleshoot-app` / `diagnose-bug`) and code work.
 
-Use this skill when the user asks to "fix it", "plan this fix", "plan the repair", "turn the troubleshooting into an implementation plan", or invokes `$fix-it` after a broken app investigation.
+Use lightweight BDD / contracts as the repair oracle (`handbook/concepts/13-quality-trace.md`). State what should happen, where that expectation lives, whether to use/refine/create it, and how tests/evals prove it. Prefer existing DocSlime REQUIREMENTS/TESTING, issue BDD, schemas, and tests over inventing a parallel definition.
 
-Use lightweight BDD completion scenarios and existing requirements as the repair contract. A fix plan should say what was supposed to happen, where that expectation is defined, whether the definition should be used as-is or refined, and how implementation/tests will prove the behavior now holds. Prefer existing product docs, architecture/requirements/testing docs, BDD/Gherkin files, test files, issue acceptance criteria, or PR descriptions over creating a new definition. Add a new BDD scenario only when no current definition is suitable.
+Name the **quality regime** for evidence (`handbook/concepts/11-quality-regimes.md`): A = contracts/golden tests; B = journeys/a11y/data-plane; C = traces/evals (hand agent/LLM product bugs to `agents` + Langfuse when the failure is generative). Debt labels name interest — they do not demote the pain (`12-bugs-and-debt.md`).
+
+## When NOT to use
+
+- Pure structure cleanup with no behavior change → `refactor-it`
+- “Add tests only” with no repair → `test-it`
+- No failing contract yet / exploring options → `research-it` or `recon issue`
+- Runaway agent thrash → `agents slap` first
 
 ## Required Input
 
 Require at least one of:
 
-- a prior troubleshooting diagnosis in the conversation;
-- a failing URL, screenshot, or browser-visible symptom;
-- logs, database/provider/analytics evidence, or deployment evidence;
-- a clearly stated broken workflow and expected behavior.
+- a prior `troubleshoot-app` or `diagnose-bug` diagnosis in the conversation;
+- a failing URL, screenshot, or browser-visible symptom (regime B);
+- failing inputs/tests, logs/traces/metrics, or data-plane evidence (regime A/C as applicable);
+- a clearly stated broken workflow/invariant and expected behavior.
 
 If no concrete symptom or diagnosis exists, ask for the missing evidence before planning. Do not require a GitHub issue number.
 
@@ -35,13 +48,13 @@ This skill is Plan Mode friendly.
 ## Workflow
 
 1. Ground in the evidence.
-   - Restate the observed symptom and expected behavior.
-   - Carry forward the expected behavior definition from troubleshooting when available.
-   - If troubleshooting did not identify a definition, search for one before planning implementation. Look in docs, requirement files, architecture/testing docs, BDD/Gherkin files, unit/integration/e2e tests, issue bodies, PR bodies, and acceptance criteria.
+   - Restate the observed symptom, expected behavior, and regime (A / B / C / hybrid).
+   - Carry forward the contract from diagnosis when available.
+   - If diagnosis did not identify a definition, search DocSlime / requirements / TESTING / schemas / BDD / tests / issues / PRs before planning.
    - Classify the definition source as `Use Existing`, `Refine Existing`, or `Create New`.
-   - If refining or creating a definition, include the proposed Given/When/Then scenario and where it should be added.
+   - If refining or creating a definition, include the proposed Given/When/Then (or invariant) and where it should live.
    - Separate confirmed facts from inference.
-   - Include the relevant browser/session state, app database/provider state, logs/analytics, and deployment/version evidence when available.
+   - Include relevant layers: browser/session and data-plane when UI; repro input/test + logs/traces when backend; LLM/tool traces/scores when generative.
    - If a live data source is unavailable, state what is missing and why.
 
 2. Inspect the repository read-only.
@@ -86,10 +99,13 @@ Use this shape unless the user asks otherwise:
 **Observed Symptom**
 <What the user sees and where.>
 
+**Regime**
+<A | B | C | hybrid — and why>
+
 **Evidence**
-- Browser/session: <facts or unavailable>
-- App data/provider state: <facts or unavailable>
-- Logs/analytics/deployment: <facts or unavailable>
+- Browser/session (B): <facts or n/a>
+- Repro input/test (A): <facts or n/a>
+- App data/provider / logs/traces/scores: <facts or unavailable>
 - Code path: <likely source files/functions>
 
 **Diagnosis**
@@ -137,3 +153,11 @@ Keep the plan concrete and implementation-ready. Avoid restating large raw logs,
 ## Related commands
 
 After diagnosis/planning, use `issues create` if work should be tracked, `pulls create` / `merge-it` to land the fix, and `issues document` / `pulls document` when docs are part of the repair.
+
+## Grounding
+
+This skill’s TTPs are grounded in current engineering baselines (DORA, GitHub Docs, Fowler/Beck, Google SRE & SWE book, OpenTelemetry, OWASP LLM / NIST AI RMF, Diátaxis — see handbook `sources.md`).
+
+Smallest real repair after diagnosis (DORA small batches); evidence matches the regime (`11-quality-regimes.md`); BDD/contract from the quality trace (`13-quality-trace.md`).
+
+Handbook card: `handbook/practices/fix-it.md`.

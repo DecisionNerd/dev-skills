@@ -1,6 +1,6 @@
 # Concepts
 
-Shared vocabulary for the guide. Strategies and practices cite these when a mechanism matters.
+Shared vocabulary for the guide. Prefer a [project path](../paths/index.md) before reading every concept. Strategies and practices cite these when a mechanism matters.
 
 **The stance:**
 
@@ -11,7 +11,15 @@ Shared vocabulary for the guide. Strategies and practices cite these when a mech
 **How you know:**
 
 - [Evidence over Vibes](04-evidence-over-vibes.md)
+- [Quality regimes](11-quality-regimes.md) — deterministic compute ≠ product UX ≠ generative/evals
+- [Bugs & debt](12-bugs-and-debt.md) — a bug is a bug; debt is unpaid interest by type
+- [Quality trace (DocSlime + BDD)](13-quality-trace.md) — promise → scenarios → evidence → observation
 - [Vision-Tied Goals](08-vision-tied-goals.md)
+
+**How you choose tools:**
+
+- [Language selection](09-language-selection.md) — defaults: Python, TypeScript/Node, Rust; exceptions: Kotlin, Swift, Godot
+- [Web framework selection](10-web-framework-selection.md) — React + Next.js on Vercel; Astro Starlight for docs
 
 **How agents behave:**
 

@@ -15,6 +15,7 @@ Builders under stress skip the survey and “just fix it,” which is how you ge
 - Read `git status`, recent log, open PR if any
 - Skim README / AGENTS / product docs once
 - Separate **fire** (user-impacting, data risk, thrash) from **smoke** (noise, prefs)
+- Note the **quality regime** in play (compute / product / generative — see [Quality regimes](../concepts/11-quality-regimes.md)) so the next skill picks the right evidence
 
 ## Don't
 

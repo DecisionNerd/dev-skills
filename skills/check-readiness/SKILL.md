@@ -11,6 +11,8 @@ Decide whether the original issue scope is satisfied in the current project stat
 
 Use lightweight BDD completion scenarios when they exist in the issue body, active plan, PR body, or relevant comments. Treat these Given/When/Then scenarios as readable completion contracts and verify their evidence mapping. Do not require Cucumber, `.feature` files, or a separate BDD framework unless the repository already uses one or the active plan explicitly requires it.
 
+**When NOT:** exploring “what should we build?”, inventing new scope, or coaching a lost user → `recon` / `idk-now` / `issues create`. This skill gates evidence against *existing* scope.
+
 ## Input
 
 Accept an explicit issue number, task number, or GitHub issue URL. If none is provided, infer one from the strongest local or GitHub evidence: current branch, recent commits, staged/unstaged changes, PR metadata, linked issue references, recent issue activity, or local notes. Ask only when no single issue is clearly supported.
@@ -135,3 +137,11 @@ When the user later answers `y`, `yes`, `ok`, `continue`, or another affirmative
 ## Related commands
 
 Issue body/scope fixes: `issues refine|narrow|widen|critique`. PR description and checks: `pulls refine|status|critique`. Full merge lifecycle: `merge-it`.
+
+## Grounding
+
+This skill’s TTPs are grounded in current engineering baselines (DORA, GitHub Docs, Fowler/Beck, Google SRE & SWE book, OpenTelemetry, OWASP LLM / NIST AI RMF, Diátaxis — see handbook `sources.md`).
+
+Definition of Done = quality trace (`handbook/concepts/13-quality-trace.md`): DocSlime contracts + BDD scenario→evidence maps, regime-specific (`11-quality-regimes.md`). DORA CI / protected branches gate integrate. Missing Cucumber is fine; missing scenarios without evidence is not.
+
+Handbook card: `handbook/practices/check-readiness.md`.

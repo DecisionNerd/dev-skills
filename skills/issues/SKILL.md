@@ -66,3 +66,11 @@ For `create` or `draft`, follow [references/create.md](references/create.md) end
 - Pre-PR / closure readiness: `check-readiness`
 - PR open/fix/merge lifecycle: `merge-it` or `pulls`
 - Milestones: `milestones`
+
+## Grounding
+
+This skill’s TTPs are grounded in current engineering baselines (DORA, GitHub Docs, Fowler/Beck, Google SRE & SWE book, OpenTelemetry, OWASP LLM / NIST AI RMF, Diátaxis — see handbook `sources.md`).
+
+GitHub Issues as tracked intent — bug-council list (`handbook/concepts/12-bugs-and-debt.md`) plus lightweight BDD completion scenarios on the quality trace (`13-quality-trace.md`). Narrow scope = small batches (DORA). Label debt type; map scenarios to evidence.
+
+Handbook card: `handbook/practices/issues.md`.

@@ -1,6 +1,6 @@
 ---
 name: stage-it
-description: Use when the user asks to stage, promote to staging, land on staging, or "stage it" — getting a feature or release candidate onto the staging branch/environment. On repos with staging branch rules, open and drive the PR into staging with gates, merge readiness, and staging deploy verification. On main-only repos (no staging policy), do not invent a staging path — ask the user to use ship-it to promote to production instead.
+description: Land a feature or release candidate on the staging branch/environment per repo policy — open and drive the staging PR with gates, merge readiness, and staging deploy verification. Use when the user asks to stage, promote to staging, land on staging, or "stage it". Does not send work all the way into production (use ship-it). On main-only repos with no staging policy, do not invent a staging path — use merge-it for the next integrate target, or ship-it if they meant production + health check.
 ---
 
 # Stage It
@@ -76,9 +76,9 @@ Before acting, classify the repository from current evidence only (not memory of
 | Intent | Skill |
 | --- | --- |
 | Land feature on staging | `stage-it` (this skill) |
-| Promote staging to production | `ship-it` |
-| Feature PR lifecycle with review/autofix/merge | `merge-it` |
-| Main-only / no staging policy | Do not use this skill — point to `ship-it` or normal feature -> default-branch flow |
+| Merge current work → next integrate target | `merge-it` |
+| All the way into production + check it is healthy | `ship-it` |
+| Main-only / no staging policy | Do not use this skill — use `merge-it` for the next integrate target, or `ship-it` if they meant production |
 
 ## Blockers
 
@@ -100,3 +100,11 @@ Keep the final response short and evidence-first:
 - Smoke checks run and results.
 - Issues closed, left open, or deferred to production.
 - Whether `ship-it` is the logical next step (and that it was not run unless requested).
+
+## Grounding
+
+This skill’s TTPs are grounded in current engineering baselines (DORA, GitHub Docs, Fowler/Beck, Google SRE & SWE book, OpenTelemetry, OWASP LLM / NIST AI RMF, Diátaxis — see handbook `sources.md`).
+
+Staging as progressive-delivery control (SRE launch/canary thinking). Staging that never matches prod is theater.
+
+Handbook card: `handbook/practices/stage-it.md`.

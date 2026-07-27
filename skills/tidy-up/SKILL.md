@@ -94,3 +94,11 @@ Run scan across all buckets, then apply approved buckets in order: **workspaces 
 - Agent thrash left junk mid-run: `agents slap` first, then `tidy-up`
 - Code structure cleanup (not disk clutter): `refactor-it`
 - Situational awareness before cleaning: `recon`
+
+## Grounding
+
+This skill’s TTPs are grounded in current engineering baselines (DORA, GitHub Docs, Fowler/Beck, Google SRE & SWE book, OpenTelemetry, OWASP LLM / NIST AI RMF, Diátaxis — see handbook `sources.md`).
+
+Inventory before delete (safe ops hygiene). Reclaim regenerable clutter and merged branches; never confuse tidy with deleting secrets or unmerged work.
+
+Handbook card: `handbook/practices/tidy-up.md`.

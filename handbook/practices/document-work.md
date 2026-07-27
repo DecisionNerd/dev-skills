@@ -4,20 +4,20 @@ Repo docs that tracked work needs — then link from issue/PR.
 
 ## What it is
 
-Repo docs that tracked work needs — then link from issue/PR. In this guide, practices are skill-mapped TTPs: they tell you *when*, *why*, and *which command* — not a second copy of the full skill text. Open the skill when you execute.
+Repo docs that tracked work needs — then link from issue/PR. This practice is a skill-mapped TTP: *when*, *why*, and *which command*—not a full copy of the skill. Open the skill to execute.
 
 ## Why it works
 
-Named practices beat improvised chat workflows under load. They encode stop conditions and handoffs so you don’t invent process while the room burns.
+Linking issues/PRs to durable docs prevents tribal knowledge. GitHub’s model of closing keywords and linked work keeps the change set auditable; Diátaxis keeps the doc type honest (how-to vs reference).
 
 ## When to use it
 
-When the situation matches the one-liner above and [Orientation](../orientation/index.md) says this fire (or smoke) is the one to touch now.
+When the situation matches the one-liner above and [Orientation](../orientation/index.md) (or your [project path](../paths/index.md)) says this is the fire to touch now.
 
 ## Do
 
 - Invoke the skill; follow its safety rules
-- Keep one write owner; collect evidence
+- Keep one write owner; collect evidence before claiming done
 - Hand off to the next practice instead of boiling the ocean
 
 ## Don't
@@ -28,8 +28,15 @@ When the situation matches the one-liner above and [Orientation](../orientation/
 
 ## Related concepts
 
-[04-evidence-over-vibes](../concepts/04-evidence-over-vibes.md)
+[04-evidence-over-vibes](../concepts/04-evidence-over-vibes.md), [06-work-ownership](../concepts/06-work-ownership.md)
+
+## Further reading
+
+- [GitHub Docs — Linking a pull request to an issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue)
+- [Diátaxis](https://diataxis.fr/)
+
+See also the handbook [Sources & grounding](../sources.md) bibliography.
 
 ## Agent skill
 
-`issues document · pulls document · document-it`
+`issues document` · `pulls document` · `document-it`

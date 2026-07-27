@@ -1,13 +1,13 @@
 ---
 title: Merge It
-description: "Open a GitHub pull request for the current branch, run review/autofix feedback, wait for CI and required checks to go green, merge the PR, confirm linked issue closure, and return the local checkout to the appropriate integration branch. Use when the user asks to ship, open a PR and merge it, run autofix before merging, close out an issue through PR completion, or finish a branch end-to-end."
+description: "Merge the current work into its next integrate target (main/trunk, release branch, staging, or another repo-defined base) — open/update the PR, run review/autofix, wait for CI green, merge, confirm linked issue closure, and return the local checkout. Use when the user asks to merge this, open a PR and merge it, land this branch on the next target, finish a branch end-to-end, run autofix before merging, or close out an issue through PR completion. Not for sending work all the way into production and checking that it is healthy (use ship-it). Prefer stage-it when the user specifically asked to stage / land on staging."
 sidebar:
   order: 8
 ---
 
 `merge-it`
 
-Open a GitHub pull request for the current branch, run review/autofix feedback, wait for CI and required checks to go green, merge the PR, confirm linked issue closure, and return the local checkout to the appropriate integration branch. Use when the user asks to ship, open a PR and merge it, run autofix before merging, close out an issue through PR completion, or finish a branch end-to-end.
+Merge the current work into its next integrate target (main/trunk, release branch, staging, or another repo-defined base) — open/update the PR, run review/autofix, wait for CI green, merge, confirm linked issue closure, and return the local checkout. Use when the user asks to merge this, open a PR and merge it, land this branch on the next target, finish a branch end-to-end, run autofix before merging, or close out an issue through PR completion. Not for sending work all the way into production and checking that it is healthy (use ship-it). Prefer stage-it when the user specifically asked to stage / land on staging.
 
 ## Install
 

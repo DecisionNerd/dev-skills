@@ -1,6 +1,6 @@
 # Continue learning
 
-This handbook is a stance and a map, not the whole library.
+This handbook is a stance and a map, not the whole library. Prefer the [project paths](paths/index.md) before collecting more tabs.
 
 ## Companion skill ecosystems
 
@@ -18,12 +18,20 @@ This handbook is a stance and a map, not the whole library.
 - Incident response and blameless postmortems
 - Trunk-based development and small batches
 - Observability as product empathy
-- Agent evals and stop conditions
+- [Quality regimes](concepts/11-quality-regimes.md) — compute vs product vs generative evidence
+- [Bugs & debt](concepts/12-bugs-and-debt.md) — BugSplat lineage; debt types as named interest
+- [Quality trace](concepts/13-quality-trace.md) — DocSlime docs + lightweight BDD scenarios
+- Agent evals, Langfuse-style tracing, and stop conditions
+- Monorepo affected CI and package boundaries
 
 ## Primary sources worth keeping
+
+The curated bibliography lives in [Sources & grounding](sources.md) — DORA, GitHub Docs, Fowler/Beck, Google SRE & SWE book, OpenTelemetry, OWASP LLM / NIST AI RMF, Diátaxis, and more. Each [practice](practices/index.md) links the subset that justifies that TTP.
+
+Also keep close:
 
 - Norman — emotional design / everyday things
 - Kahneman — peaks, ends, and noisy judgment
 - Your own `PRODUCT.md` / DocSlime `docs/` / git history — the only vision that counts for *this* repo
 
-When stuck, don’t collect more tabs. Run `idk-now` or reopen [Orientation](orientation/index.md).
+When stuck, don’t collect more tabs. Run `idk-now`, reopen [Orientation](orientation/index.md), or return to your [path](paths/index.md).

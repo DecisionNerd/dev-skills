@@ -1,34 +1,44 @@
 # Fix It
 
-Plan and implement a repair from diagnosis — smallest real fix.
+Plan and implement a repair from diagnosis — smallest real fix, evidence matched to regime.
 
 ## What it is
 
-Plan and implement a repair from diagnosis — smallest real fix. In this guide, practices are skill-mapped TTPs: they tell you *when*, *why*, and *which command* — not a second copy of the full skill text. Open the skill when you execute.
+Turn `troubleshoot-app` / `diagnose-bug` (or clear breakage evidence) into an implementation-ready plan, then execute when approved. Bridge diagnose → plan → `check-readiness` → `merge-it`.
 
 ## Why it works
 
-Named practices beat improvised chat workflows under load. They encode stop conditions and handoffs so you don’t invent process while the room burns.
+Small, tested repairs beat speculative rewrites (DORA small batches). The repair oracle comes from the [quality trace](../concepts/13-quality-trace.md) (DocSlime + lightweight BDD / contracts); proof shape follows [quality regimes](../concepts/11-quality-regimes.md). A bug remains a bug whether the interest is labeled development, data, craft, or framing debt ([Bugs & debt](../concepts/12-bugs-and-debt.md)).
 
 ## When to use it
 
-When the situation matches the one-liner above and [Orientation](../orientation/index.md) says this fire (or smoke) is the one to touch now.
+After a diagnosis (or clear failing contract) when you need a decision-complete plan — not for pure refactors (`refactor-it`) or greenfield without a broken promise.
 
 ## Do
 
-- Invoke the skill; follow its safety rules
-- Keep one write owner; collect evidence
-- Hand off to the next practice instead of boiling the ocean
+- Name regime A/B/C; lock Use Existing / Refine / Create New for the contract
+- Prefer smallest fix that restores the scenario; map scenario → evidence
+- One write owner; ask before mutating unless already ordered to implement
 
 ## Don't
 
-- Skip orientation when you’re lost
+- Hide behavior change inside “refactor”
+- Invent a parallel Definition of Done when DocSlime/issue BDD exists
 - Spawn overlapping agents to “go faster”
-- Treat the practice as done without evidence
 
 ## Related concepts
 
-[03-smallest-next-step](../concepts/03-smallest-next-step.md), [04-evidence-over-vibes](../concepts/04-evidence-over-vibes.md)
+[03-smallest-next-step](../concepts/03-smallest-next-step.md), [04-evidence-over-vibes](../concepts/04-evidence-over-vibes.md), [11-quality-regimes](../concepts/11-quality-regimes.md), [12-bugs-and-debt](../concepts/12-bugs-and-debt.md), [13-quality-trace](../concepts/13-quality-trace.md)
+
+## Further reading
+
+- [Quality regimes (handbook)](../concepts/11-quality-regimes.md)
+- [Quality trace (handbook)](../concepts/13-quality-trace.md)
+- [DORA — Working in small batches](https://dora.dev/capabilities/working-in-small-batches/)
+- [Martin Fowler — Refactoring](https://martinfowler.com/books/refactoring.html)
+- [Practical Test Pyramid](https://martinfowler.com/articles/practical-test-pyramid.html)
+
+See also the handbook [Sources & grounding](../sources.md) bibliography.
 
 ## Agent skill
 

@@ -1,13 +1,13 @@
 ---
 title: Document It
-description: "Improve or add repository documentation for a feature, API, ops path, or decision. Use when the user says \"document it\", asks for README/runbook/API docs, architecture notes, changelog entries, or DocSlime-style product docs updates. Prefer editing existing docs over new files; keep docs accurate to the code. For issue/PR-scoped doc links only, issues document / pulls document may be enough — use this skill for substantive doc work."
+description: "Improve or add repository documentation for work just done or for product-docs gaps. Surgical update of the nearest accurate home by default — do not scaffold DocSlime unless the altitude needs it. Use DocSlime structures when product/requirements/testing/observability contracts are in play."
 sidebar:
   order: 7
 ---
 
 `document-it`
 
-Improve or add repository documentation for a feature, API, ops path, or decision. Use when the user says "document it", asks for README/runbook/API docs, architecture notes, changelog entries, or DocSlime-style product docs updates. Prefer editing existing docs over new files; keep docs accurate to the code. For issue/PR-scoped doc links only, issues document / pulls document may be enough — use this skill for substantive doc work.
+Document what changed — surgically by default. Use DocSlime structures and methods when product-altitude truth is actually needed; don’t init or fill a docs tree just to note today’s fix.
 
 ## Install
 

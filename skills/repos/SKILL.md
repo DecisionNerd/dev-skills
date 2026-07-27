@@ -111,3 +111,11 @@ Hand off product/UI feeling to ProductFeeling / Impeccable; docs tree to DocSlim
 - Agent thrash during migration → `agents slap`
 - Local clutter after history ops → `tidy-up`
 - Lost on whether to split → `idk-now` then `repos architecture`
+
+## Grounding
+
+This skill’s TTPs are grounded in current engineering baselines (DORA, GitHub Docs, Fowler/Beck, Google SRE & SWE book, OpenTelemetry, OWASP LLM / NIST AI RMF, Diátaxis — see handbook `sources.md`).
+
+DORA CI + loosely coupled topology; GitHub OIDC / pinned Actions / least privilege for supply-chain baseline; Pulumi ESC is this house’s default over long-lived cloud keys.
+
+Handbook card: `handbook/practices/repos.md`.

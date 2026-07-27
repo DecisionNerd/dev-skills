@@ -1,36 +1,44 @@
 # KISS
 
-Audit goals, processes, systems, and plans for needless complexity — recommend simplification **only when warranted**; otherwise keep or reshape.
+Audit complexity; simplify only when warranted; right-size the DAG.
 
 ## What it is
 
-Audit goals, processes, systems, and plans for needless complexity — recommend simplification **only when warranted**; otherwise keep or reshape. In this guide, practices are skill-mapped TTPs: they tell you *when*, *why*, and *which command* — not a second copy of the full skill text. Open the skill when you execute.
-
-Simple means a straightforward DAG to completion and **right-sized** tasks (not too small, not overly big) — not automatic reductionism.
+Audit complexity; simplify only when warranted; right-size the DAG. This practice is a skill-mapped TTP: *when*, *why*, and *which command*—not a full copy of the skill. Open the skill to execute.
 
 ## Why it works
 
-Named practices beat improvised chat workflows under load. KISS encodes an honest verdict (overly complex / earned / wrong-shaped) plus risks and benefits of simplifying *and* of keeping as-is.
+Gall’s Law: complex systems that work evolved from simple systems that worked. Beck’s simple-design rules prioritize passing tests and revealing intent before minimizing structure—so simplification is earned, not automatic reductionism. Unpaid **development / architecture debt** is interest that `kiss` helps name and repay ([Bugs & debt](../concepts/12-bugs-and-debt.md)). DORA loosely coupled architecture rewards deployable simplicity without deleting needed safety.
 
 ## When to use it
 
-When goals, process, architecture, or a plan feel heavy — or someone is pushing cuts that might remove earned safety. After [Orientation](../orientation/index.md).
+When the situation matches the one-liner above and [Orientation](../orientation/index.md) (or your [project path](../paths/index.md)) says this is the fire to touch now.
 
 ## Do
 
 - Invoke the skill; follow its safety rules
-- Weigh simplify vs keep; protect earned complexity
-- Right-size the DAG (Goldilocks tasks)
+- Keep one write owner; collect evidence before claiming done
+- Hand off to the next practice instead of boiling the ocean
 
 ## Don't
 
-- Default to cutting everything
 - Skip orientation when you’re lost
-- Delete safety/validation nodes just to shorten a diagram
+- Spawn overlapping agents to “go faster”
+- Treat the practice as done without evidence
 
 ## Related concepts
 
-[01-this-is-fine-stance](../concepts/01-this-is-fine-stance.md), [03-smallest-next-step](../concepts/03-smallest-next-step.md), [08-vision-tied-goals](../concepts/08-vision-tied-goals.md)
+[01-this-is-fine-stance](../concepts/01-this-is-fine-stance.md), [03-smallest-next-step](../concepts/03-smallest-next-step.md), [08-vision-tied-goals](../concepts/08-vision-tied-goals.md), [12-bugs-and-debt](../concepts/12-bugs-and-debt.md)
+
+## Further reading
+
+- [Bugs & debt (handbook)](../concepts/12-bugs-and-debt.md)
+- [Beck Design Rules](https://martinfowler.com/bliki/BeckDesignRules.html)
+- [Martin Fowler — Technical Debt](https://martinfowler.com/bliki/TechnicalDebt.html)
+- [Gall’s Law (summary)](https://en.wikipedia.org/wiki/John_Gall_(author)#Gall's_law)
+- [DORA — Loosely coupled architecture](https://dora.dev/capabilities/loosely-coupled-architecture/)
+
+See also the handbook [Sources & grounding](../sources.md) bibliography.
 
 ## Agent skill
 

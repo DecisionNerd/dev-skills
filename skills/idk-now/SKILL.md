@@ -111,3 +111,11 @@ Inventory only: DecisionNerd pack from this repo’s `skills/*/SKILL.md` (or ins
 - Already know the domain, need tactical next move → `recon`
 - Clear issue to plan → `recon issue`
 - Emergency agent thrash → `agents slap` (not this skill)
+
+## Grounding
+
+This skill’s TTPs are grounded in current engineering baselines (DORA, GitHub Docs, Fowler/Beck, Google SRE & SWE book, OpenTelemetry, OWASP LLM / NIST AI RMF, Diátaxis — see handbook `sources.md`).
+
+Under uncertainty, frame the goal before options (small batches / Beck clarity). Survey → vision-tied next skill beats thrashing tools.
+
+Handbook card: `handbook/practices/idk-now.md`.

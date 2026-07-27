@@ -99,10 +99,11 @@ Use this map when recommending next steps. Prefer the **smallest** next skill th
 | Is the issue done enough to PR/close? | `check-readiness` |
 | Live UI / data-plane broken | `troubleshoot-app` then maybe `fix-it` |
 | Backend / algo / API bug | `diagnose-bug` then maybe `fix-it` |
+| Agent / LLM quality or thrash | `agents slap` / `agents analyze` (+ Langfuse via `observe-it`) |
 | Plan a repair from diagnosis | `fix-it` |
-| Need tests / coverage / BDD evidence | `test-it` |
-| Need logs/metrics/traces/analytics | `observe-it` |
-| Need repo docs / runbooks / API docs | `document-it` |
+| Need tests / coverage / BDD evidence | `test-it` (name regime A/B/C first) |
+| Need logs/metrics/traces/analytics | `observe-it` (regime-matched; Langfuse for C) |
+| Need repo docs / runbooks (surgical) | `document-it` — DocSlime only when altitude earned |
 | Need options/tradeoffs before building | `research-it` |
 | Need structure cleanup without behavior change | `refactor-it` |
 | Agent thrashing / dumb workflow / need drain | `agents slap` |
@@ -134,3 +135,11 @@ Do you want me to run <primary suggestion>?
 ```
 
 For `issue`, use the plan format in [references/issue.md](references/issue.md) instead, still ending with a single Follow-Up Prompt tied to this skill map.
+
+## Grounding
+
+This skill’s TTPs are grounded in current engineering baselines (DORA, GitHub Docs, Fowler/Beck, Google SRE & SWE book, OpenTelemetry, OWASP LLM / NIST AI RMF, Diátaxis — see handbook `sources.md`).
+
+Situational awareness before action (SRE incident habit): read git/issue/PR state, then the smallest next move. For one issue, plan a reviewable small CL (Google eng practices).
+
+Handbook card: `handbook/practices/recon.md`.

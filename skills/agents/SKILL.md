@@ -90,8 +90,17 @@ Rules:
 
 ## Related skills
 
-- Product/backend bugs: `diagnose-bug` / `troubleshoot-app` / `fix-it`
-- Tests as agent success criteria: `test-it`
-- Docs for agents/humans: `document-it`
+- Product/backend bugs: `diagnose-bug` / `troubleshoot-app` / `fix-it` (do not use `agents` as the primary cut for deterministic compute or UI data-plane bugs)
+- Tests / evals as success criteria: `test-it` (regime C)
+- Traces/scores in prod: `observe-it` (Langfuse house default for LLM)
+- Docs for agents/humans: `document-it` (surgical)
 - Options before design: `research-it`
 - Repo situational awareness: `recon`
+
+## Grounding
+
+This skill’s TTPs are grounded in current engineering baselines (DORA, GitHub Docs, Fowler/Beck, Google SRE & SWE book, OpenTelemetry, OWASP LLM / NIST AI RMF, Diátaxis — see handbook `sources.md`).
+
+Anthropic: keep agents simple and evaluable. OWASP LLM: bound tools/agency; NIST AI RMF: measure before optimize. Use `slap` to drain runaway loops (excessive agency). Parallel explore / sequential mutate for sub-agents. This is **quality regime C** — design for traces + evals (Langfuse house default), not unit-test theater (`handbook/concepts/11-quality-regimes.md`).
+
+Handbook card: `handbook/practices/design-agents.md`.

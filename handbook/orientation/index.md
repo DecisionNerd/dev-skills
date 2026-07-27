@@ -18,9 +18,13 @@ flowchart LR
 - [Situation Assessment](02-situation-assessment.md) — env, repo, git, what’s on fire vs smoke
 - [Skill Universe](03-skill-universe.md) — DecisionNerd pack + DocSlime + ProductFeeling + Impeccable + vendored
 
+Also decide [language](../concepts/09-language-selection.md) early (Python / TypeScript / Rust; Kotlin, Swift, Godot only when the platform requires it). For web, decide [framework](../concepts/10-web-framework-selection.md) (Next/React on Vercel vs Starlight for docs).
+
 ## Fast path
 
 Run **`idk-now`** (full) or **`idk-now quick`**. For tactical git/issue scope only, use **`recon`** — but if you’re *lost*, prefer `idk-now`.
+
+Then pick a [project path](../paths/index.md) (website → CLI → monorepo) so you don’t load every practice at once.
 
 ## Agent skill
 

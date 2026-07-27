@@ -34,6 +34,10 @@ export default defineConfig({
 					label: "The 'This is Fine' Guide",
 					items: [
 						{ label: 'Handbook home', slug: 'handbook' },
+						{
+							label: 'Project paths',
+							items: [{ autogenerate: { directory: 'handbook/paths' } }],
+						},
 						{ label: 'Why it works', slug: 'handbook/why-it-works' },
 						{
 							label: 'Orientation',

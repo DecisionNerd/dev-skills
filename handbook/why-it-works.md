@@ -12,6 +12,12 @@ Working definitions live in [Concepts](concepts/index.md). Know *why the project
 
 **Named techniques beat vibes.** Culinary schools don’t treat knife cuts as optional personality. Escoffier-style *named cuts* make excellence teachable. Agent **skills** are the same idea: a `slap` drain, a `recon issue` plan, a `check-readiness` gate — repeatable moves with stop conditions.
 
+**Quality has regimes.** Backend/algo/analytics quality is not website quality is not generative quality. Correctness SLIs and contracts, Core Web Vitals and journeys, and LLM traces/evals (e.g. Langfuse) are different oracles — see [Quality regimes](concepts/11-quality-regimes.md).
+
+**A bug is a bug.** Pain for a user, developer, agent, or operator counts whether it lives in code, data, docs, framing, or feedback loops. Debt is unpaid interest on those bugs — see [Bugs & debt](concepts/12-bugs-and-debt.md) (BugSplat / bug-council lineage).
+
+**Quality has a documentation trace.** DocSlime holds product truth; lightweight BDD scenarios make behavior falsifiable; tests/evals/observation close the loop — see [Quality trace](concepts/13-quality-trace.md). Documentation that lies is a quality failure, not a side quest.
+
 **Agency preserves quality.** Builders (and end users) attach to systems that make them competent and in control. Dark patterns in product *and* in agent orchestration — forced pledges, infinite retries, overlapping writers — manufacture compliance, not craft.
 
 ## From cowboy coding to skill-shaped work
@@ -35,6 +41,10 @@ Grounded clarity, not vibes. That’s the whole point of [This is Fine (stance)]
 
 ## Further reading
 
+- [Sources & grounding](sources.md) — full bibliography for every practice TTP
+- [Quality regimes](concepts/11-quality-regimes.md) — which evidence closes which system shape
+- [Bugs & debt](concepts/12-bugs-and-debt.md) — experience bugs and debt types
+- [Quality trace](concepts/13-quality-trace.md) — DocSlime + BDD as quality/docs system
 - [Emotional Design (Don Norman)](https://jnd.org/emotional-design-people-and-things/)
 - [Peak–End Rule (NN/g)](https://www.nngroup.com/articles/peak-end-rule/)
 - ProductFeeling handbook — feeling as a product requirement

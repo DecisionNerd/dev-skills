@@ -77,3 +77,11 @@ Only when open issues are closed, moved out, or the user explicitly accepts clos
 - Issue implementation planning: `recon issue` (or `recon` with no args to scout first)
 - Shipping a release train: `stage-it` / `ship-it`
 - PR lifecycle: `pulls` / `merge-it`
+
+## Grounding
+
+This skill’s TTPs are grounded in current engineering baselines (DORA, GitHub Docs, Fowler/Beck, Google SRE & SWE book, OpenTelemetry, OWASP LLM / NIST AI RMF, Diátaxis — see handbook `sources.md`).
+
+Time-boxed releasable slices over endless backlog; keep milestone WIP honest (DORA small batches).
+
+Handbook card: `handbook/practices/milestones.md`.

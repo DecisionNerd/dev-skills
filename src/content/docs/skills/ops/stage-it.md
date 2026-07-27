@@ -1,13 +1,13 @@
 ---
 title: Stage It
-description: "Use when the user asks to stage, promote to staging, land on staging, or \"stage it\" — getting a feature or release candidate onto the staging branch/environment. On repos with staging branch rules, open and drive the PR into staging with gates, merge readiness, and staging deploy verification. On main-only repos (no staging policy), do not invent a staging path — ask the user to use ship-it to promote to production instead."
+description: "Land a feature or release candidate on the staging branch/environment per repo policy — open and drive the staging PR with gates, merge readiness, and staging deploy verification. Use when the user asks to stage, promote to staging, land on staging, or \"stage it\". Does not send work all the way into production (use ship-it). On main-only repos with no staging policy, do not invent a staging path — use merge-it for the next integrate target, or ship-it if they meant production + health check."
 sidebar:
   order: 3
 ---
 
 `stage-it`
 
-Use when the user asks to stage, promote to staging, land on staging, or "stage it" — getting a feature or release candidate onto the staging branch/environment. On repos with staging branch rules, open and drive the PR into staging with gates, merge readiness, and staging deploy verification. On main-only repos (no staging policy), do not invent a staging path — ask the user to use ship-it to promote to production instead.
+Land a feature or release candidate on the staging branch/environment per repo policy — open and drive the staging PR with gates, merge readiness, and staging deploy verification. Use when the user asks to stage, promote to staging, land on staging, or "stage it". Does not send work all the way into production (use ship-it). On main-only repos with no staging policy, do not invent a staging path — use merge-it for the next integrate target, or ship-it if they meant production + health check.
 
 ## Install
 

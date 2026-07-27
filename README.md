@@ -39,7 +39,7 @@ KISS, research, fix, refactor, test, observe, and document.
 - **`refactor-it`** — Safely refactor code to improve structure, clarity, or testability without changing intended behavior.
 - **`test-it`** — Add, fix, or harden tests for the current change, issue, or failing suite.
 - **`observe-it`** — Add or improve observability — structured logs, metrics, traces, errors, analytics, and dashboards — for a feature, bug path, or service.
-- **`document-it`** — Improve or add repository documentation for a feature, API, ops path, or decision.
+- **`document-it`** — Document what you just changed (surgical by default); use DocSlime structures when product-docs altitude is earned.
 ### Agents
 
 Slap/drain runaway agents, analyze, optimize, design, and sub-agents.

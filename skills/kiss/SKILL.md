@@ -147,3 +147,11 @@ Merge micro-tasks; split epics at real dependency or risk boundaries — not at 
 - Issue/milestone scope → `issues narrow` / `milestones narrow`
 - Agent stacks → `agents analyze|design|optimize` (slap first if thrashing)
 - Docs bloat → DocSlime `kiss` / `document-it` as appropriate
+
+## Grounding
+
+This skill’s TTPs are grounded in current engineering baselines (DORA, GitHub Docs, Fowler/Beck, Google SRE & SWE book, OpenTelemetry, OWASP LLM / NIST AI RMF, Diátaxis — see handbook `sources.md`).
+
+Beck’s simple-design order (pass tests → reveal intent → remove duplication → fewer elements) and Gall’s Law: simplify when complexity is unearned, not by deleting needed safety. DORA loosely coupled architecture rewards deployable simplicity.
+
+Handbook card: `handbook/practices/kiss.md`.

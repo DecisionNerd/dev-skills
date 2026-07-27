@@ -4,20 +4,20 @@ Clean dangling workspaces, artifacts, caches, stale branches — inventory first
 
 ## What it is
 
-Clean dangling workspaces, artifacts, caches, stale branches — inventory first. In this guide, practices are skill-mapped TTPs: they tell you *when*, *why*, and *which command* — not a second copy of the full skill text. Open the skill when you execute.
+Clean dangling workspaces, artifacts, caches, stale branches — inventory first. This practice is a skill-mapped TTP: *when*, *why*, and *which command*—not a full copy of the skill. Open the skill to execute.
 
 ## Why it works
 
-Named practices beat improvised chat workflows under load. They encode stop conditions and handoffs so you don’t invent process while the room burns.
+Clutter raises cognitive load and hides real fires. Inventory-before-delete matches safe ops hygiene; regenerable artifacts and merged branches are low-risk reclaim. Never confuse tidy with deleting secrets or unmerged work.
 
 ## When to use it
 
-When the situation matches the one-liner above and [Orientation](../orientation/index.md) says this fire (or smoke) is the one to touch now.
+When the situation matches the one-liner above and [Orientation](../orientation/index.md) (or your [project path](../paths/index.md)) says this is the fire to touch now.
 
 ## Do
 
 - Invoke the skill; follow its safety rules
-- Keep one write owner; collect evidence
+- Keep one write owner; collect evidence before claiming done
 - Hand off to the next practice instead of boiling the ocean
 
 ## Don't
@@ -29,6 +29,13 @@ When the situation matches the one-liner above and [Orientation](../orientation/
 ## Related concepts
 
 [06-work-ownership](../concepts/06-work-ownership.md), [01-this-is-fine-stance](../concepts/01-this-is-fine-stance.md)
+
+## Further reading
+
+- [Beck Design Rules — minimize elements (after clarity)](https://martinfowler.com/bliki/BeckDesignRules.html)
+- [Git documentation — git worktree](https://git-scm.com/docs/git-worktree)
+
+See also the handbook [Sources & grounding](../sources.md) bibliography.
 
 ## Agent skill
 

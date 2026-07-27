@@ -105,6 +105,7 @@ function frontmatter({ title, description, order }) {
 const ORDER = {
 	'index.md': 0,
 	'why-it-works.md': 1,
+	'sources.md': 98,
 	'continue-learning.md': 99,
 };
 
@@ -123,11 +124,13 @@ for (const rel of files) {
 	body = rewriteLinks(body, sourceRelDir === '.' ? '' : sourceRelDir);
 	const order =
 		ORDER[rel] ??
-		(rel.startsWith('orientation/')
-			? 10 + (parseInt(path.basename(rel), 10) || 5)
-			: rel.startsWith('concepts/')
-				? 20 + (parseInt(path.basename(rel), 10) || 5)
-				: rel.startsWith('strategies/')
+		(rel.startsWith('paths/')
+			? 5 + (parseInt(path.basename(rel), 10) || 0)
+			: rel.startsWith('orientation/')
+				? 10 + (parseInt(path.basename(rel), 10) || 5)
+				: rel.startsWith('concepts/')
+					? 20 + (parseInt(path.basename(rel), 10) || 5)
+					: rel.startsWith('strategies/')
 					? 30 + (parseInt(path.basename(rel), 10) || 5)
 					: rel.startsWith('practices/')
 						? 40

@@ -72,3 +72,11 @@ Use [references/ops.md](references/ops.md) for critique/narrow/widen/merge/clean
 - Issues: `issues`
 - Readiness before PR: `check-readiness`
 - Staging/production promote: `stage-it` / `ship-it`
+
+## Grounding
+
+This skill’s TTPs are grounded in current engineering baselines (DORA, GitHub Docs, Fowler/Beck, Google SRE & SWE book, OpenTelemetry, OWASP LLM / NIST AI RMF, Diátaxis — see handbook `sources.md`).
+
+PRs as the review unit (GitHub Docs); small reviewable changes (Google eng practices); required checks gate trunk (DORA trunk-based).
+
+Handbook card: `handbook/practices/pulls.md`.

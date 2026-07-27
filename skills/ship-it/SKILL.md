@@ -1,15 +1,17 @@
 ---
 name: ship-it
-description: Use when the user asks to ship, promote, release, or take staging to production/main — especially "ship it", "promote staging to production", "take this to production", "ship staging", "staging to main", or "release the staging branch". Handles repo-level branch-policy checks, the release-source-to-production PR when the repo defines one, merge readiness, production deploy verification, smoke tests, and issue closeout evidence. For promoting work into staging first, use stage-it.
+description: Send work all the way into production and check that it is healthy — promote the release source to production per repo policy, then verify the deploy and observe live health (smoke/checks, issue closeout evidence). Use when the user asks to ship it, ship to production, promote staging to production, take this to production, ship staging, staging to main, or release to prod. Not for merging a PR into the next integrate target (use merge-it) or landing on staging only (use stage-it).
 ---
 
 # Ship It
 
 ## Overview
 
-Use this skill to turn an already-reviewed repo-approved release branch into a production release without skipping the evidence trail. This is commonly `staging` -> `main` for deployed applications, but the branch path is repo-level policy, not a global default. Libraries, SDKs, CLIs, crates, packages, and local tools often release from feature branches directly to the default branch or through a separate tag/package flow; do not force a staging promotion path onto those repos.
+Use this skill to send work **all the way into production** and **check on it** — promote per repo policy, then verify the deploy and observe that production is healthy. This is not “merge a PR into the next integrate target” (`merge-it`).
 
-When the user wants to land work on staging first (not production), use `stage-it` instead.
+This is commonly `staging` -> `main` for deployed applications, but the branch path is repo-level policy, not a global default. Libraries, SDKs, CLIs, crates, packages, and local tools often release from feature branches directly to the default branch or through a separate tag/package flow; do not force a staging promotion path onto those repos.
+
+When the user wants to land work on staging only (not production), use `stage-it` instead. When the user wants to merge current work into its next integrate target (main, release branch, staging, etc.), use `merge-it` instead.
 
 This skill does not mutate production data, seed CMS records, rotate secrets, or bypass branch protection unless the user explicitly asks for a separate operational change and the repo runbook allows it.
 
@@ -89,3 +91,11 @@ Keep the final response short and evidence-first:
 - Smoke checks run and results.
 - Issues closed, left open, or blocked.
 - Any follow-up needed for infrastructure, docs, or release notes.
+
+## Grounding
+
+This skill’s TTPs are grounded in current engineering baselines (DORA, GitHub Docs, Fowler/Beck, Google SRE & SWE book, OpenTelemetry, OWASP LLM / NIST AI RMF, Diátaxis — see handbook `sources.md`).
+
+Continuous delivery (DORA) with progressive exposure / rollback thinking (SRE canarying). Promote with evidence, not hope.
+
+Handbook card: `handbook/practices/ship-it.md`.

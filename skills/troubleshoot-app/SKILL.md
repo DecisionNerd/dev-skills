@@ -1,13 +1,15 @@
 ---
 name: troubleshoot-app
-description: Troubleshoot live web app failures by combining user-visible browser evidence, current project data-plane sources, logs, analytics, and local code inspection. Use when a user reports a broken or confusing app experience, asks why a deployed/live page is not working, provides a URL to inspect in Atlas or another browser, asks to look at what they see, or wants diagnosis before implementation. The skill must diagnose the problem, recommend a fix, and ask a yes/no "Do you want me to..." question before making code or data changes unless the user already explicitly asked to implement. For backend, API, data-pipeline, or algorithm bugs without a UI surface, use diagnose-bug instead.
+description: Troubleshoot live web app failures by combining user-visible browser evidence, current project data-plane sources, logs, analytics, and local code inspection. Use when a user reports a broken or confusing app experience, asks why a deployed/live page is not working, provides a URL to inspect in Atlas or another browser, asks to look at what they see, or wants diagnosis before implementation. The skill must diagnose the problem, recommend a fix, and ask a yes/no "Do you want me to..." question before making code or data changes unless the user already explicitly asked to implement. For backend, API, data-pipeline, or algorithm bugs without a UI surface, use diagnose-bug; for agent/LLM quality failures, use agents analyze.
 ---
 
 # Troubleshoot App
 
 Use this skill to diagnose live app problems from the outside in: reproduce the user-visible issue, correlate it with data-plane truth, inspect logs and code, then recommend a fix. Keep it globally usable; discover the project’s actual sources instead of assuming a stack.
 
-Use lightweight BDD completion scenarios and existing requirements as the definition of what should be happening. During troubleshooting, look for existing definitions in product docs, architecture docs, requirement docs, issue bodies, PR descriptions, BDD/Gherkin files, test names, test fixtures, and acceptance criteria. Prefer using or refining an existing definition over inventing a parallel one. If no suitable definition exists, write a concise proposed BDD scenario that captures the expected behavior and identify where it should be added during the fix.
+This is **quality regime B** (interactive product). Wrong outputs from APIs/pipelines with no UI → `diagnose-bug` (A). Thrashing agents / bad LLM generations → `agents analyze` / Langfuse traces (C), not this skill.
+
+Use lightweight BDD completion scenarios and existing requirements as the definition of what should be happening (`handbook/concepts/13-quality-trace.md`). Look in DocSlime `docs/` (`PRODUCT.md`, `experience/`, `REQUIREMENTS.md`, `engineering/TESTING.md`, …), issue bodies, PR descriptions, existing `.feature`/tests, and acceptance criteria. Prefer refining an existing definition over inventing a parallel one. If none fits, draft a concise Given/When/Then scenario and say where it should live. A broken, confusing, or falsely promised experience is still a bug — including craft/a11y/framing debt (`handbook/concepts/12-bugs-and-debt.md`).
 
 For backend-only, API, worker, data-pipeline, or algorithm failures (no meaningful browser UI), use `diagnose-bug` instead.
 
@@ -31,7 +33,7 @@ The user can answer yes/no. If the user already explicitly says to implement or 
 2. Identify the intended workflow.
    - Determine the user journey, entry URL, auth state, selected tenant/org/account, and expected landing state.
    - Search for the intended behavior in existing docs, requirements, acceptance criteria, BDD/Gherkin files, test files, issue text, PR text, and relevant code comments.
-   - Link the expected behavior back to a concrete source when one exists, such as `docs/2-REQUIREMENTS.md`, `docs/1-EXPERIENCE.md`, a `.feature` file, an e2e test, a unit/integration test, or a GitHub issue.
+   - Link the expected behavior back to a concrete source when one exists, such as DocSlime `REQUIREMENTS.md` / `experience/`, a `.feature` file (only if the repo already uses one), an e2e/unit/integration test, or a GitHub issue.
    - If an existing definition is close but stale or incomplete, say how it should be refined rather than creating a competing definition.
    - If no definition is suitable, draft a proposed BDD completion scenario using Given/When/Then and recommend where it should live.
    - Name the invariant that appears violated, such as “active browser org exists but app has no private workspace,” “checkout created a session but subscription is missing,” or “UI says saved but database lacks row.”
@@ -121,3 +123,11 @@ Do you want me to implement this fix?
 ```
 
 If the user already asked to implement, include the diagnosis briefly, implement, validate, and summarize what changed.
+
+## Grounding
+
+This skill’s TTPs are grounded in current engineering baselines (DORA, GitHub Docs, Fowler/Beck, Google SRE & SWE book, OpenTelemetry, OWASP LLM / NIST AI RMF, Diátaxis — see handbook `sources.md`).
+
+Live incidents: reproduce → isolate → evidence (SRE). Regime **B** (`handbook/concepts/11-quality-regimes.md`): journeys, a11y, Web Vitals, data-plane mismatch — not unit-test theater and not LLM-eval theater. Prefer the quality trace before inventing a private oracle (`13-quality-trace.md`).
+
+Handbook card: `handbook/practices/troubleshoot-app.md`.

@@ -1,13 +1,13 @@
 ---
 title: Fix It
-description: "Create an implementation-ready repair plan from troubleshooting evidence, live-app diagnoses, failing URLs, screenshots, logs, data-plane findings, or clearly reported product breakage. Use when the user asks to \"fix it\", \"plan this fix\", \"plan the repair\", or after troubleshoot-app or diagnose-bug when they want a plan before implementation — especially in the lifecycle troubleshoot to fix-it to check-readiness to merge-it."
+description: "Create an implementation-ready repair plan from diagnosis evidence — live-app (troubleshoot-app), backend/algo (diagnose-bug), failing URLs, logs, data-plane findings, or clearly reported breakage. Use when the user asks to \"fix it\", \"plan this fix\", or wants a plan before implementation — especially diagnose → fix-it → check-readiness → merge-it. Not for behavior-preserving structure work (refactor-it) or greenfield features without a failing contract."
 sidebar:
   order: 3
 ---
 
 `fix-it`
 
-Create an implementation-ready repair plan from troubleshooting evidence, live-app diagnoses, failing URLs, screenshots, logs, data-plane findings, or clearly reported product breakage. Use when the user asks to "fix it", "plan this fix", "plan the repair", or after troubleshoot-app or diagnose-bug when they want a plan before implementation — especially in the lifecycle troubleshoot to fix-it to check-readiness to merge-it.
+Create an implementation-ready repair plan from diagnosis evidence (troubleshoot-app or diagnose-bug). Not for behavior-preserving structure work (refactor-it) or greenfield without a failing contract.
 
 ## Install
 

@@ -32,6 +32,7 @@ Replace vibes with **evidence**: what exists, what fits this repo, what to do ne
 
 3. **Compare options**
    - 2–4 viable options max. Criteria table: fit, complexity, ops burden, risk, lock-in.
+   - Prefer **house defaults when unconstrained**: React + Next on Vercel for web; Pulumi ESC + OIDC for secrets; Langfuse for LLM obs/evals — unless the repo already standardized elsewhere.
    - Call out unknowns and what a spike would prove.
 
 4. **Recommend**
@@ -72,3 +73,11 @@ Replace vibes with **evidence**: what exists, what fits this repo, what to do ne
 **Follow-Up Prompt**
 Do you want me to open an issue (issues create), plan it (recon issue), or spike a prototype?
 ```
+
+## Grounding
+
+This skill’s TTPs are grounded in current engineering baselines (DORA, GitHub Docs, Fowler/Beck, Google SRE & SWE book, OpenTelemetry, OWASP LLM / NIST AI RMF, Diátaxis — see handbook `sources.md`).
+
+Evidence before commitment; avoid jumping to complex systems before a simple one works (Gall’s Law / Beck). Prefer house defaults only when the repo has no stronger local constraint (`handbook/concepts/11-quality-regimes.md` for generative tooling; `repos` for ESC).
+
+Handbook card: `handbook/practices/research-it.md`.

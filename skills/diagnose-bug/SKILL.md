@@ -1,15 +1,18 @@
 ---
 name: diagnose-bug
-description: Diagnose backend, API, worker, data-pipeline, or algorithm bugs by reproducing with inputs/tests, checking invariants and complexity assumptions, correlating logs/traces/metrics, and inspecting code. Use when a user reports wrong outputs, failing tests, timeouts, races, incorrect algorithms, flaky jobs, bad API responses, or asks why a non-UI system is broken — before implementation. Diagnose, recommend a fix, and ask a yes/no "Do you want me to..." question before changing code or data unless the user already asked to implement. For live web UI / browser-visible product failures, use troubleshoot-app instead.
+description: Diagnose backend, API, worker, data-pipeline, or algorithm bugs by reproducing with inputs/tests, checking invariants and complexity assumptions, correlating logs/traces/metrics, and inspecting code. Use when a user reports wrong outputs, failing tests, timeouts, races, incorrect algorithms, flaky jobs, bad API responses, or asks why a non-UI system is broken — before implementation. Diagnose, recommend a fix, and ask a yes/no "Do you want me to..." question before changing code or data unless the user already asked to implement. For live web UI / browser-visible product failures, use troubleshoot-app; for agent/LLM quality failures, use agents analyze.
 ---
 
 # Diagnose Bug
 
 Use this skill to diagnose backend and algorithmic failures from evidence inward: reproduce with concrete inputs, establish the intended invariant or contract, correlate runtime signals, then inspect code. Keep it globally usable; discover the project’s actual runtimes, test harnesses, and observability instead of assuming a stack.
 
-This skill is for **non-UI** surfaces: APIs, services, CLIs, libraries, workers/queues, ETL/pipelines, compilers/analyzers, and algorithms (correctness, complexity, numeric stability). For live browser/product UI failures, use `troubleshoot-app`.
+This skill is for **non-UI** surfaces: APIs, services, CLIs, libraries, workers/queues, ETL/pipelines, compilers/analyzers, and algorithms (correctness, complexity, numeric stability). This is **quality regime A** (deterministic compute).
 
-Use existing specs, types, contracts, property tests, unit/integration tests, and docs as the definition of correct behavior. Prefer refining an existing definition over inventing a parallel one. If none is suitable, propose a concise contract or Given/When/Then scenario and say where it should live.
+- Live browser/product UI failures → `troubleshoot-app` (regime B)
+- Agent loops / stochastic LLM quality → `agents analyze` (+ Langfuse traces/evals), not this skill as the primary cut (regime C)
+
+Use existing specs, types, contracts, property tests, unit/integration tests, DocSlime/TESTING, and docs as the definition of correct behavior (`handbook/concepts/13-quality-trace.md`). Prefer refining an existing definition over inventing a parallel one. If none fits, propose a concise contract or Given/When/Then scenario and say where it should live. Wrong answers, broken invariants, and silent data lies are bugs — including data/test/observability debt labels when those name the interest (`handbook/concepts/12-bugs-and-debt.md`).
 
 ## Core Rule
 
@@ -107,3 +110,11 @@ Do you want me to implement this fix?
 ```
 
 If the user already asked to implement, include the diagnosis briefly, implement, validate, and summarize what changed.
+
+## Grounding
+
+This skill’s TTPs are grounded in current engineering baselines (DORA, GitHub Docs, Fowler/Beck, Google SRE & SWE book, OpenTelemetry, OWASP LLM / NIST AI RMF, Diátaxis — see handbook `sources.md`).
+
+Reproduce → isolate → falsifiable hypothesis before coding (SRE troubleshooting). Regime **A** (`handbook/concepts/11-quality-regimes.md`); `troubleshoot-app` for product UI (B); `agents analyze` + Langfuse for generative (C). Prefer golden signals / data correctness SLIs over random restarts. Close against the quality trace (`13-quality-trace.md`).
+
+Handbook card: `handbook/practices/diagnose-bug.md`.

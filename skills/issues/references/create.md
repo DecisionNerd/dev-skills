@@ -12,6 +12,8 @@ This command is for issue creation/drafting, not implementation. Do not edit pro
 
 Use a lightweight BDD completion-scenario model for feature completion. BDD here means writing plain-language Given/When/Then completion scenarios and mapping them to expected evidence. It is not a requirement to introduce Cucumber, `.feature` files, or a new test framework. Prefer scenarios that capture user-visible behavior, product boundaries, permissions, privacy, provenance, entitlement, observability, documentation, and regression expectations.
 
+**A bug is a bug** (`handbook/concepts/12-bugs-and-debt.md`): end-user, developer, agent, and infra experience failures all belong on the list. Do not launder pain as “just tech debt” or “just a feature request” without filing it. When drafting, name a **debt type** (development, architecture, data, test/proof, observability, documentation, understanding/feedback, infrastructure/toil, security, product-framing, craft/UX) when that names the interest. Note the **quality regime** (A compute / B product / C generative) when it changes what evidence closes the issue (`11-quality-regimes.md`).
+
 Default interaction model:
 
 1. Accept a short text input from the user.
@@ -165,10 +167,14 @@ After the user answers sufficiently, use this shape unless the user asks otherwi
 Title: <concise task-oriented title>
 
 ## Problem
-<user/customer/developer problem and why it matters>
+<who is hurting (user / developer / agent / infra) and why it matters — still a bug>
 
 ## Objective
 <desired outcome>
+
+## Debt / regime (when useful)
+- Debt type: <development | architecture | data | test/proof | observability | documentation | understanding/feedback | infrastructure/toil | security | product-framing | craft/UX | n/a>
+- Quality regime: <A | B | C | hybrid | n/a>
 
 ## Requirements
 - <requirement>
