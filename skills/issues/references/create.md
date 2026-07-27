@@ -223,6 +223,8 @@ If the decision is `Update Existing Issue` or `Do Nothing`, omit `Draft Issue` u
 
 When the user approves creation after seeing the draft, create the issue with the recommended metadata and return the created issue link. If the user approves updating an existing issue, apply only the approved update text and return the updated issue link.
 
+After create/update succeeds (or when presenting a final draft the user may keep local), **offer to execute** Complete the work — usually `recon issue #N` for a plan, or `diagnose-bug` / `troubleshoot-app` when the issue is a live failure. If the user already asked to finish/ship the work (not only file it), run that next skill instead of stopping at “issue created.”
+
 ### Tracker Issue Output
 
 For pure tracker issues, preserve the tracker-native format instead of forcing the full draft shape. Use sections such as:

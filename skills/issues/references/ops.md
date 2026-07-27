@@ -17,7 +17,7 @@ Cover:
 - Duplicate or related-issue hygiene
 - Tracker vs feature-issue shape (if relevant)
 
-Output: strengths, issues (severity-ordered), recommended next command (`refine`, `narrow`, `widen`, `document`, …).
+Output: strengths, issues (severity-ordered). If this was an explicit `critique` command, end by offering to **execute** Complete the work (`recon issue #N`, diagnose/fix, `check-readiness`, `merge-it`, …). Do not end only with `refine`/`narrow` when the issue is actionable.
 
 ## narrow
 
@@ -69,7 +69,7 @@ Improve clarity and actionability without changing agreed scope.
 
 Explain to the **user** in plain language. Do not edit GitHub unless asked.
 
-Cover: what the issue is asking for, why it matters, what’s in/out of scope, how we’ll know it’s done, open risks/questions. Keep it short.
+Cover: what the issue is asking for, why it matters, what’s in/out of scope, how we’ll know it’s done, open risks/questions. Keep it short. After an explicit `explain`, offer to **execute** Complete the work (usually `recon issue #N` or diagnose/fix).
 
 ## document
 

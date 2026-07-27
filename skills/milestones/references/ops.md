@@ -13,7 +13,7 @@ Assess:
 - Missing tracker/closure issue when the repo expects one?
 - Orphan high-priority issues that should be in/out?
 
-Output: strengths, problems (severity), recommended next command.
+Output: strengths, problems (severity). After an explicit `critique`, offer to **execute** Complete the work on the critical-path issue (`recon issue #N`, diagnose/fix, `merge-it`, `stage-it`/`ship-it`). Do not end only with `narrow`/`critique`/`refine` when open issues are actionable.
 
 ## narrow
 
@@ -49,7 +49,7 @@ Improve description and close criteria clarity without moving issues unless requ
 
 ## explain
 
-Explain to the user: what this milestone is for, what’s in it, how close it is, what “done” means, risks. No GitHub edits.
+Explain to the user: what this milestone is for, what’s in it, how close it is, what “done” means, risks. No GitHub edits. After an explicit `explain`, offer to **execute** Complete the work (usually `recon issue #N` on the blocker, or `stage-it`/`ship-it` if issues are done).
 
 ## document
 

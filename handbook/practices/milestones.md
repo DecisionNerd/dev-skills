@@ -18,6 +18,8 @@ When the situation matches the one-liner above and [Orientation](../orientation/
 
 - Invoke the skill; follow its safety rules
 - Keep one write owner; collect evidence before claiming done
+- With only a milestone identifier (± details), **execute** completion on the critical-path issue — don’t menu admin commands
+- After explicit admin shaping, offer to execute (`recon issue #N`, diagnose/fix, `merge-it`, then `stage-it`/`ship-it`)
 - Hand off to the next practice instead of boiling the ocean
 
 ## Don't

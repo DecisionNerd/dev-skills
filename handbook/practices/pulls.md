@@ -18,6 +18,8 @@ When the situation matches the one-liner above and [Orientation](../orientation/
 
 - Invoke the skill; follow its safety rules
 - Keep one write owner; collect evidence before claiming done
+- With only a PR identifier (± details), or no-arg on a current-branch PR, **execute** completion work — don’t menu admin commands
+- After explicit admin shaping, offer to execute landing (`merge-it`, `fix-it`, `check-readiness`, `stage-it`/`ship-it`)
 - Hand off to the next practice instead of boiling the ocean
 
 ## Don't
