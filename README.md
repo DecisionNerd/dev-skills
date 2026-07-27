@@ -1,4 +1,4 @@
-# skills
+# dev-skills
 
 Personal agent skills for Cursor, Claude Code, Codex, and other agents compatible with [`npx skills`](https://github.com/vercel-labs/skills).
 
