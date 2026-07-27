@@ -1,5 +1,7 @@
 # Why it Works
 
+![This is fine](assets/this-is-fine.png)
+
 Building software under load fails in predictable ways: teams optimise motion (commits, agent turns, ticket counts) while the **remembered** experience of the product and of the builders themselves goes sour. This handbook treats calm competence as a design requirement for *how you build* — measured through shipped outcomes and recoverable state — while refusing panic automation that manufactures more fire.
 
 Working definitions live in [Concepts](concepts/index.md). Know *why the project exists* first: [Orientation](orientation/index.md).

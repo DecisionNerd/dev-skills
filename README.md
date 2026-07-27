@@ -4,7 +4,9 @@ Personal agent skills for Cursor, Claude Code, Codex, and other agents compatibl
 
 **Docs:** [decisionnerd.github.io/dev-skills](https://decisionnerd.github.io/dev-skills/)
 
-**Handbook:** [*The 'This is Fine' Guide to Building Software*](./handbook/) — calm, vision-tied building with these skills (source in [`handbook/`](./handbook/); site via `npm run handbook:prepare`).
+**Handbook:** [*The 'This is Fine' Guide to Building Software*](./handbook/) — lifecycle (Discover → Deliver → Operate → Maintain → Retire), architecture choosers, then the skills/practices deck (source in [`handbook/`](./handbook/); site via `npm run handbook:prepare`).
+
+![This is fine](./handbook/assets/this-is-fine.png)
 
 [![skills.sh](https://skills.sh/b/DecisionNerd/dev-skills)](https://skills.sh/DecisionNerd/dev-skills)
 

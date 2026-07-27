@@ -1,6 +1,6 @@
 # The 'This is Fine' Guide to Building Software
 
-![This is fine — original homage: a calm dog with coffee while stylized flames fill the room](assets/this-is-fine.svg)
+![This is fine](assets/this-is-fine.png)
 
 *The room is on fire. You have coffee. Build anyway — on purpose.*
 

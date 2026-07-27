@@ -15,7 +15,7 @@ One file per page:
 - `practices/` — modular Tools, Techniques, and Practices (TTPs), skill-mapped
 - `sources.md` — authoritative bibliography grounding TTPs and lifecycle
 - `continue-learning.md` — companions and further study beyond this handbook
-- `assets/` — original “this is fine” homage art (inspired by the cultural meme; **not** a copy of KC Green’s copyrighted comic)
+- `assets/` — cover art (`this-is-fine.png`; optional `this-is-fine.svg` homage)
 
 **Authoring rule:** narrative in `flow/`; architecture choosers in `architecture/` (+ language/framework concepts + `paths/` detail); strategies/practices as the reusable deck. Cross-link with relative `.md` links. Do not reintroduce Path A/B/C or Track A/B naming.
 

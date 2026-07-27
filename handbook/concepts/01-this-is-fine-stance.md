@@ -1,5 +1,7 @@
 # This is Fine (stance)
 
+![This is fine](../assets/this-is-fine.png)
+
 Situated calm amid real chaos: acknowledge the fire, refuse denial *and* panic, then make one deliberate move.
 
 ## Definition
