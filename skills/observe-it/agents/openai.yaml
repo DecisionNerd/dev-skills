@@ -1,0 +1,4 @@
+interface:
+  display_name: "Observe It"
+  short_description: "Instrument logs, metrics, traces, analytics"
+  default_prompt: "Use $observe-it to add or improve observability for this path."

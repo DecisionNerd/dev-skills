@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research It"
+  short_description: "Evidence-backed options and recommendation"
+  default_prompt: "Use $research-it to research options and recommend an approach."

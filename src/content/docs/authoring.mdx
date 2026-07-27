@@ -1,0 +1,43 @@
+---
+title: Authoring
+description: How to add and structure skills in this repository.
+---
+
+Skills live under `skills/{skill-name}/` with a required `SKILL.md`.
+
+## Layout
+
+```text
+skills/
+  {skill-name}/
+    SKILL.md              # Required
+    scripts/              # Optional
+    references/           # Optional
+```
+
+## Frontmatter
+
+```markdown
+---
+name: my-skill
+description: What this skill does and when to use it. Include trigger phrases.
+---
+
+# My Skill
+
+Instructions for the agent.
+```
+
+## Conventions
+
+- Directory names are `kebab-case`
+- Keep `SKILL.md` focused; put long reference material in separate files
+- Write specific descriptions so agents know when to activate the skill
+
+Create a starter with:
+
+```bash
+npx skills init my-skill
+```
+
+See [AGENTS.md](https://github.com/DecisionNerd/dev-skills/blob/main/AGENTS.md) in the repo for the full authoring guide.

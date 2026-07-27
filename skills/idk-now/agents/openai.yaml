@@ -1,0 +1,4 @@
+interface:
+  display_name: "IDK Now"
+  short_description: "When lost: survey, ask, then suggest the next skill toward vision"
+  default_prompt: "Use $idk-now — I don't know what to do next; survey and guide me."

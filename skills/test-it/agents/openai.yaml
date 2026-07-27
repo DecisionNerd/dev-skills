@@ -1,0 +1,4 @@
+interface:
+  display_name: "Test It"
+  short_description: "Add or harden tests and BDD evidence"
+  default_prompt: "Use $test-it to add or fix tests that prove this change."

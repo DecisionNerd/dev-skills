@@ -1,0 +1,4 @@
+interface:
+  display_name: "Issues"
+  short_description: "GitHub issues with create, scope, and ops commands"
+  default_prompt: "Use $issues to work this GitHub issue (create, critique, narrow, refine, etc.)."

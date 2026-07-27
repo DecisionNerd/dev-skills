@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agents"
+  short_description: "Slap, analyze, optimize, design, and run sub-agents"
+  default_prompt: "Use $agents to slap/drain a dumb agent workflow, or analyze, optimize, design, or run sub-agents."

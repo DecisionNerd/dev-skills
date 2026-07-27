@@ -1,0 +1,4 @@
+interface:
+  display_name: "Troubleshoot App"
+  short_description: "Diagnose UI issues with data-plane evidence"
+  default_prompt: "Use $troubleshoot-app to diagnose this live app problem, inspect Atlas, check relevant data-plane sources, and recommend the fix before making changes."

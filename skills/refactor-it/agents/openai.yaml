@@ -1,0 +1,4 @@
+interface:
+  display_name: "Refactor It"
+  short_description: "Behavior-preserving structural cleanup"
+  default_prompt: "Use $refactor-it to safely refactor this code without changing behavior."

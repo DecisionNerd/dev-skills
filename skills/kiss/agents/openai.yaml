@@ -1,0 +1,4 @@
+interface:
+  display_name: "KISS"
+  short_description: "Simplify only when complexity is unwarranted; right-size the DAG"
+  default_prompt: "Use $kiss to audit whether this goal/process/system/plan is overly complex — and only simplify if it is."

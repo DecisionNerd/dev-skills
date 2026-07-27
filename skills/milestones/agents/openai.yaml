@@ -1,0 +1,4 @@
+interface:
+  display_name: "Milestones"
+  short_description: "GitHub milestones with plan, scope, and ops commands"
+  default_prompt: "Use $milestones to work this GitHub milestone (status, plan, critique, narrow, etc.)."

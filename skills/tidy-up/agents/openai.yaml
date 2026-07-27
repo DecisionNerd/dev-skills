@@ -1,0 +1,4 @@
+interface:
+  display_name: "Tidy Up"
+  short_description: "Clean worktrees, build artifacts, caches, and stale branches"
+  default_prompt: "Use $tidy-up to scan and clean dangling workspaces, artifacts, and caches."

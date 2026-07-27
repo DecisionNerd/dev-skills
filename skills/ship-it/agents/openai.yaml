@@ -1,0 +1,7 @@
+interface:
+  display_name: "Ship It"
+  short_description: "Ship staging safely to production"
+  default_prompt: "Use $ship-it to promote staging to production with verification."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,45 @@
+---
+title: Install
+description: Install DecisionNerd skills with the npx skills CLI.
+---
+
+## All skills
+
+```bash
+npx skills add DecisionNerd/dev-skills
+```
+
+## Specific skills
+
+```bash
+npx skills add DecisionNerd/dev-skills --skill issues --skill pulls
+```
+
+## Global, non-interactive
+
+```bash
+npx skills add DecisionNerd/dev-skills -g -y
+```
+
+## List without installing
+
+```bash
+npx skills add DecisionNerd/dev-skills --list
+```
+
+## Use without installing
+
+```bash
+npx skills use DecisionNerd/dev-skills --skill troubleshoot-app --agent claude-code
+```
+
+## What is not in this repo
+
+Skills that already ship from other sources are not duplicated here. Install those from their upstreams, for example:
+
+- `npx skills add DecisionNerd/DocSlime`
+- `npx skills add DecisionNerd/imessage-analysis`
+- `npx skills add DecisionNerd/ProductFeeling`
+- `npx skills add langfuse/skills`
+- `npx skills add browserbase/skills`
+- `npx skills add pbakaus/impeccable`

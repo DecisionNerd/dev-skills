@@ -1,0 +1,4 @@
+interface:
+  display_name: "Document It"
+  short_description: "Improve or add repository documentation"
+  default_prompt: "Use $document-it to improve or add docs for this change."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Recon"
+  short_description: "Scout scope from git/issues/milestones; suggest next skills"
+  default_prompt: "Use $recon to scout current git scope and recommend the next skill."

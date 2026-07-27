@@ -1,0 +1,51 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "GitHub",
+      "description": "Orient, repos, issues, milestones, pulls, readiness, and merge.",
+      "skills": [
+        "idk-now",
+        "recon",
+        "repos",
+        "issues",
+        "milestones",
+        "pulls",
+        "check-readiness",
+        "merge-it"
+      ]
+    },
+    {
+      "title": "Craft",
+      "description": "KISS, research, fix, refactor, test, observe, and document.",
+      "skills": [
+        "kiss",
+        "research-it",
+        "fix-it",
+        "refactor-it",
+        "test-it",
+        "observe-it",
+        "document-it"
+      ]
+    },
+    {
+      "title": "Agents",
+      "description": "Slap/drain runaway agents, analyze, optimize, design, and sub-agents.",
+      "skills": [
+        "agents"
+      ]
+    },
+    {
+      "title": "Ops & Ship",
+      "description": "Live diagnosis, shipping, and local tidy-up.",
+      "skills": [
+        "troubleshoot-app",
+        "diagnose-bug",
+        "stage-it",
+        "ship-it",
+        "tidy-up"
+      ]
+    }
+  ]
+}

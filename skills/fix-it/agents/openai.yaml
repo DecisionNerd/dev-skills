@@ -1,0 +1,4 @@
+interface:
+  display_name: "Fix It"
+  short_description: "Plan implementation-ready repairs"
+  default_prompt: "Use $fix-it to turn this troubleshooting diagnosis into an implementation-ready fix plan."

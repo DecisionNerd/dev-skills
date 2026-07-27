@@ -1,0 +1,4 @@
+interface:
+  display_name: "Check Readiness"
+  short_description: "Review issue readiness for PR or closure"
+  default_prompt: "Use $check-readiness to review whether issue 123 is ready for PR, merge, closure, or more work."

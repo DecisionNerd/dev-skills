@@ -1,0 +1,4 @@
+interface:
+  display_name: "Repos"
+  short_description: "GitHub repo split/combine, monorepo, CI, ESC secrets"
+  default_prompt: "Use $repos to manage this GitHub repository (status, split, combine, monorepo, ci, secrets via Pulumi ESC)."

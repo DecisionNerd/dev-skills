@@ -1,0 +1,51 @@
+---
+title: DecisionNerd Skills
+description: Personal agent skills for Cursor, Claude Code, Codex, and other agents compatible with npx skills.
+template: splash
+hero:
+  tagline: The 'This is Fine' Guide to Building Software — plus agent skills for when the room is on fire.
+  actions:
+    - text: Install
+      link: ./install/
+      icon: right-arrow
+    - text: GitHub
+      link: https://github.com/DecisionNerd/dev-skills
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+## Install
+
+```bash
+npx skills add DecisionNerd/dev-skills
+```
+
+Works with Cursor, Claude Code, Codex, and 70+ other agents via the [`npx skills`](https://github.com/vercel-labs/skills) CLI.
+
+## Skill groups
+
+<CardGrid>
+	<Card title="The 'This is Fine' Guide" icon="open-book">
+		Handbook for calm, vision-tied building with skills — while the room is on fire.
+	</Card>
+	<Card title="GitHub & Code Review" icon="github">
+		idk-now, recon, and repos; issues, milestones, pulls, readiness, merge.
+	</Card>
+	<Card title="Craft" icon="pencil">
+		KISS, research, fix, refactor, test, observe, and document.
+	</Card>
+	<Card title="Agents" icon="rocket">
+		Slap/drain runaway agents, analyze, optimize, design, and sub-agents.
+	</Card>
+	<Card title="Ops & Ship" icon="warning">
+		App/backend diagnosis, stage-it, ship-it, and tidy-up.
+	</Card>
+</CardGrid>
+
+## Browse skills
+
+<LinkCard title="The 'This is Fine' Guide" href="./handbook/" />
+<LinkCard title="Install guide" href="./install/" />
+<LinkCard title="Authoring skills" href="./authoring/" />

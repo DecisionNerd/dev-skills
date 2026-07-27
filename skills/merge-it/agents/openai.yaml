@@ -1,0 +1,4 @@
+interface:
+  display_name: "Merge It"
+  short_description: "Open, fix, verify, merge, and close PRs"
+  default_prompt: "Use $merge-it to open a PR for the current branch, apply review fixes, wait for green checks, merge it, and confirm issue closure."

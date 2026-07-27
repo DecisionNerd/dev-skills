@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" role="img" aria-labelledby="title desc">
+  <title id="title">This is fine  homage</title>
+  <desc id="desc">Original homage to the this-is-fine meme: a calm dog sits with a coffee cup while stylized flames fill the room. Not a copy of the copyrighted comic.</desc>
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a1810"/>
+      <stop offset="55%" stop-color="#4a2218"/>
+      <stop offset="100%" stop-color="#1a0e0a"/>
+    </linearGradient>
+    <linearGradient id="flame" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#ff6a00"/>
+      <stop offset="45%" stop-color="#ffb000"/>
+      <stop offset="100%" stop-color="#ffe56a"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3d2a1f"/>
+      <stop offset="100%" stop-color="#1c120c"/>
+    </linearGradient>
+  </defs>
+  <!-- room -->
+  <rect width="800" height="480" fill="url(#wall)"/>
+  <rect y="340" width="800" height="140" fill="url(#floor)"/>
+  <!-- back flames -->
+  <g fill="url(#flame)" opacity="0.95">
+    <path d="M40 360 C60 280, 20 220, 70 160 C90 220, 110 200, 100 280 C140 240, 130 180, 170 140 C160 220, 200 260, 180 360 Z"/>
+    <path d="M200 360 C220 290, 190 230, 240 170 C255 230, 280 210, 270 290 C310 250, 300 190, 340 150 C330 230, 370 270, 350 360 Z"/>
+    <path d="M520 360 C540 285, 510 225, 560 165 C575 225, 600 205, 590 285 C630 245, 620 185, 660 145 C650 225, 690 265, 670 360 Z"/>
+    <path d="M680 360 C700 290, 670 230, 720 175 C735 235, 760 215, 750 295 C780 260, 775 200, 790 170 C800 240, 800 300, 790 360 Z"/>
+  </g>
+  <!-- table -->
+  <ellipse cx="400" cy="355" rx="170" ry="28" fill="#2b1a12"/>
+  <rect x="250" y="355" width="20" height="70" fill="#24150f"/>
+  <rect x="530" y="355" width="20" height="70" fill="#24150f"/>
+  <!-- dog body -->
+  <ellipse cx="400" cy="300" rx="95" ry="55" fill="#c4a574"/>
+  <ellipse cx="400" cy="250" rx="58" ry="52" fill="#d2b48c"/>
+  <!-- ears -->
+  <ellipse cx="348" cy="220" rx="22" ry="36" fill="#a67c52" transform="rotate(-18 348 220)"/>
+  <ellipse cx="452" cy="220" rx="22" ry="36" fill="#a67c52" transform="rotate(18 452 220)"/>
+  <!-- snout -->
+  <ellipse cx="400" cy="268" rx="28" ry="20" fill="#e6d3b0"/>
+  <ellipse cx="400" cy="262" rx="8" ry="6" fill="#2a1a12"/>
+  <!-- eyes: half-lidded calm -->
+  <path d="M372 245 Q382 252 392 245" stroke="#2a1a12" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M408 245 Q418 252 428 245" stroke="#2a1a12" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <!-- slight smile -->
+  <path d="M388 278 Q400 286 412 278" stroke="#2a1a12" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- arm holding cup -->
+  <path d="M470 295 C500 305, 515 320, 505 335" stroke="#c4a574" stroke-width="22" fill="none" stroke-linecap="round"/>
+  <!-- coffee cup -->
+  <g transform="translate(500 310)">
+    <rect x="0" y="8" width="44" height="40" rx="4" fill="#f4f0e6"/>
+    <rect x="4" y="12" width="36" height="10" fill="#3b2216"/>
+    <path d="M44 18 C58 18, 58 42, 44 42" stroke="#f4f0e6" stroke-width="6" fill="none"/>
+    <path d="M12 0 Q22 -10 32 0" stroke="#d8d0c0" stroke-width="3" fill="none" opacity="0.7"/>
+    <path d="M18 -2 Q26 -14 34 -2" stroke="#d8d0c0" stroke-width="2.5" fill="none" opacity="0.5"/>
+  </g>
+  <!-- foreground flame lick -->
+  <path d="M120 400 C140 350, 110 320, 155 280 C165 320, 190 310, 175 360 C210 340, 200 300, 230 280 C220 330, 250 360, 240 400 Z" fill="url(#flame)" opacity="0.85"/>
+  <path d="M600 410 C625 355, 595 325, 640 285 C650 325, 680 315, 665 365 C700 345, 690 305, 720 285 C710 335, 745 365, 735 410 Z" fill="url(#flame)" opacity="0.85"/>
+  <!-- caption -->
+  <text x="400" y="455" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="28" fill="#f4e4c8" letter-spacing="1">This is fine.</text>
+</svg>

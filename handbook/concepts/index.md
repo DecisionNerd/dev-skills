@@ -1,0 +1,20 @@
+# Concepts
+
+Shared vocabulary for the guide. Strategies and practices cite these when a mechanism matters.
+
+**The stance:**
+
+- [This is Fine (stance)](01-this-is-fine-stance.md)
+- [Skills as Named Cuts](02-skills-as-named-cuts.md)
+- [Smallest Next Step](03-smallest-next-step.md)
+
+**How you know:**
+
+- [Evidence over Vibes](04-evidence-over-vibes.md)
+- [Vision-Tied Goals](08-vision-tied-goals.md)
+
+**How agents behave:**
+
+- [Agent Agency](05-agent-agency.md)
+- [Work Ownership](06-work-ownership.md)
+- [Stop Conditions](07-stop-conditions.md)

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pulls"
+  short_description: "GitHub PRs with create, review, scope, and merge commands"
+  default_prompt: "Use $pulls to work this pull request (create, critique, status, merge, etc.)."

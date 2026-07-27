@@ -1,0 +1,7 @@
+interface:
+  display_name: "Stage It"
+  short_description: "Promote work onto staging"
+  default_prompt: "Use $stage-it to promote this branch to staging with verification."
+
+policy:
+  allow_implicit_invocation: true
