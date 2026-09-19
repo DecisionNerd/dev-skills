@@ -64,15 +64,22 @@ For `create` or `draft`, follow [references/create.md](references/create.md) end
 
 Issue admin (`create` / `critique` / `refine` / `narrow` / …) tracks intent. Completing the work means planning, diagnosing, implementing, proving, and shipping.
 
+### Planning and workspace rules
+
+Planning is a read-only phase, not a requirement for a host-specific mode or tool. If native Plan Mode is unavailable, inspect and produce the plan in the current agent. Respect active host restrictions; do not invent a mode-switch tool or stop merely because one is absent. A completion request already authorizes in-scope planning and implementation when the host permits them; a planning-only request does not.
+
+Before the first repository write, read and follow [references/workspace.md](references/workspace.md). **Use a dedicated task worktree by default, with one writer per worktree.** Reuse a host-created task worktree only after verifying ownership. Apply this to docs and tests as well as code; read-only planning and GitHub-only admin do not need a worktree. Carry the absolute worktree path, branch, base, and ownership through every execution-skill handoff.
+
 ### Default path (identifier ± details)
 
 When routed here (no admin command):
 
 1. Resolve the issue (`gh issue view`); skim linked PRs, milestone, labels.
 2. Fold any user details into scope (constraints, focus area, “don’t touch X”).
-3. Pick the **smallest next execution skill** from the table and **run it now** (invoke that skill / continue the work). One-line why is enough — do not present a recommend-only menu.
-4. Chain forward as each step unblocks (e.g. `recon issue` → implement → `check-readiness` → `merge-it`) until blocked on approval, missing info, or the user stops you.
-5. If the issue body is too vague to execute safely, do the minimum shaping (`refine` questions or a tight `recon issue` plan), then continue execution — don’t end on admin alone.
+3. Resolve repository policy and inspect existing worktrees/PRs. Before implementation, establish the owned workspace using the rules above; plan-only work remains read-only.
+4. Pick the **smallest next execution skill** from the table and **run it now** (invoke that skill / continue the work). One-line why is enough — do not present a recommend-only menu.
+5. Chain forward as each step unblocks (e.g. `recon issue` → implement → `check-readiness` → `merge-it`) until blocked on approval, missing info, or the user stops you.
+6. If the issue body is too vague to execute safely, do the minimum shaping (`refine` questions or a tight `recon issue` plan), then continue execution — don’t end on admin alone.
 
 ### After explicit admin commands
 

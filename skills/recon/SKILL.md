@@ -16,7 +16,7 @@ argument-hint: "[repo|issue|milestone] [target...]"
 
 # Recon
 
-Situational awareness for the current repo. Recon gathers evidence, sets scope, and **recommends the next skill** from this pack. It does not silently implement, open PRs, or mutate GitHub unless the user approves a follow-up that requires it.
+Situational awareness for the current repo. Recon gathers evidence, sets scope, and **recommends the next skill** from this pack. It does not silently implement, open PRs, or mutate GitHub without authorization. An existing completion request, including an `issues #N` handoff, carries that authorization for its scope.
 
 If the user is **lost** (“idk”, no sense of purpose, need coaching across DocSlime / ProductFeeling / Impeccable / vendored skills), prefer **`idk-now`** instead of this skill.
 
@@ -75,9 +75,9 @@ Details: [references/repo.md](references/repo.md).
 
 Deep issue recon / implementation plan. Follow [references/issue.md](references/issue.md) and [references/planning-checklist.md](references/planning-checklist.md).
 
-Prefer Plan Mode for full plans. Outside Plan Mode, still produce the plan as guidance and list mutating steps without executing them until approved.
+Planning does not require native Plan Mode. Use read-only inspection in the current agent when a mode switch is unavailable, and respect any active host restrictions. A standalone planning request stops at the plan; when called from an already authorized completion workflow such as `issues #N`, return the plan and continue that workflow once the host permits execution. Before implementation, follow [workspace ownership](../issues/references/workspace.md). If `issues` is not installed, use a dedicated task worktree with verified exclusive ownership, preserve the shared checkout, and carry the verified absolute path, branch, base revision, and ownership through every execution handoff and implementation result.
 
-End with one **Follow-Up Prompt** (implement? `check-readiness`? `issues refine`?).
+For standalone planning, end with one **Follow-Up Prompt** when a decision is needed. An authorized completion workflow continues without another approval for the same scope.
 
 ## `milestone`
 
@@ -134,7 +134,7 @@ When suggesting, name the skill and a concrete command string the user (or you) 
 Do you want me to run <primary suggestion>?
 ```
 
-For `issue`, use the plan format in [references/issue.md](references/issue.md) instead, still ending with a single Follow-Up Prompt tied to this skill map.
+For `issue`, use the plan format in [references/issue.md](references/issue.md) instead, using a Follow-Up Prompt only when a new decision or authorization is needed.
 
 ## Grounding
 
