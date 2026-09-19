@@ -68,7 +68,7 @@ Do not use raw UI markup. Do not depend on `request_user_input` for these gates;
    - Planning may inspect `main`, `master`, `staging`, or detached HEAD read-only; do not create or switch branches merely to plan or post an authorized issue comment.
    - Check existing worktrees and PRs. Reuse only a task workspace whose ownership is established for this session; do not assume the current feature branch or a matching issue branch is available.
    - Include the intended path, branch, base, and ownership in the plan. Create the worktree only when implementation is authorized and host restrictions permit it. Preserve unrelated dirty work.
-   - Carry the verified absolute workspace path through subsequent skills and report the actual branch/path with implementation results.
+   - Carry the complete verified workspace record (absolute path, branch, base revision, and ownership) through every subsequent execution-skill handoff and report that same record with implementation results.
 
 5. Build local context.
    - Inspect the repository before proposing changes.
@@ -149,7 +149,7 @@ Do not use raw UI markup. Do not depend on `request_user_input` for these gates;
    - When posting a plan comment for an issue in a different repository than the current workspace, pass the resolved repository with `--repo <owner/repo>`.
    - After posting a plan comment, summarize that the plan was added as an issue comment and include the issue URL.
    - Use one `Follow-Up Prompt` only when a new approval or blocking decision is needed. For an already authorized completion workflow, report progress and continue without a redundant gate.
-   - If the plan is ready and the next natural action is implementation, use the follow-up prompt to ask whether to implement the issue plan. Implementation must wait for this user response unless the user already explicitly asked to implement.
+   - For standalone `recon issue` planning without prior completion authorization, ask whether to implement the ready plan and wait for the answer. For an `issues #N` handoff or another already authorized completion request, proceed into implementation without a separate confirmation when host restrictions permit it.
    - If the user explicitly asked for an issue comment and the plan is ready but not yet posted, use the follow-up prompt to ask whether to post the plan comment.
    - If implementation has completed and the issue appears ready for PR review, run `check-readiness` when completion is already authorized; otherwise ask through the follow-up prompt.
    - If a blocking question remains, use the follow-up prompt for that single blocker.

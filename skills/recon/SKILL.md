@@ -75,7 +75,7 @@ Details: [references/repo.md](references/repo.md).
 
 Deep issue recon / implementation plan. Follow [references/issue.md](references/issue.md) and [references/planning-checklist.md](references/planning-checklist.md).
 
-Planning does not require native Plan Mode. Use read-only inspection in the current agent when a mode switch is unavailable, and respect any active host restrictions. A standalone planning request stops at the plan; when called from an already authorized completion workflow such as `issues #N`, return the plan and continue that workflow once the host permits execution. Before implementation, follow [workspace ownership](../issues/references/workspace.md). If `issues` is not installed, use a dedicated task worktree with verified exclusive ownership, preserve the shared checkout, and carry its absolute path through execution handoffs.
+Planning does not require native Plan Mode. Use read-only inspection in the current agent when a mode switch is unavailable, and respect any active host restrictions. A standalone planning request stops at the plan; when called from an already authorized completion workflow such as `issues #N`, return the plan and continue that workflow once the host permits execution. Before implementation, follow [workspace ownership](../issues/references/workspace.md). If `issues` is not installed, use a dedicated task worktree with verified exclusive ownership, preserve the shared checkout, and carry the verified absolute path, branch, base revision, and ownership through every execution handoff and implementation result.
 
 For standalone planning, end with one **Follow-Up Prompt** when a decision is needed. An authorized completion workflow continues without another approval for the same scope.
 
