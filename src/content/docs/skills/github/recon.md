@@ -9,6 +9,8 @@ sidebar:
 
 Scout the current work and recommend the next skill or action. Arguments: repo (whole-repo health), issue (deep implementation plan for an issue), milestone (milestone readiness and issue set). With no argument, read git logs and local branch state first to set scope, then suggest what to do next. Use when the user asks to recon, scout, assess, or "what should I do next". Knows DecisionNerd/dev-skills: agents, idk-now, kiss, repos, issues, milestones, pulls, check-readiness, merge-it, fix-it, test-it, observe-it, document-it, research-it, refactor-it, troubleshoot-app, diagnose-bug, stage-it, ship-it, tidy-up. Prefer idk-now when the user is lost or needs vision-tied coaching across DocSlime / ProductFeeling / Impeccable / vendored skills — not only this pack.
 
+Issue planning works read-only in any host; native Plan Mode is optional. Standalone recon returns a plan, while an already authorized issues completion workflow continues into implementation in an owned task worktree when host permissions allow it.
+
 ## Install
 
 ```bash
