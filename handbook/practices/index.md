@@ -13,7 +13,7 @@ Browse this index when you know the pattern; browse a [strategy](../strategies/i
 | [Simple website](../paths/01-simple-website.md) | IDK Now, KISS, Repos (thin CI), Impeccable, Document It, Pulls, Merge, Tidy Up |
 | [CLI](../paths/02-cli.md) | + Test It, Research It, Issues, Recon Issue, Check Readiness, repos ci harden |
 | [Python package](../paths/03-python-package.md) | Research It, Test It, Document It, Repos CI/release, Check Readiness, KISS |
-| [Monorepo](../paths/04-monorepo.md) | + Repos (architecture/monorepo/secrets ESC), Milestones, Architect It, Observe, Sub-Agents, Agent Slap |
+| [Monorepo](../paths/04-monorepo.md) | + Repos (architecture/monorepo/secrets ESC), Milestones, Architect It, Merge (Stage/Ship), Observe, Sub-Agents, Agent Slap |
 | [Compute](../paths/compute/index.md) | KISS, Repos CI/secrets (ESC), Observe, Architect It, Merge (Stage/Ship), Diagnose on prod |
 
 ## Full catalogue

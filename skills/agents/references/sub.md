@@ -74,9 +74,11 @@ Sources: `https://learn.chatgpt.com/docs/config-file/config-reference`, `https:/
 
 ### Cursor
 
-- **Agent frontmatter `model:`**: the ability to set `model:` in `.cursor/agents/*.md` frontmatter for per-agent model selection is unverified against current official Cursor docs (as of 2026-09-29; a forum feature request for similar functionality in `.cursor/commands` was open). Treat as "inherit parent model" until confirmed.
-- **Inheritance**: when no per-agent model is configured, children inherit the parent model.
-- **Question tool**: use plain text with numbered options; no dedicated structured question tool confirmed.
+- **Agent frontmatter `model:`**: custom subagents in `.cursor/agents/*.md` (also `.claude/agents/`, `.codex/agents/`, and the `~/` equivalents) take `model: inherit` (the default, same model as the parent) or a specific model ID.
+- **Built-in subagents**: Explore, Bash, and Browser are used automatically and are not configurable; they inherit.
+- **Question tool**: the agent can ask clarifying questions mid-task; use that tool when the surface exposes it, otherwise plain text with numbered options.
+
+Sources: https://cursor.com/docs/subagents and https://cursor.com/docs/agent/overview (checked 2026-09-29).
 
 Source: Cursor forum search (cursor.com/changelog, forum.cursor.com); official agent-model docs not confirmed.
 

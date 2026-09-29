@@ -87,6 +87,10 @@ function findMirror(skillName) {
 }
 
 function extractFrontmatterField(text, field) {
+  // Read only the leading frontmatter block, never body lines.
+  const fm = /^---\n([\s\S]*?)\n---/.exec(text);
+  if (!fm) return null;
+  text = fm[1] + '\n';
   // Single-line: field: value
   const reSingle = new RegExp(`^${field}:\\s+(.+)$`, 'm');
   const mSingle = reSingle.exec(text);

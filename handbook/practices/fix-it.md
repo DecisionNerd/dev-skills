@@ -18,7 +18,7 @@ After a diagnosis (or clear failing contract) when you need a decision-complete 
 
 - Name regime A/B/C; lock Use Existing / Refine / Create New for the contract
 - Prefer smallest fix that restores the scenario; map scenario → evidence
-- One write owner; implement in-repo once the plan is set; ask only before live-data or outside-repo changes
+- One write owner; implement in-repo once the plan is set; ask only before destructive, live-data, or outside-repo changes, or leaving the plan's scope
 
 ## Don't
 

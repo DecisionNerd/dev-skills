@@ -220,7 +220,7 @@ If the decision is `Update Existing Issue` or `Do Nothing`, omit `Draft Issue` u
 
 When the user approves creation after seeing the draft, create the issue with the recommended metadata and return the created issue link. If the user approves updating an existing issue, apply only the approved update text and return the updated issue link.
 
-After create/update succeeds (or when presenting a final draft the user may keep local), state `Next: recon issue #N` (or `diagnose-bug` / `troubleshoot-app` when the issue is a live failure); run that skill when the user already asked to finish/ship the work (not only file it).
+After create/update succeeds, state `Next: recon issue #N` (or `diagnose-bug` / `troubleshoot-app` when the issue is a live failure); run that skill when the user already asked to finish/ship the work (not only file it). For a draft the user keeps local, state `Next: issues create` instead.
 
 ### Tracker Issue Output
 
