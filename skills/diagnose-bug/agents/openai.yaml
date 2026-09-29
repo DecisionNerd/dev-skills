@@ -1,7 +1,7 @@
 interface:
   display_name: "Diagnose Bug"
   short_description: "Diagnose backend and algorithm bugs"
-  default_prompt: "Use $diagnose-bug to reproduce this backend or algorithm bug, check contracts and runtime evidence, and recommend the fix before making changes."
+  default_prompt: "Use $diagnose-bug to reproduce this backend or algorithm bug, check contracts and runtime evidence, then fix it with a regression test."
 
 policy:
   allow_implicit_invocation: true

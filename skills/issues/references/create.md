@@ -70,7 +70,7 @@ If the ask is too vague to analyze responsibly, ask for the single missing detai
      - priority, milestone, or release timing;
      - related issue or duplicate confirmation;
      - observability, privacy, security, or testing constraints.
-   - Stop after the questions and wait for the user's reply. Do not draft yet unless the user explicitly says to draft with assumptions.
+   - Use the harness's structured question tool (e.g., `AskUserQuestion` in Claude Code) to ask these questions; provide 2–5 concrete options per question where applicable. Stop after the questions and wait for the user's reply. Do not draft yet unless the user explicitly says to draft with assumptions.
 
 4. Evaluate the user's answers.
    - If the answers are sufficient, proceed to the draft.
@@ -112,9 +112,8 @@ If the ask is too vague to analyze responsibly, ask for the single missing detai
    - Recommend a milestone only when it clearly matches repo conventions.
    - Link duplicate or related issues in the body.
    - If creating the issue, use a concise task-oriented title and a body that includes all relevant sections.
-   - After presenting the draft, ask a binary yes/no approval question for the recommended GitHub action.
-   - Do not combine create/update/revise/stop alternatives into the approval question. If helpful, put alternatives in a separate sentence after the yes/no question.
-   - Do not create or update an issue unless the user explicitly approves that action after seeing the draft or update text.
+   - After presenting the draft, state the proposed GitHub action; ask one structured question with options `create / revise / stop`. Skip when the user's original request already ordered creating or updating the issue (e.g. "create an issue for X").
+   - Do not create or update an issue unless the user explicitly approves that action after seeing the draft or update text (or their original request already ordered it).
 
 ## Output
 
@@ -136,7 +135,7 @@ Lead with a short disposition and questions. Use this shape:
 3. <focused question>
 ```
 
-If no questions are needed, say so and ask whether to proceed to the draft.
+If no questions are needed, proceed to the draft.
 
 ### Follow-Up Question Rounds
 
@@ -214,16 +213,14 @@ And <important boundary, privacy, provenance, observability, or regression expec
 - <only blockers or material ambiguities, or "None">
 
 **Create In GitHub?**
-Should I create this issue in GitHub?
-
-If not, you can say "revise", "update #123", or "stop".
+`create / revise / stop`
 ```
 
 If the decision is `Update Existing Issue` or `Do Nothing`, omit `Draft Issue` unless the user explicitly asks for a new issue anyway.
 
 When the user approves creation after seeing the draft, create the issue with the recommended metadata and return the created issue link. If the user approves updating an existing issue, apply only the approved update text and return the updated issue link.
 
-After create/update succeeds (or when presenting a final draft the user may keep local), **offer to execute** Complete the work — usually `recon issue #N` for a plan, or `diagnose-bug` / `troubleshoot-app` when the issue is a live failure. If the user already asked to finish/ship the work (not only file it), run that next skill instead of stopping at “issue created.”
+After create/update succeeds (or when presenting a final draft the user may keep local), state `Next: recon issue #N` (or `diagnose-bug` / `troubleshoot-app` when the issue is a live failure); run that skill when the user already asked to finish/ship the work (not only file it).
 
 ### Tracker Issue Output
 

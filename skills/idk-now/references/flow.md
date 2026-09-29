@@ -24,8 +24,14 @@
 1. **Primary:** `<skill> <command> …` — …
 2. Alternatives: …
 
-## Follow-Up Prompt
-Want me to run <primary>?
+## Blocked on me
+(none, or the one genuine question)
+
+## Changed
+nothing
+
+## Found
+Vision (confidence: low|med|high): … Achievable goal: … Next: `<exact primary invoke>`.
 ```
 
 ## Survey budget
@@ -35,7 +41,7 @@ Stay brief. Cap file reads: README + one vision/product doc + AGENTS if present 
 ## Question tips
 
 - Offer choices, not essays.
-- If the user says “just ship something”: bias toward `check-readiness` / `pulls` / `stage-it` / `ship-it` / Impeccable polish of an existing surface — not greenfield DocSlime.
+- If the user says “just ship something”: bias toward `check-readiness` / `pulls` / `merge-it` (full release path) / Impeccable polish of an existing surface — not greenfield DocSlime.
 - If vision is missing and the project is product-shaped: offer DocSlime init or ProductFeeling *only if* durable product altitude is the real gap — not as a default rabbit hole. Prefer surgical `document-it` / a vision statement in-chat when that unblocks.
 - If the surface is UI and the goal is feel/craft: ProductFeeling (emotion) → Impeccable (craft), not random `fix-it`.
 - If the repo is dirty with agent debris: `tidy-up scan` or `agents slap` before strategy theater.

@@ -21,9 +21,7 @@ When the change is ready enough. Don’t ship to quiet anxiety.
 - [Check Readiness](../practices/check-readiness.md)
 - [Merge It](../practices/merge-it.md)
 - [Pulls](../practices/pulls.md)
-- [Stage It](../practices/stage-it.md)
-- [Ship It](../practices/ship-it.md)
 
 ## Agent skill
 
-`check-readiness` · `merge-it` · `pulls merge` · `stage-it` · `ship-it`
+`check-readiness` · `merge-it` (integrate → stage → ship phases per repo policy) · `pulls merge`

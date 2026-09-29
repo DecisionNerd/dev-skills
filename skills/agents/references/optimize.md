@@ -17,7 +17,7 @@ Improve an existing agent’s **latency, cost, reliability, and loop quality**. 
 | Narrower tools | Shell/network overuse, accidental writes |
 | Clearer done-when | Ambiguous success, endless polish |
 | Prompt split (plan vs act) | Mixed planning+editing thrash |
-| Model routing | Cheap model for explore, stronger for mutate |
+| Model routing | Cheap model for explore, stronger for mutate (see [sub.md — Model tiers](sub.md)) |
 | Caching / less context | Context rot, repeated file reads |
 | Evals / golden tasks | Regressions after prompt edits |
 | Subagent fan-out | Parallel research; never parallel writers on same paths |
@@ -27,6 +27,6 @@ Improve an existing agent’s **latency, cost, reliability, and loop quality**. 
 1. **Target metric(s)**
 2. **Plan** (numbered, each reversible)
 3. **Risks**
-4. Ask approval → implement → re-run a thin smoke scenario → report delta
+4. Implement in-repo prompt/config changes; ask only before production-workflow or paid changes. Re-run a thin smoke scenario → report delta.
 
-Hand off to `test-it` for agent eval harnesses, `observe-it` for production agent telemetry, `document-it` for operator runbooks.
+Close with three headings: `Blocked on me` (production/paid gate if any), `Changed` (files edited), `Found` (before/after metric estimate). Next: `test-it` for eval harnesses, `observe-it` for production telemetry, `document-it` for runbooks.

@@ -18,6 +18,7 @@ When the situation matches the one-liner above and [Orientation](../orientation/
 
 - Invoke the skill; follow its safety rules
 - Keep one write owner; collect evidence before claiming done
+- Pick the model tier per child (fast for inventory, mid for implementation, top for review); defer to harness and user routing config when set
 - Hand off to the next practice instead of boiling the ocean
 
 ## Don't

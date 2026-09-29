@@ -26,7 +26,7 @@ Simple is not “few files.” Simple is:
 3. Orientation + [Skill Universe](../orientation/03-skill-universe.md)
 4. Concepts: [Agent Agency](../concepts/05-agent-agency.md) · [Stop Conditions](../concepts/07-stop-conditions.md) · [Work Ownership](../concepts/06-work-ownership.md) · all prior concepts
 5. Strategies: full set, especially [Track Work](../strategies/02-track-work.md) · [Ship](../strategies/05-ship.md) · [Agent Hygiene](../strategies/06-agent-hygiene.md) · [Diagnose and Fix](../strategies/03-diagnose-and-fix.md)
-6. Practices to emphasize: [Repos](../practices/repos.md) · [KISS](../practices/kiss.md) · [Milestones](../practices/milestones.md) · [Stage It](../practices/stage-it.md) · [Ship It](../practices/ship-it.md) · [Observe It](../practices/observe-it.md) · [Sub-Agents](../practices/sub-agents.md) (explore only) · [Agent Slap](../practices/agent-slap.md) · [Tidy Up](../practices/tidy-up.md)
+6. Practices to emphasize: [Repos](../practices/repos.md) · [KISS](../practices/kiss.md) · [Milestones](../practices/milestones.md) · [Architect It](../practices/architect-it.md) · [Merge It](../practices/merge-it.md) · [Observe It](../practices/observe-it.md) · [Sub-Agents](../practices/sub-agents.md) (explore only) · [Agent Slap](../practices/agent-slap.md) · [Tidy Up](../practices/tidy-up.md)
 
 Companions: DocSlime for real product docs when multiple audiences exist; ProductFeeling/Impeccable for user-facing surfaces inside the monorepo.
 
@@ -40,7 +40,7 @@ flowchart TD
   D --> E[repos ci: affected tests per unit]
   E --> F[repos secrets setup - Pulumi ESC + OIDC]
   F --> G[CODEOWNERS + milestones]
-  G --> H[stage-it / ship-it per target]
+  G --> H[merge-it stage / ship per target]
   H --> I[observe-it per critical path]
 ```
 
@@ -63,7 +63,7 @@ Right-sized tasks:
 | Cross-cutting work | `milestones` · `issues` · `recon issue` |
 | Parallel explore | `agents sub` (no overlapping writers) |
 | Thrash | `agents slap` |
-| Promote | `stage-it` · `ship-it` |
+| Promote | `merge-it` (Stage / Ship phases) |
 | Clutter after filters | `tidy-up` |
 
 ## Anti-patterns

@@ -1,6 +1,6 @@
 # Shared pull request operations
 
-Resolve the target PR (or draft for `create`) first. Code or GitHub mutations need explicit approval unless already ordered.
+Resolve the target PR (or draft for `create`) first. GitHub mutations need one structured question (`<do it> / revise / stop`) unless the request already named the action; in-repo code changes continue.
 
 ## critique
 
@@ -13,7 +13,7 @@ Assess reviewability and ship readiness (description, not only CI):
 - Secrets, migrations, feature flags, rollout called out
 - Size: too large to review?
 
-Output: strengths, problems. After an explicit `critique`, offer to **execute** Complete the work (`merge-it`, `fix-it`, `check-readiness`, `test-it`, …). Prefer landing/fixing over `refine`/`critique` alone when the diff is the real work.
+Output: strengths, problems. After an explicit `critique`, state `Next: merge-it` (or `fix-it` / `check-readiness` / `test-it` as fits); prefer landing/fixing over `refine`/`critique` alone when the diff is the real work.
 
 ## narrow
 
@@ -48,7 +48,7 @@ Improve title, summary, test plan, and risk notes so reviewers can act — witho
 
 ## explain
 
-Explain the PR to the user: intent, main changes, risk, how to verify, what’s not included. Use the diff; don’t edit GitHub unless asked. After an explicit `explain`, offer to **execute** Complete the work (usually `merge-it`, `fix-it`, or `check-readiness`).
+Explain the PR to the user: intent, main changes, risk, how to verify, what’s not included. Use the diff; don’t edit GitHub unless asked. After an explicit `explain`, state `Next: merge-it` (or `fix-it` / `check-readiness` as fits).
 
 ## document
 

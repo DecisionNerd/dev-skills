@@ -1,7 +1,7 @@
 ---
 # Loaded by `recon issue` (or `recon #N`) for deep implementation planning.
 # Plan read-only in any host; native Plan Mode is optional.
-# Continue authorized completion only when host restrictions permit execution.
+# Continue into implementation when the request was an outcome and host restrictions permit execution.
 ---
 
 # Recon → issue (implementation plan)
@@ -20,6 +20,7 @@ Use lightweight BDD completion scenarios as the bridge between issue intent, imp
 
 By default, do not post the plan to the GitHub issue. Issue comments create friction and should only be written when the user explicitly asks to post, update, or publish the plan as an issue comment.
 
+
 ## Required Input
 
 Require an issue number. Accept formats like `123`, `#123`, `issue 123`, or a GitHub issue URL.
@@ -30,27 +31,10 @@ If the user references a prior, broken, stale, incomplete, or incorrect plan, tr
 
 If the user asks to implement, continue, finish, or fix work from an existing plan, use the issue, the user's latest request, and the existing plan together to drive implementation. The deliverable is working repository changes for the issue, not a cleaner plan, unless the user explicitly asks for planning-only work.
 
-If the immediately preceding assistant response used this skill and ended with a `Follow-Up Prompt`, treat the user's next response as the answer to that prompt. Interpret `y`, `Y`, `yes`, `Yes`, `YES`, `yeah`, `yep`, `ok`, `okay`, `sure`, `go`, `continue`, `proceed`, `do it`, a blank/enter-style continuation when the client sends one, and affirmative UI choices as approval. Continue with the prompted next action immediately when the answer is affirmative, unless the user adds a conflicting instruction. Do not answer with a confirmation-only message.
-
-Affirmative follow-up routing:
-- If the prompt asked whether to implement the issue plan, proceed into implementation in the current repository using the plan, issue, and latest user request as execution context. Execute only when active host restrictions permit mutations; otherwise present the implementation as planned next steps.
-- If the prompt asked whether to run `check-readiness`, invoke the `check-readiness` skill for the same issue/branch and continue that lifecycle check.
-- If the prompt asked whether to post an issue comment, post the prepared plan comment and then summarize the posted comment.
-- If the prompt asked a blocking question, use the affirmative answer as the selected decision and continue the planning workflow.
-
-Use a textual `Follow-Up Prompt` only for a new decision or missing authorization. When `issues` or the user has already authorized completion, continue implementation and readiness without repeating these gates. For standalone planning, the normal flow is:
-1. The user invokes this skill with an issue number.
-2. Build and present the issue plan, then ask whether to implement it.
-3. If the user answers affirmatively, implement the issue work.
-4. After implementation finishes, print the final implementation summary, then ask whether to run `check-readiness`.
-5. If the user accepts the PR readiness prompt, invoke the `check-readiness` skill and continue that lifecycle check.
-
-Do not use raw UI markup. Do not depend on `request_user_input` for these gates; it may be unavailable in Default mode even when schemas are visible. The textual `Follow-Up Prompt` is the canonical checkpoint, and short affirmative replies such as `y`, `yes`, `ok`, or `continue` should route directly to the prompted next action.
-
 ## Workflow
 
 1. Determine intent and host capabilities.
-   - Distinguish planning-only from an already authorized completion request.
+   - Distinguish planning-only from an outcome request (implement, finish, fix, or an `issues #N` handoff).
    - Respect active read-only restrictions. If native Plan Mode or a switching tool is unavailable, continue read-only inspection and planning in the current agent; lack of that tool is not a blocker.
 
 2. Resolve the issue.
@@ -105,8 +89,8 @@ Do not use raw UI markup. Do not depend on `request_user_input` for these gates;
    - Include data backfills, compatibility handling, environment variables, permissions, feature-flag strategy, rollout gates, or migration steps when relevant.
    - Include the resolved PR base and issue-completion branch in the implementation plan when they affect branch creation, PR creation, issue closure, or release sequencing.
 
-9. Implement from a plan when requested.
-   - Include implementation as ordered steps. Execute only when authorized and permitted by the host, after establishing the owned task worktree; a native read-only restriction still applies after user approval.
+9. Implement from the plan.
+   - Include implementation as ordered steps. Execute when the request was an outcome and the host permits it, after establishing the owned task worktree; a native read-only restriction still applies.
    - Start by reconciling the issue, latest user request, existing plan, current branch, and current repository state. If they conflict, follow the latest user request and issue acceptance criteria, and call out any materially stale plan assumptions.
    - Keep implementation scope tied to the issue requirements. Do not broaden into adjacent cleanup, speculative refactors, or plan-comment polish unless needed to deliver the issue.
    - Preserve user work in the branch. Inspect dirty files before editing, stage only relevant files, and do not revert unrelated changes.
@@ -114,8 +98,9 @@ Do not use raw UI markup. Do not depend on `request_user_input` for these gates;
    - Make privacy, authorization, entitlement, audit, billing, and data-retention checks explicit when the issue touches private data, organization context, integrations, scoring, or paid/gated behavior.
    - Update documentation and GitHub issue context when implementation changes product direction, architecture, requirements, testing expectations, or previously posted execution guidance.
    - Before declaring the implementation complete, compare the final diff against the issue requirements and the plan's intended outcome. Confirm the actual product/code work is done, not merely that the plan text was edited.
+   - Fan out implementation across non-overlapping file sets (one subagent per set, mid tier); then run an independent reviewer subagent (top tier) that checks the diff against the issue requirements before running check-readiness. Verify each child's result before consolidating.
    - In the final response, summarize implemented behavior, key files changed, verification run, any tests not run, and remaining risks or follow-up work.
-   - Continue to `check-readiness` when completion is already authorized; otherwise use a `Follow-Up Prompt` for that next lifecycle action.
+   - After implementation, run `check-readiness` as the next step; state `Next: check-readiness` in `Found`.
 
 10. Plan validation.
    - For non-docs-only issues, plan test writing or test updates at the appropriate layers, not only validation commands.
@@ -145,20 +130,17 @@ Do not use raw UI markup. Do not depend on `request_user_input` for these gates;
    - If the user asked to implement an issue or continue from a prior plan, this skill should not stop after plan repair. Use the plan as execution context, then implement the issue work in the repository according to the main coding-agent instructions.
    - Show the full plan in chat by default.
    - Do not post the plan as a GitHub issue comment unless the user explicitly asks to post, update, publish, or write it to the issue.
-   - If the user explicitly asks for an issue comment, include issue-comment posting in the plan, ask for approval before actually posting it unless the user already gave explicit approval, write the plan body to a temporary markdown file, then post it with `gh issue comment <number> --body-file <temp-file>`.
+   - If the user explicitly asks for an issue comment, write the plan body to a temporary markdown file, then post it with `gh issue comment <number> --body-file <temp-file>`.
    - When posting a plan comment for an issue in a different repository than the current workspace, pass the resolved repository with `--repo <owner/repo>`.
    - After posting a plan comment, summarize that the plan was added as an issue comment and include the issue URL.
-   - Use one `Follow-Up Prompt` only when a new approval or blocking decision is needed. For an already authorized completion workflow, report progress and continue without a redundant gate.
-   - For standalone `recon issue` planning without prior completion authorization, ask whether to implement the ready plan and wait for the answer. For an `issues #N` handoff or another already authorized completion request, proceed into implementation without a separate confirmation when host restrictions permit it.
-   - If the user explicitly asked for an issue comment and the plan is ready but not yet posted, use the follow-up prompt to ask whether to post the plan comment.
-   - If implementation has completed and the issue appears ready for PR review, run `check-readiness` when completion is already authorized; otherwise ask through the follow-up prompt.
-   - If a blocking question remains, use the follow-up prompt for that single blocker.
-   - Do not call `request_user_input` for this checkpoint. The skill should work through plain chat approval so Default mode can continue smoothly.
-   - When the user later answers `y`, `yes`, `ok`, `continue`, or another affirmative short reply to a follow-up that names another skill, invoke that skill directly and continue the lifecycle; do not ask the user to repeat the skill name.
+   - End each planning or implementation-summary response with the three closing headings: `Blocked on me` / `Changed` / `Found`, where `Found` ends with `Next: <exact invoke>`.
+   - Standalone planning (no outcome requested) stops at the plan with `Next: <implement invoke>`. For an outcome request or an `issues #N` handoff, continue into implementation without stopping to ask when host restrictions permit it.
+   - If the user explicitly asked for an issue comment, post it.
+   - If a genuine blocker exists (cannot continue without the user), put it under `Blocked on me`.
 
 ## Output Format
 
-Use this shape for the plan unless the user asks otherwise. Omit the Follow-Up Prompt when continuing an already authorized completion workflow:
+Use this shape for the plan unless the user asks otherwise; it ends with the three closing headings:
 
 ```markdown
 **Issue**
@@ -200,8 +182,14 @@ And <important boundary, privacy, provenance, observability, or regression expec
 **Open Questions**
 - <only blockers or material ambiguities, or "None">
 
-**Follow-Up Prompt**
-<Ask exactly one concise question for the next approval, lifecycle action, or blocking decision. Examples: "Do you want me to implement this issue plan?", "Do you want me to run check-readiness for issue #<number>?", or, only when the user explicitly requested an issue comment, "Post this plan as a comment on issue #<number>?">
+**Blocked on me**
+<The one genuine blocker preventing continuation, else "none">
+
+**Changed**
+<Files, commits, GitHub objects touched, else "nothing">
+
+**Found**
+<Plan summary and `Next: <exact invoke>` — e.g. `Next: check-readiness` after implementation>
 ```
 
 For larger issues, read `references/planning-checklist.md` before writing the final plan.

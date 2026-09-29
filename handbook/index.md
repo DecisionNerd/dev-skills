@@ -73,8 +73,8 @@ flowchart TD
 | Tactical scout | `recon` / `recon issue` |
 | Track work | `issues` · `milestones` · `pulls` |
 | Diagnose / repair | `troubleshoot-app` · `diagnose-bug` · `fix-it` |
-| Harden | `test-it` · `observe-it` · `document-it` · `research-it` · `refactor-it` |
-| Ship | `check-readiness` · `merge-it` · `stage-it` · `ship-it` |
+| Harden | `test-it` · `observe-it` · `document-it` · `research-it` · `refactor-it` · `architect-it` |
+| Ship | `check-readiness` · `merge-it` (integrate → stage → ship) |
 | Agent thrash | `agents slap` |
 | Clutter | `tidy-up scan` |
 | Companions | ProductFeeling · Impeccable · DocSlime |

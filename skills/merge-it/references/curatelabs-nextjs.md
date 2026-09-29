@@ -1,6 +1,6 @@
-# Curate Labs Ship-It Reference
+# Curate Labs Reference
 
-Use this reference when the working directory is `curatelabs-nextjs` and running `ship-it`.
+Use this reference when the working directory is `curatelabs-nextjs` and running `merge-it` (Integrate, Stage, or Ship phases).
 
 ## Branch Policy
 

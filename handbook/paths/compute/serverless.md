@@ -27,7 +27,7 @@ flowchart TD
 
 ## Skills
 
-`kiss` · `repos ci` · `repos secrets setup` · `test-it` · `observe-it` · `stage-it` / `ship-it` · `diagnose-bug` on prod failures
+`kiss` · `repos ci` · `repos secrets setup` · `test-it` · `observe-it` · `merge-it` (Stage/Ship) · `diagnose-bug` on prod failures
 
 ## Watchouts
 

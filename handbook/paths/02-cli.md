@@ -39,7 +39,7 @@ flowchart TD
   D --> E[document-it: install + examples + exit codes]
   E --> F[repos ci: test on PR + release workflow]
   F --> G[issues/pulls for changes - check-readiness]
-  G --> H[Publish artifact - ship-it / release]
+  G --> H[Publish artifact - merge-it Ship phase / release]
 ```
 
 Right-sized tasks:

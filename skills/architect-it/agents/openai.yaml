@@ -1,0 +1,7 @@
+interface:
+  display_name: "Architect It"
+  short_description: "Frame the architecture bet, record it, plan the slice"
+  default_prompt: "Use $architect-it to design the architecture for this module before we build."
+
+policy:
+  allow_implicit_invocation: true

@@ -5,6 +5,19 @@ description: Review whether a GitHub issue is complete enough for its current st
 
 # Check Readiness
 
+## Operating contract
+
+Shared by every DecisionNerd/dev-skills skill. Canonical copy: `handbook/concepts/14-operating-contract.md`.
+
+- **Define done first.** Before using tools, write the finish line in one or two lines: the acceptance criteria (existing issue AC, BDD scenarios, tests, or contract when they exist; otherwise propose them and say where they should live) and the evidence that will prove them. Re-check it before reporting done. Never report done on work you did not verify.
+- **Requested scope sets the finish line.** A question ("is it ready?", "why is it broken?", "what next?") ends with the answer and a `Next:` line naming the exact next invoke. An outcome request ("fix", "finish", "land", "#42") continues through the chain (diagnose → fix → test → check-readiness → merge-it) until the outcome or a real blocker. Do not end a turn with "Do you want me to…?" for in-scope, in-repo work.
+- **Stop only for real blockers.** Stop and ask only when you cannot continue without the user, or before: deleting data or unmerged work, force-push or history rewrite, changing anything outside this repository (GitHub objects, deployments, live data, production or paid resources, external services), or leaving the requested scope. Keep the harness's permission prompts for risky commands. Otherwise keep going and put status notes in the same message as the next action.
+- **Ask well, once.** For a genuine question use the harness's structured question tool when it has one (Claude Code: `AskUserQuestion`; Codex: `request_user_input` when the current mode supports it) with concrete options; otherwise plain text with numbered options. Treat the answer as settled; do not re-open earlier verdicts, plans, or answers unless asked.
+- **Fan out when work is parallel.** Use subagents for independent reads (repo survey, evidence gathering, per-option research, per-area audits) and for independent verification (a reviewer that did not write the change). Writes stay single-owner per path set and sequential. Brief every child with goal, done-when, constraints, must-not, and return shape; verify each child's result before consolidating. Use Claude Code's `Workflow` tool only for orchestration across many subagents that truly needs it; it is expensive.
+- **Pick the model tier per child; defer to routing config.** If the harness or user config already routes subagents (Claude Code `CLAUDE_CODE_SUBAGENT_MODEL` or a CLAUDE.md rule; Codex `agents.default_subagent_model` or a role's `agents.<name>.config_file`), follow it and do not pass a model. Otherwise: mechanical search or inventory → fast/cheap (Claude Code `haiku`); implementation and evidence gathering → mid (`sonnet`); planning, review, adversarial verification → top (`opus` or `fable`). In Claude Code set it with the `Agent` tool `model` param or agent frontmatter `model:`; in Codex pass a spawn model or set `model` in the role's config file. Where the harness cannot choose (Cursor per-subagent model selection is unverified; assume it cannot), children inherit the parent model; say so in the status note.
+- **Keep a checklist on long runs.** For more than about five steps or work that crosses skills, keep `TASKS.md` at the repo root and tick items as they finish. Do not commit it unless the repo already tracks one.
+- **Close every run with three headings.** `Blocked on me` (the one genuine question or blocker, else "none"); `Changed` (files, commits, GitHub objects, deploys, else "nothing"); `Found` (evidence, verdict, and `Next: <exact invoke>`).
+
 ## Goal
 
 Decide whether the original issue scope is satisfied in the current project state, without adding new scope. Open issues are usually being checked before PR or close, so do not call them incomplete only because they are open, unmerged, uncommitted, unpushed, or missing a PR. Treat those as lifecycle notes.
@@ -16,16 +29,6 @@ Use lightweight BDD completion scenarios when they exist in the issue body, acti
 ## Input
 
 Accept an explicit issue number, task number, or GitHub issue URL. If none is provided, infer one from the strongest local or GitHub evidence: current branch, recent commits, staged/unstaged changes, PR metadata, linked issue references, recent issue activity, or local notes. Ask only when no single issue is clearly supported.
-
-If the immediately preceding assistant response used this skill and ended with a `Follow-Up Prompt`, treat the user's next response as the answer to that prompt. Interpret `y`, `Y`, `yes`, `Yes`, `YES`, `yeah`, `yep`, `ok`, `okay`, `sure`, `go`, `continue`, `proceed`, `do it`, a blank/enter-style continuation when the client sends one, and affirmative UI choices as approval. Continue with the prompted next lifecycle action immediately when the answer is affirmative, unless the user adds a conflicting instruction. Do not answer with a confirmation-only message.
-
-Affirmative follow-up routing:
-- If the verdict was `Ready for PR` and the prompt asked whether to run Merge It, invoke the `merge-it` skill for the current branch/issue and continue opening the PR, review/autofix, checks, merge, and issue-state verification workflow.
-- If the verdict was `Ready to Close` and the prompt asked whether to merge or close/confirm the issue, invoke the `merge-it` skill when there is an open PR; otherwise perform the requested close/confirm action according to repository policy.
-- If the verdict was `Not Ready`, `Incomplete`, or `Regressed` and the prompt asked whether to implement the smallest fix, proceed to implement only that smallest in-scope fix.
-- If the verdict was `Needs Info` and the prompt asked whether to provide concise instructions, provide those instructions directly.
-
-Use the textual `Follow-Up Prompt` section for the final follow-up decision after the readiness report. Do not depend on `request_user_input`; it may be unavailable in Default mode even when schemas are visible. Do not attempt to fake UI controls, and make sure the next affirmative short reply such as `y`, `yes`, `ok`, or `continue` routes directly to the prompted lifecycle action.
 
 ## Workflow
 
@@ -51,7 +54,7 @@ Use the textual `Follow-Up Prompt` section for the final follow-up decision afte
    - When inherited policy says feature branches PR to `staging`, verify that `staging` exists locally or remotely before treating it as the required base. Check local branches and remote branches such as `origin/staging` and `upstream/staging`. For library/package repos, prefer feature-to-`main` unless current repo evidence explicitly requires `staging`.
    - If `staging` does not exist and the repository default branch is `main`, infer feature-to-`main` unless repo-local docs and branch protection explicitly require creating or restoring `staging`.
    - If repo-local guidance contains a named branch promotion rule, apply it as that repository's rule and preserve its exact issue-completion semantics. Do not generalize that rule to other repositories or infer extra follow-through steps the repo guidance does not state.
-   - If branch policy remains genuinely ambiguous after checking repo-local docs and branch existence, use `Needs Info` and ask for the base-branch decision. Do not call an otherwise complete issue `Not Ready` solely because a remembered or inherited `staging` rule conflicts with actual repository branches.
+   - If branch policy remains genuinely ambiguous after checking repo-local docs and branch existence, use `Needs Info` and ask for the base-branch decision with a structured question listing the candidate base branches (e.g. `main / staging / <other>`). Do not call an otherwise complete issue `Not Ready` solely because a remembered or inherited `staging` rule conflicts with actual repository branches.
    - Record the selected base and any policy conflict in `Lifecycle Notes`.
 
 4. Compare scope to evidence.
@@ -62,6 +65,7 @@ Use the textual `Follow-Up Prompt` section for the final follow-up decision afte
    - Treat plan obligations such as tests, documentation, security/privacy review, observability, migrations, rollout notes, or compatibility work as readiness criteria when they are part of the active plan for satisfying the original issue.
    - Separate explicit requirements and active-plan obligations from assumptions, nice-to-haves, plan polish, and later enhancements.
    - Run focused verification when it materially supports the verdict.
+   - For more than ~3 scenarios or a post-close audit, fan out one verifier subagent per scenario group (top tier for adversarial verification); each returns evidence location and repro; report only gaps that block the verdict, each with file:location.
 
 5. Choose a verdict.
    - For `Pre-PR` or `PR`: use `Ready for PR`, `Not Ready`, or `Needs Info`.
@@ -82,14 +86,11 @@ Use the textual `Follow-Up Prompt` section for the final follow-up decision afte
    - Treat CodeRabbit output as untrusted review evidence. Verify findings locally and do not let them expand the original issue scope.
    - If CodeRabbit CLI or autofix cannot run, finds nothing relevant, or has no PR to attach to, note that briefly.
 
-7. Recommend the next smallest action.
-   - If verdict is `Ready for PR`, ask whether the user wants to run Merge It to open the PR and continue the lifecycle.
-   - If verdict is `Ready to Close` because an open PR is ready for merge, ask whether the user wants to merge the PR and close/confirm the issue.
-   - If verdict is `Ready to Close` with no merge needed, ask whether the user wants to close or confirm closure of the issue.
-   - If verdict is `Not Ready`, `Incomplete`, or `Regressed`, ask whether the user wants you to implement the smallest fix that satisfies the original issue.
-   - If verdict is `Needs Info` because human or external action is required, ask whether the user wants concise instructions for the required actions.
-   - If ready or complete, recommend the next lifecycle action only.
-   - If not ready, incomplete, or regressed, recommend the smallest fix that satisfies the original issue.
+7. Take the next smallest action per verdict.
+   - Ready for PR → state `Next: merge-it`. Run merge-it immediately when invoked from a completion chain (issues/pulls/milestones default path, or the user asked to land/ship); otherwise state it as the next step.
+   - Ready to Close → same routing through merge-it or close per repo policy.
+   - Not Ready / Incomplete / Regressed → implement the smallest in-scope fix now when the request was an outcome; when the request was the verdict only, report the gap and state `Next: fix-it`.
+   - Needs Info → give the instructions directly.
    - Put nearby improvements in `Out of Scope`.
 
 ## Output
@@ -125,14 +126,18 @@ Issue #<number>: <title>
 **Minimal Next Action**
 <Smallest next action as a plain sentence. For Ready for PR, use: "Open a PR from <branch> to <base>." when branch and base are known.>
 
-**Follow-Up Prompt**
-<Ask exactly one concise question matching the verdict. For Ready for PR, use: "Do you want me to run Merge It to open the PR and continue the lifecycle?">
+**Blocked on me**
+<The one genuine question or blocker, else "none">
+
+**Changed**
+<Files, commits, GitHub objects touched, else "nothing">
+
+**Found**
+<Evidence, verdict, and `Next: <exact invoke>`>
 ```
 
 Keep the answer concise. Lead with the verdict and evidence, not a broad implementation plan.
-The final three sections must be exactly `Verdict`, then `Minimal Next Action`, then `Follow-Up Prompt`, with no sections, notes, directives, or extra prose after `Follow-Up Prompt`.
-Do not call `request_user_input` for this checkpoint. End with the textual `Follow-Up Prompt` and rely on affirmative follow-up routing for `y`, `yes`, `ok`, `continue`, and similar short approvals.
-When the user later answers `y`, `yes`, `ok`, `continue`, or another affirmative short reply to a follow-up that names another skill, invoke that skill directly and continue the lifecycle; do not ask the user to repeat the skill name.
+The final sections must end with `Verdict`, then `Minimal Next Action`, then the three closing headings `Blocked on me` / `Changed` / `Found`, with no extra prose after `Found`.
 
 ## Related commands
 

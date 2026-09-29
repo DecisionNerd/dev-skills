@@ -18,10 +18,11 @@
     },
     {
       "title": "Craft",
-      "description": "KISS, research, fix, refactor, test, observe, and document.",
+      "description": "KISS, research, architect, fix, refactor, test, observe, and document.",
       "skills": [
         "kiss",
         "research-it",
+        "architect-it",
         "fix-it",
         "refactor-it",
         "test-it",
@@ -38,12 +39,10 @@
     },
     {
       "title": "Ops & Ship",
-      "description": "Live diagnosis, shipping, and local tidy-up.",
+      "description": "Live diagnosis, release path via merge-it, and local tidy-up.",
       "skills": [
         "troubleshoot-app",
         "diagnose-bug",
-        "stage-it",
-        "ship-it",
         "tidy-up"
       ]
     }

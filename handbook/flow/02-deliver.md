@@ -10,17 +10,20 @@ If **shape, language, framework, or placement** is still hand-wavy, open **[Arch
 
 - One deploy unit (or one package) with a done-when and owner — [Work ownership](../concepts/06-work-ownership.md).
 - Prove as you go: [`test-it`](../practices/test-it.md), CI via [`repos`](../practices/repos.md), readiness via [`check-readiness`](../practices/check-readiness.md).
+- Structure fighting the change? Frame the bet first — [`architect-it`](../practices/architect-it.md).
 - Refuse unearned complexity — [`kiss`](../practices/kiss.md).
 
 ## Named ship plays (not synonyms)
 
-| Play | Means |
-| --- | --- |
-| [`merge-it`](../practices/merge-it.md) | Land current work into the **next integrate target** (not automatically “production”) |
-| [`stage-it`](../practices/stage-it.md) | Land on **staging** |
-| [`ship-it`](../practices/ship-it.md) | Send **all the way to production** and **check that it’s healthy** |
+`merge-it` runs the whole release path; name the **phase** so nobody confuses a merge with a promote:
 
-Use the play that matches policy. Don’t call a merge a ship.
+| Phase | Means |
+| --- | --- |
+| Integrate | Land current work into the **next integrate target** (not automatically “production”) |
+| Stage | Land on **staging** and verify the staging deploy |
+| Ship | Promote **all the way to production** and **check that it’s healthy** |
+
+Use the phase that matches policy. Don’t call a merge a ship.
 
 ## Open Architecture mid-delivery when…
 

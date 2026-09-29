@@ -19,7 +19,7 @@ Discover: `skills/*/SKILL.md` in this collection, or installed copies. Typical r
 | Overcomplicated goals / process / system / plan | `kiss` |
 | Repo management (split/combine/monorepo/CI/ESC secrets) | `repos` |
 | Agents misbehaving | `agents slap\|analyze\|design\|sub` |
-| Ship | `stage-it`, `ship-it` |
+| Structure / architecture bet needed | `architect-it`, `refactor-it` |
 | Disk/worktree clutter | `tidy-up` |
 
 ## 2. DocSlime

@@ -1,6 +1,6 @@
 # Recon → repo
 
-Whole-repository situational awareness. Read-only unless the user approves a follow-up mutation.
+Whole-repository situational awareness. Read-only; hand off via `Next:`.
 
 ## Gather
 
@@ -18,7 +18,7 @@ Whole-repository situational awareness. Read-only unless the user approves a fol
 - Stranded branches / open PRs without movement
 - Issue backlog without milestones vs overfull milestones
 - Broken-looking recent commits (fix/revert storms) → diagnose skills
-- Release train hints (`staging` branch) → stage-it / ship-it awareness
+- Release train hints (`staging` branch, promote PRs) → `merge-it` Stage/Ship phase awareness
 
 ## Recommend
 
@@ -29,4 +29,4 @@ Rank next skills from the skill map in `SKILL.md`. Examples:
 - Feature branch with commits, no PR → `pulls create` or `merge-it`
 - Failing production reports in issues → `troubleshoot-app` / `diagnose-bug`
 
-End with one Follow-Up Prompt offering to run the primary suggestion.
+End with the three closing headings; `Found` ends with `Next: <primary invoke>` as a statement.

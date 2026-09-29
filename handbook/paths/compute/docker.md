@@ -26,7 +26,7 @@ flowchart TD
 
 ## Skills
 
-`repos ci harden` · `repos secrets` · `test-it` · `kiss` (one image per unit) · `tidy-up` (prune dangling images/build cache) · `ship-it` / `stage-it`
+`repos ci harden` · `repos secrets` · `test-it` · `kiss` (one image per unit) · `tidy-up` (prune dangling images/build cache) · `merge-it` (Stage/Ship)
 
 ## Watchouts
 

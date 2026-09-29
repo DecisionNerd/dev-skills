@@ -67,6 +67,9 @@ description: {One sentence describing when to use this skill. Include trigger ph
 - Write specific descriptions so agents know when to activate the skill
 - Prefer scripts over large inline code blocks when execution is needed
 - Link supporting files one level deep from `SKILL.md`
+- Every `SKILL.md` must carry the `## Operating contract` block verbatim from `handbook/concepts/14-operating-contract.md` between the `<!-- contract:start -->` and `<!-- contract:end -->` markers. Copy the block byte-for-byte; do not paraphrase or summarise it.
+- Run `npm run check:skills` before committing. The script verifies that every skill has the contract block, has no banned phrases, stays under 500 lines, and (with `--mirrors`) that `src/content/docs/skills/**` description frontmatter matches the `SKILL.md` frontmatter description.
+- The `description:` field in `src/content/docs/skills/**` mirrors must match the `description:` in the corresponding `SKILL.md` frontmatter exactly (whitespace-normalised). Update both together.
 
 ### End-User Installation
 

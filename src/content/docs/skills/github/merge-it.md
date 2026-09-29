@@ -1,13 +1,13 @@
 ---
 title: Merge It
-description: "Merge the current work into its next integrate target (main/trunk, release branch, staging, or another repo-defined base) — open/update the PR, run review/autofix, wait for CI green, merge, confirm linked issue closure, and return the local checkout. Use when the user asks to merge this, open a PR and merge it, land this branch on the next target, finish a branch end-to-end, run autofix before merging, or close out an issue through PR completion. Not for sending work all the way into production and checking that it is healthy (use ship-it). Prefer stage-it when the user specifically asked to stage / land on staging."
+description: Drive work through the full release path per repo policy — feature PR into the next integrate target (main/trunk, release branch, staging, or another repo-defined base), staging lands with deploy/smoke verification, and production promotion with live health checks. Open or update the PR, run review/autofix, wait for CI green, merge, verify the deploy, confirm linked issue closure, and return the local checkout. Use when the user asks to open a PR and merge it, land this branch, finish a branch end-to-end, stage it, promote to staging, ship it, promote staging to production, or release to prod. The release path always comes from repository instructions, not memory.
 sidebar:
   order: 8
 ---
 
 `merge-it`
 
-Merge the current work into its next integrate target (main/trunk, release branch, staging, or another repo-defined base) — open/update the PR, run review/autofix, wait for CI green, merge, confirm linked issue closure, and return the local checkout. Use when the user asks to merge this, open a PR and merge it, land this branch on the next target, finish a branch end-to-end, run autofix before merging, or close out an issue through PR completion. Not for sending work all the way into production and checking that it is healthy (use ship-it). Prefer stage-it when the user specifically asked to stage / land on staging.
+Drive work through the full release path per repo policy — feature PR into the next integrate target (main/trunk, release branch, staging, or another repo-defined base), staging lands with deploy/smoke verification, and production promotion with live health checks. Open or update the PR, run review/autofix, wait for CI green, merge, verify the deploy, confirm linked issue closure, and return the local checkout. Use when the user asks to open a PR and merge it, land this branch, finish a branch end-to-end, stage it, promote to staging, ship it, promote staging to production, or release to prod. The release path always comes from repository instructions, not memory.
 
 ## Install
 
