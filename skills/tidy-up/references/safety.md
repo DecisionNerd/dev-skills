@@ -28,3 +28,7 @@ Non-negotiables when deleting local clutter.
 | high | Unmerged work, global caches, docker volumes, anything unclear |
 
 High-risk items stay **proposed only** until the user names them.
+
+## Single-owner execution
+
+Destructive commands (delete, prune, rm) run sequentially in the parent agent. No subagent fan-out for delete steps — a single owner prevents race conditions and makes the `Changed` list auditable.

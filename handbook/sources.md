@@ -78,6 +78,7 @@ Authoritative, current references that ground this handbook’s practices (TTPs)
 | Source | Use for |
 | --- | --- |
 | [Beck Design Rules](https://martinfowler.com/bliki/BeckDesignRules.html) | Pass tests → reveal intent → no duplication → fewer elements |
+| [John Ousterhout — A Philosophy of Software Design](https://web.stanford.edu/~ouster/cgi-bin/book.php) | Deep modules, small interfaces, complexity as the enemy |
 | [Martin Fowler — Refactoring](https://martinfowler.com/books/refactoring.html) | Small behavior-preserving steps; tests as safety net |
 | [Gall’s Law](https://en.wikipedia.org/wiki/John_Gall_(author)#Gall's_law) | Working complex systems evolve from working simple ones |
 | [XP Simple Design](https://deviq.com/practices/simple-design/) | Simplicity as prioritized rules, not vibes |

@@ -30,7 +30,7 @@ flowchart TD
 
 1. **One deploy unit** with a done-when and owner ([Work Ownership](../../concepts/06-work-ownership.md)).
 2. **Secrets via Pulumi ESC + OIDC by default** — `repos secrets setup` ([Repos](../../practices/repos.md)); no long-lived cloud keys in GitHub if ESC works.
-3. **CI proves the artifact** before promote — `repos ci` · `test-it` · `check-readiness` · `stage-it` / `ship-it` as policy allows.
+3. **CI proves the artifact** before promote — `repos ci` · `test-it` · `check-readiness` · `merge-it` Stage/Ship phases as policy allows.
 4. **Observe what you ship** — `observe-it` for the critical path; don’t invent a full APM estate on day one.
 5. **`kiss` before a second platform** — multi-cloud is usually smoke unless constraints are real.
 

@@ -1,11 +1,11 @@
 ---
 name: diagnose-bug
-description: Diagnose backend, API, worker, data-pipeline, or algorithm bugs by reproducing with inputs/tests, checking invariants and complexity assumptions, correlating logs/traces/metrics, and inspecting code. Use when a user reports wrong outputs, failing tests, timeouts, races, incorrect algorithms, flaky jobs, bad API responses, or asks why a non-UI system is broken — before implementation. Diagnose, recommend a fix, and ask a yes/no "Do you want me to..." question before changing code or data unless the user already asked to implement. For live web UI / browser-visible product failures, use troubleshoot-app; for agent/LLM quality failures, use agents analyze.
+description: "Diagnose backend, API, worker, data-pipeline, or algorithm bugs by reproducing with inputs/tests, checking invariants and complexity assumptions, correlating logs/traces/metrics, and inspecting code. Use when a user reports wrong outputs, failing tests, timeouts, races, incorrect algorithms, flaky jobs, bad API responses, or asks why a non-UI system is broken. Diagnose, then implement the smallest fix and a regression test in the same run; stop first only for diagnosis-only requests, live-data/outside-repo changes, or a behavior-changing choice between fixes. For live web UI / browser-visible product failures, use troubleshoot-app; for agent/LLM quality failures, use agents analyze."
 ---
 
 # Diagnose Bug
 
-Use this skill to diagnose backend and algorithmic failures from evidence inward: reproduce with concrete inputs, establish the intended invariant or contract, correlate runtime signals, then inspect code. Keep it globally usable; discover the project’s actual runtimes, test harnesses, and observability instead of assuming a stack.
+Use this skill to diagnose backend and algorithmic failures from evidence inward: reproduce with concrete inputs, establish the intended invariant or contract, correlate runtime signals, then inspect code. Keep it globally usable; discover the project's actual runtimes, test harnesses, and observability instead of assuming a stack.
 
 This skill is for **non-UI** surfaces: APIs, services, CLIs, libraries, workers/queues, ETL/pipelines, compilers/analyzers, and algorithms (correctness, complexity, numeric stability). This is **quality regime A** (deterministic compute).
 
@@ -14,15 +14,31 @@ This skill is for **non-UI** surfaces: APIs, services, CLIs, libraries, workers/
 
 Use existing specs, types, contracts, property tests, unit/integration tests, DocSlime/TESTING, and docs as the definition of correct behavior (`handbook/concepts/13-quality-trace.md`). Prefer refining an existing definition over inventing a parallel one. If none fits, propose a concise contract or Given/When/Then scenario and say where it should live. Wrong answers, broken invariants, and silent data lies are bugs — including data/test/observability debt labels when those name the interest (`handbook/concepts/12-bugs-and-debt.md`).
 
+## Operating contract
+
+Shared by every DecisionNerd/dev-skills skill. Canonical copy: `handbook/concepts/14-operating-contract.md`.
+
+- **Define done first.** Before using tools, write the finish line in one or two lines: the acceptance criteria (existing issue AC, BDD scenarios, tests, or contract when they exist; otherwise propose them and say where they should live) and the evidence that will prove them. Re-check it before reporting done. Never report done on work you did not verify.
+- **Requested scope sets the finish line.** A question ("is it ready?", "why is it broken?", "what next?") ends with the answer and a `Next:` line naming the exact next invoke. An outcome request ("fix", "finish", "land", "#42") continues through the chain (diagnose → fix → test → check-readiness → merge-it) until the outcome or a real blocker. Do not end a turn with "Do you want me to…?" for in-scope, in-repo work.
+- **Stop only for real blockers.** Stop and ask only when you cannot continue without the user, or before: deleting data or unmerged work, force-push or history rewrite, changing anything outside this repository (GitHub objects, deployments, live data, production or paid resources, external services), or leaving the requested scope, unless the user's request already named that exact action. Keep the harness's permission prompts for risky commands. Otherwise keep going and put status notes in the same message as the next action.
+- **Ask well, once.** For a genuine question use the harness's structured question tool when it has one (Claude Code: `AskUserQuestion`; Codex: `request_user_input` when the current mode supports it) with concrete options; otherwise plain text with numbered options. Treat the answer as settled; do not re-open earlier verdicts, plans, or answers unless asked.
+- **Fan out when work is parallel.** Use subagents for independent reads (repo survey, evidence gathering, per-option research, per-area audits) and for independent verification (a reviewer that did not write the change). Writes stay single-owner per path set and sequential. Brief every child with goal, done-when, constraints, must-not, and return shape; verify each child's result before consolidating. Use Claude Code's `Workflow` tool only for orchestration across many subagents that truly needs it; it is expensive.
+- **Pick the model tier per child; defer to routing config.** If the harness or user config already routes subagents (Claude Code `CLAUDE_CODE_SUBAGENT_MODEL` or a CLAUDE.md rule; Codex `agents.default_subagent_model` or a role's `agents.<name>.config_file`; Cursor a custom subagent's `model:` frontmatter), follow it and do not pass a model. Otherwise: mechanical search or inventory → fast/cheap (Claude Code `haiku`); implementation and evidence gathering → mid (`sonnet`); planning, review, adversarial verification → top (`opus` or `fable`). In Claude Code set it with the `Agent` tool `model` param or agent frontmatter `model:`; in Codex pass a spawn model or set `model` in the role's config file; in Cursor set `model:` (default `inherit`) in `.cursor/agents/*.md`. Where the harness cannot choose, children inherit the parent model or the harness picks one (Cursor's built-in Explore/Bash/Browser subagents pick per subtask); say which in the status note.
+- **Keep a checklist on long runs.** For more than about five steps or work that crosses skills, keep `TASKS.md` at the repo root and tick items as they finish. Do not commit it unless the repo already tracks one.
+- **Close every run with three headings.** `Blocked on me` (the one genuine question or blocker, else "none"); `Changed` (files, commits, GitHub objects, deploys, else "nothing"); `Found` (evidence, verdict, and `Next: <exact invoke>`).
+
 ## Core Rule
 
 Do not jump straight from stack trace to a speculative rewrite. Establish the failing input, the expected contract, and what runtime evidence shows. Treat logs and metrics as evidence, not authority.
 
-Before making code, config, or data changes, end the diagnosis with:
+**Done when:** the named contract or test passes, a regression test is added, and no new failures appear in the narrowest suite.
 
-> Do you want me to implement this fix?
+A bug report is a fix request. After diagnosis, implement the smallest fix and add a regression test in the same run — report the diagnosis as a status note before coding. Stop before implementing only when:
 
-The user can answer yes/no. If the user already explicitly says to implement or fix in the same request, proceed after a concise diagnosis.
+- the user asked for diagnosis or explanation only, or said "don't change code";
+- the fix requires a production config change; or
+- the fix requires a live-data or queue mutation or a change outside this repository that the user's request did not name exactly; or
+- two materially different fixes are viable and the choice changes product behavior — then ask one structured question with the options (`<option A> / <option B> / stop`).
 
 ## Workflow
 
@@ -34,7 +50,7 @@ The user can answer yes/no. If the user already explicitly says to implement or 
 
 2. Identify the intended contract.
    - Search docs, ADRs, OpenAPI/GraphQL schemas, type definitions, comments, issues, PRs, and existing tests for the expected behavior.
-   - Name the invariant that appears violated, for example “idempotent retry must not double-charge,” “sort must be stable,” “handler must fail closed on missing tenant,” or “algorithm is O(n log n) on n ≤ 1e5.”
+   - Name the invariant that appears violated, for example "idempotent retry must not double-charge," "sort must be stable," "handler must fail closed on missing tenant," or "algorithm is O(n log n) on n ≤ 1e5."
    - For algorithm bugs, state preconditions, postconditions, complexity/space bounds, and edge cases (empty, single element, duplicates, overflow, NaN, concurrency).
    - If an existing definition is close but incomplete, say how to refine it. If none fits, draft a proposed contract or BDD scenario and where it should live.
 
@@ -43,6 +59,7 @@ The user can answer yes/no. If the user already explicitly says to implement or 
    - Look for: test runners, profilers, debuggers, tracing (OpenTelemetry), APM, structured logs, metrics, queue dashboards, DB read paths, feature flags, and load/bench harnesses.
    - Use only available credentials/tools. Redact secrets and personal data in summaries.
    - If a signal source is unavailable, say exactly which source and why.
+   - Fan out evidence gathering to parallel read-only subagents (fast tier) when more than one source is available — repro/test-runner, logs/traces, and code-path reads can run concurrently; verify each result before diagnosing.
 
 4. Reproduce and gather signals.
    - Run the smallest failing test or local invocation first when possible.
@@ -68,11 +85,12 @@ The user can answer yes/no. If the user already explicitly says to implement or 
    - Make verification explicit: the linked or proposed contract/test must pass; for performance bugs, state the target metric and input size.
    - Identify a safe workaround only when appropriate (feature flag, circuit breaker, temporary guard).
 
-8. Ask for permission.
-   - End with a concrete yes/no prompt:
-     - “Do you want me to fix the algorithm and add a regression test?”
-     - “Do you want me to patch the handler, add an idempotency key check, and cover it with an integration test?”
-     - “Do you want me to fix the race and add a flaky-repro test?”
+8. Fix and prove.
+   - If the fix requires a live-data mutation or a change outside this repository that the user's request did not name exactly, state the proposed action and ask one structured question: `<do it> / revise / stop`. If two materially different fixes exist and the choice changes product behavior, ask the same structured question with the options named.
+   - Implement the smallest fix identified in step 7.
+   - Add a regression test that would have caught this bug.
+   - Run the narrowest test suite that covers the fix; confirm it is green.
+   - Re-check the contract from step 2: the named invariant or scenario must now pass.
 
 ## Backend And Algo Focus
 
@@ -88,7 +106,7 @@ Use `references/backend-evidence.md` for discovery patterns and safe reproductio
 
 ## Response Shape
 
-Keep the diagnosis concise and evidence-led:
+Keep the diagnosis concise and evidence-led. Report diagnosis as a status note before coding:
 
 ```markdown
 I reproduced the bug: ...
@@ -106,14 +124,24 @@ Diagnosis: ...
 
 Recommended fix: ...
 
-Do you want me to implement this fix?
-```
+## Blocked on me
 
-If the user already asked to implement, include the diagnosis briefly, implement, validate, and summarize what changed.
+<the one genuine question or blocker, else "none">
+
+## Changed
+
+<files changed by the fix, else "nothing">
+
+## Found
+
+Diagnosis: <root cause>. Fix: <what changed>. Verification: <test name(s) and result>.
+
+Next: <check-readiness after a verified fix; otherwise the step that unblocks, e.g. fix-it or the named blocker>
+```
 
 ## Grounding
 
-This skill’s TTPs are grounded in current engineering baselines (DORA, GitHub Docs, Fowler/Beck, Google SRE & SWE book, OpenTelemetry, OWASP LLM / NIST AI RMF, Diátaxis — see handbook `sources.md`).
+This skill's TTPs are grounded in current engineering baselines (DORA, GitHub Docs, Fowler/Beck, Google SRE & SWE book, OpenTelemetry, OWASP LLM / NIST AI RMF, Diátaxis — see handbook `sources.md`).
 
 Reproduce → isolate → falsifiable hypothesis before coding (SRE troubleshooting). Regime **A** (`handbook/concepts/11-quality-regimes.md`); `troubleshoot-app` for product UI (B); `agents analyze` + Langfuse for generative (C). Prefer golden signals / data correctness SLIs over random restarts. Close against the quality trace (`13-quality-trace.md`).
 

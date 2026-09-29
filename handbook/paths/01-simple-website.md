@@ -27,7 +27,7 @@ If you’re reaching for those, either you graduated early — jump to [Path 04]
 3. Concepts: [This is Fine](../concepts/01-this-is-fine-stance.md) · [Smallest Next Step](../concepts/03-smallest-next-step.md) · [Vision-Tied Goals](../concepts/08-vision-tied-goals.md) · [Evidence over Vibes](../concepts/04-evidence-over-vibes.md)
 4. Orientation: [Vision](../orientation/01-vision-and-why.md) · [Situation](../orientation/02-situation-assessment.md)
 5. Strategies: [Orient](../strategies/01-orient.md) → [Craft and Harden](../strategies/04-craft-and-harden.md) → [Ship](../strategies/05-ship.md) (light) → [Tidy](../strategies/07-tidy-and-recover.md) as needed
-6. Practices (draw these first): [IDK Now](../practices/idk-now.md) · [KISS](../practices/kiss.md) · [Repos](../practices/repos.md) (`status`, thin `ci`) · [Impeccable](../practices/impeccable.md) · [Document It](../practices/document-it.md) · [Pulls](../practices/pulls.md) · [Merge It](../practices/merge-it.md) / [Ship It](../practices/ship-it.md) · [Tidy Up](../practices/tidy-up.md)
+6. Practices (draw these first): [IDK Now](../practices/idk-now.md) · [KISS](../practices/kiss.md) · [Repos](../practices/repos.md) (`status`, thin `ci`) · [Impeccable](../practices/impeccable.md) · [Document It](../practices/document-it.md) · [Pulls](../practices/pulls.md) · [Merge It](../practices/merge-it.md) · [Tidy Up](../practices/tidy-up.md)
 
 Companion: **Impeccable** for UI craft; **DocSlime** only if you want a tiny `docs/PRODUCT.md` — don’t scaffold the whole product org tree.
 
@@ -39,7 +39,7 @@ flowchart TD
   B --> C[Build the thinnest page that proves the promise]
   C --> D[repos ci: lint/build on PR]
   D --> E[pulls + merge-it]
-  E --> F[Deploy once - ship-it or host default]
+  E --> F[Deploy once - merge-it Ship phase or host default]
   F --> G[document-it: how to run and deploy]
 ```
 
@@ -60,7 +60,7 @@ Right-sized tasks (Goldilocks):
 | Repo/CI basics | `repos status` · `repos ci` |
 | UI craft | Impeccable |
 | Docs | `document-it` |
-| Land the change | `pulls` · `merge-it` · `ship-it` |
+| Land the change | `pulls` · `merge-it` (integrate; Ship phase when the host needs a promote) |
 | Agent thrash | `agents slap` then stop |
 
 ## Graduate when

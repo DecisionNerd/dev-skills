@@ -13,6 +13,19 @@ argument-hint: "[slap|analyze|optimize|design|sub|sub-agents] [target...]"
 
 Command-driven skill for **building, diagnosing, and running** agent systems (Cursor/Codex/Claude agents, Task/subagent trees, Trigger/durable workflows, custom orchestrators). Parse the first token as a command when it matches the table; otherwise map clear intent.
 
+## Operating contract
+
+Shared by every DecisionNerd/dev-skills skill. Canonical copy: `handbook/concepts/14-operating-contract.md`.
+
+- **Define done first.** Before using tools, write the finish line in one or two lines: the acceptance criteria (existing issue AC, BDD scenarios, tests, or contract when they exist; otherwise propose them and say where they should live) and the evidence that will prove them. Re-check it before reporting done. Never report done on work you did not verify.
+- **Requested scope sets the finish line.** A question ("is it ready?", "why is it broken?", "what next?") ends with the answer and a `Next:` line naming the exact next invoke. An outcome request ("fix", "finish", "land", "#42") continues through the chain (diagnose → fix → test → check-readiness → merge-it) until the outcome or a real blocker. Do not end a turn with "Do you want me to…?" for in-scope, in-repo work.
+- **Stop only for real blockers.** Stop and ask only when you cannot continue without the user, or before: deleting data or unmerged work, force-push or history rewrite, changing anything outside this repository (GitHub objects, deployments, live data, production or paid resources, external services), or leaving the requested scope, unless the user's request already named that exact action. Keep the harness's permission prompts for risky commands. Otherwise keep going and put status notes in the same message as the next action.
+- **Ask well, once.** For a genuine question use the harness's structured question tool when it has one (Claude Code: `AskUserQuestion`; Codex: `request_user_input` when the current mode supports it) with concrete options; otherwise plain text with numbered options. Treat the answer as settled; do not re-open earlier verdicts, plans, or answers unless asked.
+- **Fan out when work is parallel.** Use subagents for independent reads (repo survey, evidence gathering, per-option research, per-area audits) and for independent verification (a reviewer that did not write the change). Writes stay single-owner per path set and sequential. Brief every child with goal, done-when, constraints, must-not, and return shape; verify each child's result before consolidating. Use Claude Code's `Workflow` tool only for orchestration across many subagents that truly needs it; it is expensive.
+- **Pick the model tier per child; defer to routing config.** If the harness or user config already routes subagents (Claude Code `CLAUDE_CODE_SUBAGENT_MODEL` or a CLAUDE.md rule; Codex `agents.default_subagent_model` or a role's `agents.<name>.config_file`; Cursor a custom subagent's `model:` frontmatter), follow it and do not pass a model. Otherwise: mechanical search or inventory → fast/cheap (Claude Code `haiku`); implementation and evidence gathering → mid (`sonnet`); planning, review, adversarial verification → top (`opus` or `fable`). In Claude Code set it with the `Agent` tool `model` param or agent frontmatter `model:`; in Codex pass a spawn model or set `model` in the role's config file; in Cursor set `model:` (default `inherit`) in `.cursor/agents/*.md`. Where the harness cannot choose, children inherit the parent model or the harness picks one (Cursor's built-in Explore/Bash/Browser subagents pick per subtask); say which in the status note.
+- **Keep a checklist on long runs.** For more than about five steps or work that crosses skills, keep `TASKS.md` at the repo root and tick items as they finish. Do not commit it unless the repo already tracks one.
+- **Close every run with three headings.** `Blocked on me` (the one genuine question or blocker, else "none"); `Changed` (files, commits, GitHub objects, deploys, else "nothing"); `Found` (evidence, verdict, and `Next: <exact invoke>`).
+
 ## Commands
 
 | Command | What it does |
@@ -30,7 +43,7 @@ Target: path to agent config / skill / workflow, run ID, PR/issue, or free-text 
 
 ## Routing
 
-1. **No argument**: ask intent; offer `slap` (if something is on fire), else `analyze` / `design` / `help`.
+1. **No argument**: ask intent via the harness's structured question tool (Claude Code: `AskUserQuestion`); options: `slap` (something on fire), `analyze`, `optimize`, `design`, `sub`, `help`.
 2. **First word is a command**: run it; remainder is target/context.
 3. **Clear intent** (“emergency stop this agent”, “design a code-review agent”, “use subagents to explore”): map and proceed.
 4. **Active runaway loop / dumb workflow burning tokens**: default to **`slap`** even if the user only said “fix the agents”.
@@ -66,13 +79,13 @@ Details: [references/analyze.md](references/analyze.md).
 
 ## `optimize`
 
-Only after you know *what* is bad (`analyze` first unless the user already provided a sharp diagnosis). Propose a small numbered plan (prompt splits, tool narrowing, caching, evals, step limits, model routing). Implement only what the user approves. Prefer measurable wins (fewer steps, fewer retries, clearer success criteria).
+Only after you know *what* is bad (`analyze` first unless the user already provided a sharp diagnosis). Propose a small numbered plan (prompt splits, tool narrowing, caching, evals, step limits, model routing). Implement in-repo prompt and config changes; ask only before production-workflow or paid changes. Prefer measurable wins (fewer steps, fewer retries, clearer success criteria).
 
 Details: [references/optimize.md](references/optimize.md).
 
 ## `design`
 
-Architecture before code. Output a short design: goal, inputs/outputs, tools (allow/deny), memory, success criteria, failure/escalation, whether to use `sub` fan-out, eval plan. Ask before scaffolding files. Prefer one sharp agent over a swarm.
+Architecture before code. Output a short design: goal, inputs/outputs, tools (allow/deny), memory, success criteria, failure/escalation, whether to use `sub` fan-out, eval plan. Scaffolding is a separate step — end with `Next: scaffold <name>` rather than asking. Prefer one sharp agent over a swarm.
 
 Details: [references/design.md](references/design.md).
 
@@ -85,8 +98,19 @@ Rules:
 - Write a crisp parent brief: goal, constraints, done-when, tools allowed, what **not** to do.
 - Prefer parallel explore/research children; keep write/mutate work sequential or single-owned.
 - Never give two subagents overlapping write ownership of the same files.
-- Aggregate child results; parent decides; do not rubber-stamp contradictory child plans.
+- Verify each child’s result before consolidating; do not rubber-stamp contradictory child plans.
+- Aggregate verified results; parent decides.
 - If children thrash → **`slap`**, don’t spawn more.
+
+## Output
+
+Close every run with:
+
+```
+Blocked on me: (production/paid change awaiting approval, or "none")
+Changed: (files, config changes, GitHub objects, else "nothing")
+Found: (analysis verdict, plan, or design). Next: `<exact follow-up invoke>`.
+```
 
 ## Related skills
 

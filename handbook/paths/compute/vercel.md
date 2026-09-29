@@ -27,7 +27,7 @@ flowchart TD
 
 ## Skills
 
-Impeccable (UI) · `repos ci` · `pulls` · `merge-it` · `ship-it` / host promote · `observe-it` · `kiss` before adding a second host for the same UI
+Impeccable (UI) · `repos ci` · `pulls` · `merge-it` (Integrate; Ship phase / host promote) · `observe-it` · `kiss` before adding a second host for the same UI
 
 ## Watchouts
 

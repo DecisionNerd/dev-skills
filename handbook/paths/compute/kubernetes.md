@@ -27,7 +27,7 @@ flowchart TD
 
 ## Skills
 
-`kiss` · `repos architecture` · `repos ci` · `repos secrets` · `stage-it` · `ship-it` · `observe-it` · `agents slap` if GitOps agents thrash · `tidy-up`
+`kiss` · `repos architecture` · `repos ci` · `repos secrets` · `merge-it` (Stage/Ship) · `observe-it` · `agents slap` if GitOps agents thrash · `tidy-up`
 
 ## Watchouts
 

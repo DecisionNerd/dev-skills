@@ -25,3 +25,7 @@ src/content/docs/handbook/
 .idea/
 .vscode/
 *.swp
+
+# Local agent state (plans, subagent memory)
+.claude/agent-memory/
+.claude/plans/

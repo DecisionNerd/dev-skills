@@ -2,7 +2,7 @@
 title: Observe It
 description: "Add or improve observability — structured logs, metrics, traces, errors, analytics, dashboards, and (for generative) LLM traces/scores. Use when the user says \"observe it\", asks for instrumentation, telemetry, alerting hooks, Langfuse/evals online, or \"how do we know this works in prod\". Match signals to quality regime A/B/C; prefer existing vendors (OTel, Sentry, PostHog, Langfuse house default for LLM). Ask before emitting PII or paid-volume storms."
 sidebar:
-  order: 6
+  order: 7
 ---
 
 `observe-it`

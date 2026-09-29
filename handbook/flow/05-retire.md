@@ -7,7 +7,7 @@ Leave the room better than you found it. In standards language this is close to 
 - Prefer **strangler / migrate** patterns over big-bang flips when users depend on the old path.
 - Dual-run with clear stop conditions for the old system.
 - Be honest with users and operators about timelines and what’s breaking.
-- Own the cutover: who flips traffic, who watches health ([`ship-it`](../practices/ship-it.md) / [`observe-it`](../practices/observe-it.md)), who turns the old unit off.
+- Own the cutover: who flips traffic, who watches health ([`merge-it`](../practices/merge-it.md) Ship phase / [`observe-it`](../practices/observe-it.md)), who turns the old unit off.
 
 ## Archive and remember
 

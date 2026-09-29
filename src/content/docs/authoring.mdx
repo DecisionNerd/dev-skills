@@ -33,6 +33,7 @@ Instructions for the agent.
 - Directory names are `kebab-case`
 - Keep `SKILL.md` focused; put long reference material in separate files
 - Write specific descriptions so agents know when to activate the skill
+- Every `SKILL.md` must include the `## Operating contract` block verbatim from [`handbook/concepts/14-operating-contract.md`](https://github.com/DecisionNerd/dev-skills/blob/main/handbook/concepts/14-operating-contract.md). Run `npm run check:skills` before committing to verify the block is present, no banned phrases appear, and `src/content/docs/skills/**` description mirrors match SKILL.md frontmatter.
 
 Create a starter with:
 

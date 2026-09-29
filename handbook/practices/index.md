@@ -10,16 +10,17 @@ Browse this index when you know the pattern; browse a [strategy](../strategies/i
 
 | Path | Draw first |
 | --- | --- |
-| [Simple website](../paths/01-simple-website.md) | IDK Now, KISS, Repos (thin CI), Impeccable, Document It, Pulls, Merge/Ship, Tidy Up |
+| [Simple website](../paths/01-simple-website.md) | IDK Now, KISS, Repos (thin CI), Impeccable, Document It, Pulls, Merge, Tidy Up |
 | [CLI](../paths/02-cli.md) | + Test It, Research It, Issues, Recon Issue, Check Readiness, repos ci harden |
 | [Python package](../paths/03-python-package.md) | Research It, Test It, Document It, Repos CI/release, Check Readiness, KISS |
-| [Monorepo](../paths/04-monorepo.md) | + Repos (architecture/monorepo/secrets ESC), Milestones, Stage/Ship, Observe, Sub-Agents, Agent Slap |
-| [Compute](../paths/compute/index.md) | KISS, Repos CI/secrets (ESC), Observe, Stage/Ship, Diagnose on prod |
+| [Monorepo](../paths/04-monorepo.md) | + Repos (architecture/monorepo/secrets ESC), Milestones, Architect It, Merge (Stage/Ship), Observe, Sub-Agents, Agent Slap |
+| [Compute](../paths/compute/index.md) | KISS, Repos CI/secrets (ESC), Observe, Architect It, Merge (Stage/Ship), Diagnose on prod |
 
 ## Full catalogue
 
 - [Agent Slap](agent-slap.md): Emergency-fix stupid agent behavior; safely drain dumb workflows.
 - [Analyze Agents](analyze-agents.md): Read-only autopsy of agent config, traces, failure modes.
+- [Architect It](architect-it.md): Frame the architecture bet, record it as an ADR, plan the slice.
 - [Check Readiness](check-readiness.md): Is the issue done enough to PR or close?
 - [Design Agents](design-agents.md): Architecture before scaffolding: tools, memory, evals, stop conditions.
 - [Diagnose Bug](diagnose-bug.md): Backend / algo / API root-cause with a repair hypothesis.
@@ -31,7 +32,7 @@ Browse this index when you know the pattern; browse a [strategy](../strategies/i
 - [Impeccable (craft)](impeccable.md): Frontend craft companion — shape, audit, polish UI.
 - [Issues](issues.md): Create and shape GitHub issues with critique, narrow, widen, refine, document.
 - [KISS](kiss.md): Audit complexity; simplify only when warranted; right-size the DAG.
-- [Merge It](merge-it.md): Merge current work to the next integrate target.
+- [Merge It](merge-it.md): Full release path per repo policy — integrate, stage, ship with evidence.
 - [Milestones](milestones.md): Organize release-shaped work; plan and critique milestone scope.
 - [Observe It](observe-it.md): Logs, metrics, traces, analytics — visibility without PII storms.
 - [Optimize Agents](optimize-agents.md): Measured improvements to agent loops — after analyze; never during thrash.
@@ -42,9 +43,7 @@ Browse this index when you know the pattern; browse a [strategy](../strategies/i
 - [Refactor It](refactor-it.md): Improve structure without changing intended behavior.
 - [Repos](repos.md): GitHub repo split/combine, monorepo, CI, Pulumi ESC secrets.
 - [Research It](research-it.md): Evidence-backed options before building; read-only by default.
-- [Ship It](ship-it.md): Send it all the way into production and check that it’s healthy.
 - [Skill Universe](skill-universe.md): Inventory DecisionNerd + DocSlime + ProductFeeling + Impeccable + vendored skills.
-- [Stage It](stage-it.md): Land work on staging per repo policy.
 - [Sub-Agents](sub-agents.md): Parent orchestrates; bounded parallel explore / sequential mutate.
 - [Test It](test-it.md): Make behavior provable with the repo’s real test stack.
 - [Tidy Up](tidy-up.md): Clean dangling workspaces, artifacts, caches, stale branches — inventory first.

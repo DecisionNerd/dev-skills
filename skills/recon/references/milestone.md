@@ -1,6 +1,6 @@
 # Recon → milestone
 
-Milestone situational awareness. Read-only unless a follow-up skill is approved.
+Milestone situational awareness. Read-only; hand off via `Next:`.
 
 ## Gather
 
@@ -16,7 +16,7 @@ Milestone situational awareness. Read-only unless a follow-up skill is approved.
 - Missing tracker/closure issue when repo expects one → `issues create`
 - Membership wrong → `milestones plan|narrow|widen`
 - Ready to close → `milestones close` (only if criteria met)
-- Release-shaped and staging/main policy exists → after issues close, `stage-it` / `ship-it`
+- Release-shaped → after issues close, `merge-it` (Stage/Ship phases per repo policy)
 
 ## Output
 
@@ -35,6 +35,12 @@ Milestone situational awareness. Read-only unless a follow-up skill is approved.
 1. **Primary:** `milestones …` or `issues …` — why
 2. Alternatives: ...
 
-**Follow-Up Prompt**
-Do you want me to run <primary>?
+**Blocked on me**
+<Genuine blocker, else "none">
+
+**Changed**
+<nothing>
+
+**Found**
+<Progress summary and `Next: <primary invoke>`>
 ```

@@ -1,15 +1,22 @@
 ---
 name: fix-it
-description: >
-  Create an implementation-ready repair plan from diagnosis evidence — live-app
-  (troubleshoot-app), backend/algo (diagnose-bug), failing URLs, logs, data-plane
-  findings, or clearly reported breakage. Use when the user asks to "fix it",
-  "plan this fix", or wants a plan before implementation — especially diagnose →
-  fix-it → check-readiness → merge-it. Not for behavior-preserving structure work
-  (refactor-it) or greenfield features without a failing contract.
+description: "Create an implementation-ready repair plan from diagnosis evidence — live-app (troubleshoot-app), backend/algo (diagnose-bug), failing URLs, logs, data-plane findings, or clearly reported breakage. Use when the user asks to \"fix it\", \"plan this fix\", or wants a plan before implementation — especially diagnose → fix-it → check-readiness → merge-it. Not for behavior-preserving structure work (refactor-it) or greenfield features without a failing contract."
 ---
 
 # Fix It
+
+## Operating contract
+
+Shared by every DecisionNerd/dev-skills skill. Canonical copy: `handbook/concepts/14-operating-contract.md`.
+
+- **Define done first.** Before using tools, write the finish line in one or two lines: the acceptance criteria (existing issue AC, BDD scenarios, tests, or contract when they exist; otherwise propose them and say where they should live) and the evidence that will prove them. Re-check it before reporting done. Never report done on work you did not verify.
+- **Requested scope sets the finish line.** A question ("is it ready?", "why is it broken?", "what next?") ends with the answer and a `Next:` line naming the exact next invoke. An outcome request ("fix", "finish", "land", "#42") continues through the chain (diagnose → fix → test → check-readiness → merge-it) until the outcome or a real blocker. Do not end a turn with "Do you want me to…?" for in-scope, in-repo work.
+- **Stop only for real blockers.** Stop and ask only when you cannot continue without the user, or before: deleting data or unmerged work, force-push or history rewrite, changing anything outside this repository (GitHub objects, deployments, live data, production or paid resources, external services), or leaving the requested scope, unless the user's request already named that exact action. Keep the harness's permission prompts for risky commands. Otherwise keep going and put status notes in the same message as the next action.
+- **Ask well, once.** For a genuine question use the harness's structured question tool when it has one (Claude Code: `AskUserQuestion`; Codex: `request_user_input` when the current mode supports it) with concrete options; otherwise plain text with numbered options. Treat the answer as settled; do not re-open earlier verdicts, plans, or answers unless asked.
+- **Fan out when work is parallel.** Use subagents for independent reads (repo survey, evidence gathering, per-option research, per-area audits) and for independent verification (a reviewer that did not write the change). Writes stay single-owner per path set and sequential. Brief every child with goal, done-when, constraints, must-not, and return shape; verify each child's result before consolidating. Use Claude Code's `Workflow` tool only for orchestration across many subagents that truly needs it; it is expensive.
+- **Pick the model tier per child; defer to routing config.** If the harness or user config already routes subagents (Claude Code `CLAUDE_CODE_SUBAGENT_MODEL` or a CLAUDE.md rule; Codex `agents.default_subagent_model` or a role's `agents.<name>.config_file`; Cursor a custom subagent's `model:` frontmatter), follow it and do not pass a model. Otherwise: mechanical search or inventory → fast/cheap (Claude Code `haiku`); implementation and evidence gathering → mid (`sonnet`); planning, review, adversarial verification → top (`opus` or `fable`). In Claude Code set it with the `Agent` tool `model` param or agent frontmatter `model:`; in Codex pass a spawn model or set `model` in the role's config file; in Cursor set `model:` (default `inherit`) in `.cursor/agents/*.md`. Where the harness cannot choose, children inherit the parent model or the harness picks one (Cursor's built-in Explore/Bash/Browser subagents pick per subtask); say which in the status note.
+- **Keep a checklist on long runs.** For more than about five steps or work that crosses skills, keep `TASKS.md` at the repo root and tick items as they finish. Do not commit it unless the repo already tracks one.
+- **Close every run with three headings.** `Blocked on me` (the one genuine question or blocker, else "none"); `Changed` (files, commits, GitHub objects, deploys, else "nothing"); `Found` (evidence, verdict, and `Next: <exact invoke>`).
 
 ## Goal
 
@@ -22,7 +29,7 @@ Name the **quality regime** for evidence (`handbook/concepts/11-quality-regimes.
 ## When NOT to use
 
 - Pure structure cleanup with no behavior change → `refactor-it`
-- “Add tests only” with no repair → `test-it`
+- "Add tests only" with no repair → `test-it`
 - No failing contract yet / exploring options → `research-it` or `recon issue`
 - Runaway agent thrash → `agents slap` first
 
@@ -42,7 +49,7 @@ If no concrete symptom or diagnosis exists, ask for the missing evidence before 
 This skill is Plan Mode friendly.
 
 - In Plan Mode, inspect repo and provider context read-only, then produce a plan. Do not edit code, write data, create branches, commit, push, post comments, or open PRs.
-- Outside Plan Mode, if the user explicitly asks to implement after a plan, use the plan as execution context and follow the normal coding-agent workflow.
+- Outside Plan Mode the plan is execution context: continue into implementation in the same run unless the user asked for plan only.
 - If the user invokes this skill outside Plan Mode but asks for planning only, still provide the plan without mutating anything.
 
 ## Workflow
@@ -67,7 +74,7 @@ This skill is Plan Mode friendly.
    - State the user-visible behavior that must work after the fix.
    - Link the objective to the chosen requirement, BDD scenario, or test definition. If a new/refined definition is needed, make adding or updating that definition part of the repair objective.
    - Identify non-goals and boundaries, especially around authorization, billing, privacy, data repair, or destructive operations.
-   - Call out any one remaining blocker as an Open Question. If no blocker exists, proceed with assumptions.
+   - Call out any one remaining blocker as an Open Question; raise it through the structured question tool with options. If no blocker exists, proceed with stated assumptions.
 
 4. Plan implementation.
    - Prefer the smallest fix that restores the intended workflow.
@@ -76,6 +83,7 @@ This skill is Plan Mode friendly.
    - Name likely files or directories only when useful for implementation safety.
    - Include any data repair or backfill as explicit planned steps, and mark whether it is live-data mutating.
    - Preserve fail-closed authorization and tenant boundaries unless the user explicitly changes the product rule.
+   - Implementation fan-out: use one subagent per non-overlapping file set (mid tier) for parallel implementation; then an independent reviewer subagent (top tier) checks the diff against the Expected Behavior Definition before check-readiness.
 
 5. Plan validation.
    - Include tests to add or update, not only commands to run.
@@ -85,11 +93,10 @@ This skill is Plan Mode friendly.
    - Do not consider the plan complete unless the validation proves the linked/refined/new behavior definition.
 
 6. Lifecycle routing.
-   - End planning output with exactly one `Follow-Up Prompt`.
-   - If the natural next step is implementation, ask: `Do you want me to implement this fix plan?`
-   - After implementation, ask whether to run `check-readiness`.
+   - Outside Plan Mode, continue from the plan into implementation in the same run unless the user asked for plan only.
+   - In Plan Mode, the harness's plan approval is the gate; do not add a textual one.
+   - After implementation, run `check-readiness` (read-only) as the next step.
    - After readiness, the normal shipping path is `merge-it`.
-   - If the next user response is a short affirmative (`y`, `yes`, `ok`, `go`, `continue`, `proceed`, `do it`), treat it as approval for the named follow-up action, unless the user adds conflicting instructions.
 
 ## Output Format
 
@@ -144,8 +151,17 @@ Use this shape unless the user asks otherwise:
 **Open Questions**
 - <Only blockers/material ambiguities, or "None">
 
-**Follow-Up Prompt**
-Do you want me to implement this fix plan?
+## Blocked on me
+
+<the one genuine question or blocker, else "none">
+
+## Changed
+
+<files, commits, GitHub objects, deploys, else "nothing">
+
+## Found
+
+<evidence, verdict, and `Next: check-readiness` or the appropriate next step>
 ```
 
 Keep the plan concrete and implementation-ready. Avoid restating large raw logs, secrets, private payloads, or sensitive user data.
@@ -156,7 +172,7 @@ After diagnosis/planning, use `issues create` if work should be tracked, `pulls 
 
 ## Grounding
 
-This skill’s TTPs are grounded in current engineering baselines (DORA, GitHub Docs, Fowler/Beck, Google SRE & SWE book, OpenTelemetry, OWASP LLM / NIST AI RMF, Diátaxis — see handbook `sources.md`).
+This skill's TTPs are grounded in current engineering baselines (DORA, GitHub Docs, Fowler/Beck, Google SRE & SWE book, OpenTelemetry, OWASP LLM / NIST AI RMF, Diátaxis — see handbook `sources.md`).
 
 Smallest real repair after diagnosis (DORA small batches); evidence matches the regime (`11-quality-regimes.md`); BDD/contract from the quality trace (`13-quality-trace.md`).
 

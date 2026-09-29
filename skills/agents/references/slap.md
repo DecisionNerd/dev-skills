@@ -90,7 +90,7 @@ Examples of durable slaps (pick the smallest that fits):
 - Product broke → `fix-it` / `test-it`
 - Docs/runbooks wrong → `document-it`
 
-End with one **Follow-Up Prompt**: e.g. “Drain complete — run `agents analyze` on `<path>`?”
+Close with three headings: `Blocked on me` (any remote destructive action still awaiting approval), `Changed` (reverted paths, cancelled runs, quarantined output), `Found` (stupid behavior named, durable fix applied). Next: `agents analyze <path>` / `agents optimize` / `fix-it` as appropriate.
 
 ## Anti-patterns
 

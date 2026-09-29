@@ -28,12 +28,12 @@ flowchart TD
   B --> C[repos ci harden + ESC OIDC]
   C --> D[Deploy one env]
   D --> E[observe-it + alarms on user-critical path]
-  E --> F[stage-it / ship-it promote]
+  E --> F[merge-it stage / ship promote]
 ```
 
 ## Skills
 
-`research-it` · `kiss` · `repos architecture` · `repos ci harden` · `repos secrets` · `observe-it` · `stage-it` · `ship-it` · `diagnose-bug` / `troubleshoot-app`
+`research-it` · `kiss` · `repos architecture` · `repos ci harden` · `repos secrets` · `observe-it` · `merge-it` (Stage/Ship) · `diagnose-bug` / `troubleshoot-app`
 
 ## Watchouts
 

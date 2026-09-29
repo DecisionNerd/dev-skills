@@ -22,6 +22,19 @@ Simple here means:
 2. **Right-sized tasks** — not micro-chores that thrash context, not epic blobs that hide risk.
 3. **Least mechanism** that still serves the vision and constraints (safety, scale, compliance, team reality).
 
+## Operating contract
+
+Shared by every DecisionNerd/dev-skills skill. Canonical copy: `handbook/concepts/14-operating-contract.md`.
+
+- **Define done first.** Before using tools, write the finish line in one or two lines: the acceptance criteria (existing issue AC, BDD scenarios, tests, or contract when they exist; otherwise propose them and say where they should live) and the evidence that will prove them. Re-check it before reporting done. Never report done on work you did not verify.
+- **Requested scope sets the finish line.** A question ("is it ready?", "why is it broken?", "what next?") ends with the answer and a `Next:` line naming the exact next invoke. An outcome request ("fix", "finish", "land", "#42") continues through the chain (diagnose → fix → test → check-readiness → merge-it) until the outcome or a real blocker. Do not end a turn with "Do you want me to…?" for in-scope, in-repo work.
+- **Stop only for real blockers.** Stop and ask only when you cannot continue without the user, or before: deleting data or unmerged work, force-push or history rewrite, changing anything outside this repository (GitHub objects, deployments, live data, production or paid resources, external services), or leaving the requested scope, unless the user's request already named that exact action. Keep the harness's permission prompts for risky commands. Otherwise keep going and put status notes in the same message as the next action.
+- **Ask well, once.** For a genuine question use the harness's structured question tool when it has one (Claude Code: `AskUserQuestion`; Codex: `request_user_input` when the current mode supports it) with concrete options; otherwise plain text with numbered options. Treat the answer as settled; do not re-open earlier verdicts, plans, or answers unless asked.
+- **Fan out when work is parallel.** Use subagents for independent reads (repo survey, evidence gathering, per-option research, per-area audits) and for independent verification (a reviewer that did not write the change). Writes stay single-owner per path set and sequential. Brief every child with goal, done-when, constraints, must-not, and return shape; verify each child's result before consolidating. Use Claude Code's `Workflow` tool only for orchestration across many subagents that truly needs it; it is expensive.
+- **Pick the model tier per child; defer to routing config.** If the harness or user config already routes subagents (Claude Code `CLAUDE_CODE_SUBAGENT_MODEL` or a CLAUDE.md rule; Codex `agents.default_subagent_model` or a role's `agents.<name>.config_file`; Cursor a custom subagent's `model:` frontmatter), follow it and do not pass a model. Otherwise: mechanical search or inventory → fast/cheap (Claude Code `haiku`); implementation and evidence gathering → mid (`sonnet`); planning, review, adversarial verification → top (`opus` or `fable`). In Claude Code set it with the `Agent` tool `model` param or agent frontmatter `model:`; in Codex pass a spawn model or set `model` in the role's config file; in Cursor set `model:` (default `inherit`) in `.cursor/agents/*.md`. Where the harness cannot choose, children inherit the parent model or the harness picks one (Cursor's built-in Explore/Bash/Browser subagents pick per subtask); say which in the status note.
+- **Keep a checklist on long runs.** For more than about five steps or work that crosses skills, keep `TASKS.md` at the repo root and tick items as they finish. Do not commit it unless the repo already tracks one.
+- **Close every run with three headings.** `Blocked on me` (the one genuine question or blocker, else "none"); `Changed` (files, commits, GitHub objects, deploys, else "nothing"); `Found` (evidence, verdict, and `Next: <exact invoke>`).
+
 ## Commands
 
 | Command | What it does |
@@ -56,7 +69,7 @@ Read-only by default. Do not delete systems, rewrite plans, or cut scope until t
 
 ### 1. Scope the target
 
-Name what you’re kissing: goal set, process, system, plan, or flow. Skim evidence (docs, code layout, issue graph, agent config, user’s paste). If scope is fuzzy, ask one clarifying question or run a 30-second `recon`-style git glance.
+Name what you’re kissing: goal set, process, system, plan, or flow. Skim evidence (docs, code layout, issue graph, agent config, user’s paste). If scope is fuzzy, ask one clarifying question (structured question tool when available, else numbered options) or run a 30-second `recon`-style git glance. For large targets (multiple areas or packages), one subagent per lens/area (fast tier) in parallel; an independent top-tier subagent argues "keep" before you recommend "simplify"; verify each before consolidating.
 
 ### 2. Describe current shape
 
@@ -127,8 +140,14 @@ Optional alternates (≤2). Hand off: `refactor-it`, `issues narrow`, `milestone
 **Do next:** <concrete steps or skill invokes>
 **Simpler / clearer DAG:** <mermaid or bullets, if recommending change>
 
-**Follow-Up Prompt**
-Want me to apply <recommendation>?
+**Blocked on me**
+(none, or the one genuine question or missing decision)
+
+**Changed**
+(nothing — read-only; or what was reworded/removed if reshape was applied)
+
+**Found**
+Verdict, recommendation, simpler DAG if applicable. Next: `<exact invoke — e.g. refactor-it, issues narrow, agents design>`.
 ```
 
 ## Goldilocks task sizing

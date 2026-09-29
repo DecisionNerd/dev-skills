@@ -27,3 +27,4 @@ Shared vocabulary for the guide. Prefer the [lifecycle](../flow/index.md) and [A
 - [Agent Agency](05-agent-agency.md)
 - [Work Ownership](06-work-ownership.md)
 - [Stop Conditions](07-stop-conditions.md)
+- [Operating contract](14-operating-contract.md)

@@ -1,11 +1,11 @@
 ---
 name: troubleshoot-app
-description: Troubleshoot live web app failures by combining user-visible browser evidence, current project data-plane sources, logs, analytics, and local code inspection. Use when a user reports a broken or confusing app experience, asks why a deployed/live page is not working, provides a URL to inspect in Atlas or another browser, asks to look at what they see, or wants diagnosis before implementation. The skill must diagnose the problem, recommend a fix, and ask a yes/no "Do you want me to..." question before making code or data changes unless the user already explicitly asked to implement. For backend, API, data-pipeline, or algorithm bugs without a UI surface, use diagnose-bug; for agent/LLM quality failures, use agents analyze.
+description: "Troubleshoot live web app failures by combining user-visible browser evidence, current project data-plane sources, logs, analytics, and local code inspection. Use when a user reports a broken or confusing app experience, asks why a deployed/live page is not working, provides a URL to inspect in Atlas or another browser, or asks to look at what they see. Diagnose, then implement the smallest fix and a regression test in the same run; stop first only for diagnosis-only requests, live-data/outside-repo changes, or a behavior-changing choice between fixes. For backend, API, data-pipeline, or algorithm bugs without a UI surface, use diagnose-bug; for agent/LLM quality failures, use agents analyze."
 ---
 
 # Troubleshoot App
 
-Use this skill to diagnose live app problems from the outside in: reproduce the user-visible issue, correlate it with data-plane truth, inspect logs and code, then recommend a fix. Keep it globally usable; discover the project’s actual sources instead of assuming a stack.
+Use this skill to diagnose live app problems from the outside in: reproduce the user-visible issue, correlate it with data-plane truth, inspect logs and code, then recommend a fix. Keep it globally usable; discover the project's actual sources instead of assuming a stack.
 
 This is **quality regime B** (interactive product). Wrong outputs from APIs/pipelines with no UI → `diagnose-bug` (A). Thrashing agents / bad LLM generations → `agents analyze` / Langfuse traces (C), not this skill.
 
@@ -13,20 +13,38 @@ Use lightweight BDD completion scenarios and existing requirements as the defini
 
 For backend-only, API, worker, data-pipeline, or algorithm failures (no meaningful browser UI), use `diagnose-bug` instead.
 
+## Operating contract
+
+Shared by every DecisionNerd/dev-skills skill. Canonical copy: `handbook/concepts/14-operating-contract.md`.
+
+- **Define done first.** Before using tools, write the finish line in one or two lines: the acceptance criteria (existing issue AC, BDD scenarios, tests, or contract when they exist; otherwise propose them and say where they should live) and the evidence that will prove them. Re-check it before reporting done. Never report done on work you did not verify.
+- **Requested scope sets the finish line.** A question ("is it ready?", "why is it broken?", "what next?") ends with the answer and a `Next:` line naming the exact next invoke. An outcome request ("fix", "finish", "land", "#42") continues through the chain (diagnose → fix → test → check-readiness → merge-it) until the outcome or a real blocker. Do not end a turn with "Do you want me to…?" for in-scope, in-repo work.
+- **Stop only for real blockers.** Stop and ask only when you cannot continue without the user, or before: deleting data or unmerged work, force-push or history rewrite, changing anything outside this repository (GitHub objects, deployments, live data, production or paid resources, external services), or leaving the requested scope, unless the user's request already named that exact action. Keep the harness's permission prompts for risky commands. Otherwise keep going and put status notes in the same message as the next action.
+- **Ask well, once.** For a genuine question use the harness's structured question tool when it has one (Claude Code: `AskUserQuestion`; Codex: `request_user_input` when the current mode supports it) with concrete options; otherwise plain text with numbered options. Treat the answer as settled; do not re-open earlier verdicts, plans, or answers unless asked.
+- **Fan out when work is parallel.** Use subagents for independent reads (repo survey, evidence gathering, per-option research, per-area audits) and for independent verification (a reviewer that did not write the change). Writes stay single-owner per path set and sequential. Brief every child with goal, done-when, constraints, must-not, and return shape; verify each child's result before consolidating. Use Claude Code's `Workflow` tool only for orchestration across many subagents that truly needs it; it is expensive.
+- **Pick the model tier per child; defer to routing config.** If the harness or user config already routes subagents (Claude Code `CLAUDE_CODE_SUBAGENT_MODEL` or a CLAUDE.md rule; Codex `agents.default_subagent_model` or a role's `agents.<name>.config_file`; Cursor a custom subagent's `model:` frontmatter), follow it and do not pass a model. Otherwise: mechanical search or inventory → fast/cheap (Claude Code `haiku`); implementation and evidence gathering → mid (`sonnet`); planning, review, adversarial verification → top (`opus` or `fable`). In Claude Code set it with the `Agent` tool `model` param or agent frontmatter `model:`; in Codex pass a spawn model or set `model` in the role's config file; in Cursor set `model:` (default `inherit`) in `.cursor/agents/*.md`. Where the harness cannot choose, children inherit the parent model or the harness picks one (Cursor's built-in Explore/Bash/Browser subagents pick per subtask); say which in the status note.
+- **Keep a checklist on long runs.** For more than about five steps or work that crosses skills, keep `TASKS.md` at the repo root and tick items as they finish. Do not commit it unless the repo already tracks one.
+- **Close every run with three headings.** `Blocked on me` (the one genuine question or blocker, else "none"); `Changed` (files, commits, GitHub objects, deploys, else "nothing"); `Found` (evidence, verdict, and `Next: <exact invoke>`).
+
 ## Core Rule
 
 Do not jump straight from screenshot to code. Establish what the user sees, what the app believes, and what durable data says. Treat analytics as evidence, not authority.
 
-Before making code, config, or data changes, end the diagnosis with:
+**Done when:** the named BDD scenario or contract passes, a regression test is added, and no new failures appear in the narrowest suite.
 
-> Do you want me to implement this fix?
+A bug report is a fix request. After diagnosis, implement the smallest fix and add a regression test in the same run — report the diagnosis as a status note before coding. Stop before implementing only when:
 
-The user can answer yes/no. If the user already explicitly says to implement or fix in the same request, proceed after a concise diagnosis.
+- the user asked for diagnosis or explanation only, or said "don't change code";
+- the fix requires a production config change; or
+- the fix requires a live-data mutation or a change outside this repository that the user's request did not name exactly; or
+- two materially different fixes are viable and the choice changes product behavior — then ask one structured question with the options (`<option A> / <option B> / stop`).
+
+If data repair is needed, describe the exact mutation first and ask before mutating live data; skip the question only when the user's request named that exact mutation.
 
 ## Workflow
 
 1. Reproduce the visible state.
-   - Use Computer Use for Atlas or the user’s named browser when they ask to see what they see.
+   - Use Computer Use for Atlas or the user's named browser when they ask to see what they see.
    - Capture the URL, visible state, selected account/org/workspace, error copy, disabled controls, and any loading or redirect loop.
    - Avoid risky browser actions. Follow Computer Use confirmation policy for account changes, submissions, billing, permissions, uploads, destructive actions, or sensitive data transmission.
 
@@ -36,13 +54,14 @@ The user can answer yes/no. If the user already explicitly says to implement or 
    - Link the expected behavior back to a concrete source when one exists, such as DocSlime `REQUIREMENTS.md` / `experience/`, a `.feature` file (only if the repo already uses one), an e2e/unit/integration test, or a GitHub issue.
    - If an existing definition is close but stale or incomplete, say how it should be refined rather than creating a competing definition.
    - If no definition is suitable, draft a proposed BDD completion scenario using Given/When/Then and recommend where it should live.
-   - Name the invariant that appears violated, such as “active browser org exists but app has no private workspace,” “checkout created a session but subscription is missing,” or “UI says saved but database lacks row.”
+   - Name the invariant that appears violated, such as "active browser org exists but app has no private workspace," "checkout created a session but subscription is missing," or "UI says saved but database lacks row."
 
 3. Discover data-plane sources.
    - Read project docs, `.env*` variable names, scripts, package files, and deployment metadata to identify systems in use.
    - Look for likely sources: application database, auth provider, billing provider, analytics, feature flags, queues/jobs, object storage, logs, and deployment platform.
    - Use only available credentials/tools. Redact secrets and personal data in summaries.
    - If a live data source is unavailable, say exactly which source is unavailable and why.
+   - Fan out evidence gathering to parallel read-only subagents (fast tier) when more than one source is available — browser/session evidence, data-plane queries, and log correlation can run concurrently; verify each result before diagnosing.
 
 4. Query current data.
    - Use read-only queries first.
@@ -69,15 +88,16 @@ The user can answer yes/no. If the user already explicitly says to implement or 
    - Make the verification target explicit: the fix should prove the linked or proposed requirement/BDD scenario now passes.
    - Identify immediate workaround only if it is safe.
 
-8. Ask for permission.
-   - End with a concrete yes/no prompt:
-     - “Do you want me to implement the route repair and tests?”
-     - “Do you want me to patch the data and then add an idempotent backfill?”
-     - “Do you want me to update the feature flag config and verify the live page?”
+8. Fix and prove.
+   - If the fix requires a live-data mutation or a change outside this repository that the user's request did not name exactly, state the proposed action and ask one structured question: `<do it> / revise / stop`. If two materially different fixes exist and the choice changes product behavior, ask the same structured question with the options named.
+   - Implement the smallest fix identified in step 7.
+   - Add a regression test that would have caught this bug.
+   - Run the narrowest test suite that covers the fix; confirm it is green.
+   - Re-check the scenario from step 2: the named BDD scenario or invariant must now pass.
 
 ## Atlas And Computer Use
 
-Use Computer Use when the user references Atlas, a current browser tab, or “what it looks like to me.”
+Use Computer Use when the user references Atlas, a current browser tab, or "what it looks like to me."
 
 - Start with `get_app_state` before interacting.
 - Prefer opening a new tab for separate URLs unless the user asks to continue in the current tab.
@@ -93,15 +113,14 @@ Best practices:
 
 - Prefer read-only provider APIs, CLIs, dashboards, logs, and database queries.
 - Correlate the same entity across systems before concluding.
-- Check timestamps and deployment hashes; stale previews often explain “still broken.”
+- Check timestamps and deployment hashes; stale previews often explain "still broken."
 - Check provider metadata and app database rows separately.
 - Treat feature flags and analytics as rollout/behavior evidence, not access or billing truth.
 - Do not paste secrets, tokens, raw private records, OAuth tokens, financial records, or private payloads into the final answer.
-- If data repair is needed, describe it first and ask before mutating live data unless the user explicitly requested repair.
 
 ## Response Shape
 
-Keep the diagnosis concise and evidence-led:
+Keep the diagnosis concise and evidence-led. Report diagnosis as a status note before coding:
 
 ```markdown
 I reproduced the issue: ...
@@ -119,14 +138,24 @@ Diagnosis: ...
 
 Recommended fix: ...
 
-Do you want me to implement this fix?
-```
+## Blocked on me
 
-If the user already asked to implement, include the diagnosis briefly, implement, validate, and summarize what changed.
+<the one genuine question or blocker, else "none">
+
+## Changed
+
+<files changed by the fix, else "nothing">
+
+## Found
+
+Diagnosis: <root cause>. Fix: <what changed>. Verification: <test name(s) and result>.
+
+Next: <check-readiness after a verified fix; otherwise the step that unblocks, e.g. fix-it or the named blocker>
+```
 
 ## Grounding
 
-This skill’s TTPs are grounded in current engineering baselines (DORA, GitHub Docs, Fowler/Beck, Google SRE & SWE book, OpenTelemetry, OWASP LLM / NIST AI RMF, Diátaxis — see handbook `sources.md`).
+This skill's TTPs are grounded in current engineering baselines (DORA, GitHub Docs, Fowler/Beck, Google SRE & SWE book, OpenTelemetry, OWASP LLM / NIST AI RMF, Diátaxis — see handbook `sources.md`).
 
 Live incidents: reproduce → isolate → evidence (SRE). Regime **B** (`handbook/concepts/11-quality-regimes.md`): journeys, a11y, Web Vitals, data-plane mismatch — not unit-test theater and not LLM-eval theater. Prefer the quality trace before inventing a private oracle (`13-quality-trace.md`).
 

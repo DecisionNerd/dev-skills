@@ -17,7 +17,7 @@ flowchart LR
 | Phase | Question | Start here |
 | --- | --- | --- |
 | [Discover](01-discover.md) | What should we learn before (and while) building? | Continuous discovery, fidelity, spec altitude |
-| [Deliver](02-deliver.md) | How do we build, integrate, and put it into service? | Merge / stage / ship; open [Architecture](../architecture/index.md) when bets are unclear |
+| [Deliver](02-deliver.md) | How do we build, integrate, and put it into service? | Merge (integrate/stage/ship); open [Architecture](../architecture/index.md) when bets are unclear |
 | [Operate](03-operate.md) | How do we keep it alive and learn from production? | Ops, observability, feedback |
 | [Maintain](04-maintain.md) | How do we change it without boiling the ocean? | Refactor, update, simplify, buy/vendor/OSS, LLM-era cost |
 | [Retire](05-retire.md) | How do we leave without losing the lessons? | Deprecate, transition, archive |

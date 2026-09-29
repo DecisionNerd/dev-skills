@@ -17,6 +17,19 @@ For when the user **doesn't know what to do next**. Not a silent autopilot: surv
 
 Unlike `recon` (tactical: git scope → skill from this pack), `idk-now` is **directional**: recover purpose, then pick the smallest useful move — which may be a DecisionNerd skill, DocSlime / ProductFeeling / Impeccable, or a **vendored** skill in this repo.
 
+## Operating contract
+
+Shared by every DecisionNerd/dev-skills skill. Canonical copy: `handbook/concepts/14-operating-contract.md`.
+
+- **Define done first.** Before using tools, write the finish line in one or two lines: the acceptance criteria (existing issue AC, BDD scenarios, tests, or contract when they exist; otherwise propose them and say where they should live) and the evidence that will prove them. Re-check it before reporting done. Never report done on work you did not verify.
+- **Requested scope sets the finish line.** A question ("is it ready?", "why is it broken?", "what next?") ends with the answer and a `Next:` line naming the exact next invoke. An outcome request ("fix", "finish", "land", "#42") continues through the chain (diagnose → fix → test → check-readiness → merge-it) until the outcome or a real blocker. Do not end a turn with "Do you want me to…?" for in-scope, in-repo work.
+- **Stop only for real blockers.** Stop and ask only when you cannot continue without the user, or before: deleting data or unmerged work, force-push or history rewrite, changing anything outside this repository (GitHub objects, deployments, live data, production or paid resources, external services), or leaving the requested scope, unless the user's request already named that exact action. Keep the harness's permission prompts for risky commands. Otherwise keep going and put status notes in the same message as the next action.
+- **Ask well, once.** For a genuine question use the harness's structured question tool when it has one (Claude Code: `AskUserQuestion`; Codex: `request_user_input` when the current mode supports it) with concrete options; otherwise plain text with numbered options. Treat the answer as settled; do not re-open earlier verdicts, plans, or answers unless asked.
+- **Fan out when work is parallel.** Use subagents for independent reads (repo survey, evidence gathering, per-option research, per-area audits) and for independent verification (a reviewer that did not write the change). Writes stay single-owner per path set and sequential. Brief every child with goal, done-when, constraints, must-not, and return shape; verify each child's result before consolidating. Use Claude Code's `Workflow` tool only for orchestration across many subagents that truly needs it; it is expensive.
+- **Pick the model tier per child; defer to routing config.** If the harness or user config already routes subagents (Claude Code `CLAUDE_CODE_SUBAGENT_MODEL` or a CLAUDE.md rule; Codex `agents.default_subagent_model` or a role's `agents.<name>.config_file`; Cursor a custom subagent's `model:` frontmatter), follow it and do not pass a model. Otherwise: mechanical search or inventory → fast/cheap (Claude Code `haiku`); implementation and evidence gathering → mid (`sonnet`); planning, review, adversarial verification → top (`opus` or `fable`). In Claude Code set it with the `Agent` tool `model` param or agent frontmatter `model:`; in Codex pass a spawn model or set `model` in the role's config file; in Cursor set `model:` (default `inherit`) in `.cursor/agents/*.md`. Where the harness cannot choose, children inherit the parent model or the harness picks one (Cursor's built-in Explore/Bash/Browser subagents pick per subtask); say which in the status note.
+- **Keep a checklist on long runs.** For more than about five steps or work that crosses skills, keep `TASKS.md` at the repo root and tick items as they finish. Do not commit it unless the repo already tracks one.
+- **Close every run with three headings.** `Blocked on me` (the one genuine question or blocker, else "none"); `Changed` (files, commits, GitHub objects, deploys, else "nothing"); `Found` (evidence, verdict, and `Next: <exact invoke>`).
+
 ## Commands
 
 | Command | What it does |
@@ -57,11 +70,11 @@ Follow [references/flow.md](references/flow.md). Summary:
 
 **Skills present** — see [references/skill-universe.md](references/skill-universe.md).
 
-Write a tight **Survey** block (bullet list, not an essay). If vision is unclear, say so explicitly.
+Write a tight **Survey** block (bullet list, not an essay). If vision is unclear, say so explicitly. For a large repo (many packages, deep docs), fan out environment/repo/docs/git reads to parallel read-only subagents (fast tier); cap total file reads per the survey budget in [references/flow.md](references/flow.md).
 
 ### 2. Guided questions
 
-Ask **3–5** questions max, prefer multiple-choice when possible. Cover:
+Ask **3–5** questions max, prefer multiple-choice when possible. Use the harness's structured question tool (Claude Code: `AskUserQuestion`) with the options listed below; plain text with numbered options as fallback. Cover:
 
 1. **Horizon** — today / this week / this milestone / vague “make it better”
 2. **Constraint** — time, risk, “must not break prod”, solo vs team
@@ -82,13 +95,13 @@ From survey + answers:
 3. Rank **Next steps** (primary + 2 alternates), each with:
    - exact skill invoke (`issues create …`, `productfeeling audit …`, `$impeccable polish`, `docslime-fill`, `recon issue #n`, …)
    - one-line why it serves the goal/vision
-4. End with one **Follow-Up Prompt**: “Want me to run \<primary\>?”
+4. Close with three headings: `Blocked on me` (none, or the one real question), `Changed` (nothing — read-only), `Found`: vision confidence, achievable goal. Next: `<exact primary invoke>`.
 
 ## Skill universe (must consider)
 
 When recommending, search across:
 
-1. **This pack (DecisionNerd/dev-skills)** — agents, check-readiness, diagnose-bug, document-it, fix-it, idk-now, issues, kiss, merge-it, milestones, observe-it, pulls, recon, refactor-it, repos, research-it, ship-it, stage-it, test-it, tidy-up, troubleshoot-app, …
+1. **This pack (DecisionNerd/dev-skills)** — agents, architect-it, check-readiness, diagnose-bug, document-it, fix-it, idk-now, issues, kiss, merge-it, milestones, observe-it, pulls, recon, refactor-it, repos, research-it, test-it, tidy-up, troubleshoot-app, …
 2. **DocSlime** — `docslime-init`, `docslime-fill`, `docslime-adr`, `docslime-kiss`, `docslime-install` (product docs tree)
 3. **ProductFeeling** — feeling/emotion-aware product design (`productfeeling` / `/productfeeling`)
 4. **Impeccable** — frontend craft (`impeccable` craft/shape/audit/polish/…)

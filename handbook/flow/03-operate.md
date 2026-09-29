@@ -6,7 +6,7 @@ Keep the system alive, visible, and honest. Operation is where discovery gets fr
 
 - Clear **ownership** for each deploy unit ([Work ownership](../concepts/06-work-ownership.md)).
 - Runbooks for the failures you already know; toil vs engineering — automate only what repeats and hurts.
-- Promote with the right play: [`merge-it`](../practices/merge-it.md) · [`stage-it`](../practices/stage-it.md) · [`ship-it`](../practices/ship-it.md).
+- Promote with the right phase of [`merge-it`](../practices/merge-it.md): integrate · stage · ship.
 - Secrets and CI remain boring: [`repos`](../practices/repos.md) (ESC + OIDC by default).
 
 ## Observability

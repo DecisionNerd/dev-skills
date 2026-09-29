@@ -1,6 +1,6 @@
 # agents design
 
-Design an agent (or small crew) **before** scaffolding code. Ask before creating files.
+Design an agent (or small crew) **before** scaffolding code. The design is the deliverable; scaffolding is a separate step — end with `Next: scaffold <name>` as a statement, not a question.
 
 ## Design doc (keep short)
 
@@ -28,4 +28,4 @@ Design an agent (or small crew) **before** scaffolding code. Ask before creating
 - Prefer existing harness patterns in-repo over new frameworks.
 - If research is needed first → `research-it`; if product code is the real work → don’t hide it inside an “agent.”
 
-After approval: scaffold minimally, then `agents optimize` once you have a trace, `test-it` for evals.
+Next: scaffold `<name>` minimally (separate step), then `agents optimize` once you have a trace, `test-it` for evals.

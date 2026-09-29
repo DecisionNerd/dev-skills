@@ -12,12 +12,19 @@ Personal agent skills for Cursor, Claude Code, Codex, and other agents compatibl
 
 ## Install
 
+Install all skills:
+
 ```bash
 npx skills add DecisionNerd/dev-skills
+```
+
+Install one skill globally:
+
+```bash
 npx skills add DecisionNerd/dev-skills --skill repos -g -y
 ```
 
-## Available Skills (21)
+## Available Skills (20)
 
 ### GitHub
 
@@ -30,18 +37,19 @@ Orient, repos, issues, milestones, pulls, readiness, and merge.
 - **`milestones`** — Work GitHub milestones with command arguments: create, update, critique, narrow, widen, merge, clean, refine, explain, document, close, status, and plan.
 - **`pulls`** — Work GitHub pull requests with command arguments: create/open, update, critique, narrow, widen, merge, clean, refine, explain, document, review, status/check…
 - **`check-readiness`** — Review whether a GitHub issue is complete enough for its current stage and decide the next PR or closure action. Use before PR, before closing an issue, afte…
-- **`merge-it`** — Open a GitHub pull request for the current branch, run review/autofix feedback, wait for CI and required checks to go green, merge the PR, confirm linked iss…
+- **`merge-it`** — Drive work through the full release path per repo policy — feature PR into the next integrate target (main/trunk, release branch, staging, or another repo-defined base), staging lands with…
 ### Craft
 
-KISS, research, fix, refactor, test, observe, and document.
+KISS, research, architect, fix, refactor, test, observe, and document.
 
 - **`kiss`** — Audit goals, processes, systems, and plans for needless complexity — then recommend simplification only when it is warranted.
 - **`research-it`** — Research a technical or product question before building — APIs, libraries, prior art in-repo, external docs, tradeoffs, and a recommendation.
-- **`fix-it`** — Create an implementation-ready repair plan from troubleshooting evidence, live-app diagnoses, failing URLs, screenshots, logs, data-plane findings, or clearl…
+- **`architect-it`** — Design or evolve the architecture of a system, module, or feature — survey the codebase, frame the bet (boundaries, placement, data flow), propose options with tradeoffs, record the decisi…
+- **`fix-it`** — Create an implementation-ready repair plan from diagnosis evidence — live-app (troubleshoot-app), backend/algo (diagnose-bug), failing URLs, logs, data-plane findings, or clearly rep…
 - **`refactor-it`** — Safely refactor code to improve structure, clarity, or testability without changing intended behavior.
 - **`test-it`** — Add, fix, or harden tests for the current change, issue, or failing suite.
-- **`observe-it`** — Add or improve observability — structured logs, metrics, traces, errors, analytics, and dashboards — for a feature, bug path, or service.
-- **`document-it`** — Document what you just changed (surgical by default); use DocSlime structures when product-docs altitude is earned.
+- **`observe-it`** — Add or improve observability — structured logs, metrics, traces, errors, analytics, dashboards, and (for generative) LLM traces/scores.
+- **`document-it`** — Improve or add repository documentation for work just done or for product-docs gaps.
 ### Agents
 
 Slap/drain runaway agents, analyze, optimize, design, and sub-agents.
@@ -49,12 +57,10 @@ Slap/drain runaway agents, analyze, optimize, design, and sub-agents.
 - **`agents`** — Work agent systems with command arguments: slap (emergency-fix stupid agent behavior and safely drain dumb workflows), analyze, optimize, design, and sub / s…
 ### Ops & Ship
 
-Live diagnosis, shipping, and local tidy-up.
+Live diagnosis, release path via merge-it, and local tidy-up.
 
 - **`troubleshoot-app`** — Troubleshoot live web app failures by combining user-visible browser evidence, current project data-plane sources, logs, analytics, and local code inspection.
 - **`diagnose-bug`** — Diagnose backend, API, worker, data-pipeline, or algorithm bugs by reproducing with inputs/tests, checking invariants and complexity assumptions, correlating…
-- **`stage-it`** — Use when the user asks to stage, promote to staging, land on staging, or "stage it" — getting a feature or release candidate onto the staging branch/environm…
-- **`ship-it`** — Use when the user asks to ship, promote, release, or take staging to production/main — especially "ship it", "promote staging to production", "take this to p…
 - **`tidy-up`** — Clean dangling workspaces/worktrees, stale branches, excess build artifacts, caches, and other leftover clutter. Arguments: scan/plan (inventory only), works…
 
 ## License
