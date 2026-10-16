@@ -21,6 +21,8 @@ Shared by every DecisionNerd/dev-skills skill. Canonical copy: `handbook/concept
 - **Keep a checklist on long runs.** For more than about five steps or work that crosses skills, keep `TASKS.md` at the repo root and tick items as they finish. Do not commit it unless the repo already tracks one.
 - **Close every run with three headings.** `Blocked on me` (the one genuine question or blocker, else "none"); `Changed` (files, commits, GitHub objects, deploys, else "nothing"); `Found` (evidence, verdict, and `Next: <exact invoke>`).
 
+**Sitrep exception to the outcome rule:** sitrep only reports state and names the next invoke. When invoked while an outcome request ("fix", "land", "#42") is unfinished, it does not continue that chain — it reports where the chain stands and puts the exact next invoke under `Next`.
+
 ## Window
 
 Default window: **since the previous sitrep in this conversation, or since the session start if there is no previous sitrep — whichever is later.** The conversation itself is the watermark; do not write watermark files.
@@ -44,7 +46,7 @@ Arguments:
    git diff --stat HEAD
    ```
    Uncommitted files count as in-progress, not done.
-3. **GitHub state** (when `gh` is available): open PRs and their checks for touched branches, issue state for referenced `#N`s. CI results decide "done" — a merged PR with red checks is not done.
+3. **GitHub state** (when `gh` is available): open PRs and their checks for touched branches, PRs merged during the window and their post-merge check state, issue state for referenced `#N`s. CI results decide "done" — a merged PR with red checks is not done.
 4. **Checklist.** If `TASKS.md` exists at the repo root, tick state is evidence for done/in-progress.
 5. **Deltas only.** Events before the window appear only when needed for context (one line, marked "before window").
 
