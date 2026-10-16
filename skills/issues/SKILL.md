@@ -27,23 +27,9 @@ Shared by every DecisionNerd/dev-skills skill. Canonical copy: `handbook/concept
 
 ## Commands
 
-| Command | What it does |
-| --- | --- |
-| `create` / `draft` | New issue from a rough idea (duplicate check, questions, draft, approve) |
-| `update` | Improve an existing issue body/title/metadata with approval |
-| `critique` | Honest quality critique (clarity, scope, AC, BDD, risks, docs) |
-| `narrow` | Shrink scope; move extras to Non-Goals / follow-ups |
-| `widen` | Expand scope deliberately with rationale and still-bounded AC |
-| `merge` | Combine overlapping issues into one canonical issue (close/redirect others) |
-| `clean` | Remove noise, stale text, broken checklists, formatting cruft |
-| `refine` | Sharpen wording and structure without changing agreed scope |
-| `explain` | Plain-language explanation for the user (not a GitHub edit) |
-| `document` | Improve or add **repo** docs that the issue needs (then link from the issue) |
-| `close` | Close with evidence-based rationale (and comment when useful) |
-| `reopen` | Reopen with reason |
-| `search` / `dup` | Duplicate/related issue search only |
-| `status` | Summarize state, labels, milestone, linked PRs, blockers |
-| `help` / `library` | List commands |
+Index — glosses route fuzzy intent. Read the command's reference before running: [references/ops.md](references/ops.md) (see **Shared operations**), [references/create.md](references/create.md) (see **Create / draft**); the rest are specified in **Update / close / reopen / search / status** below.
+
+`create`/`draft` new issue from rough idea · `update` edit body/title/metadata (approval) · `critique` quality assessment · `narrow` shrink scope · `widen` expand scope, bounded · `merge` combine issues, close/redirect others · `clean` hygiene, no scope change · `refine` wording only · `explain` to user, no edit · `document` repo docs, link from issue · `close` with rationale · `reopen` with reason · `search`/`dup` duplicate/related search only · `status` state, labels, milestone, PRs, blockers · `help`/`library` list commands
 
 Target: issue number (`123`, `#123`), URL, title search, or free-text idea (for `create`).
 
