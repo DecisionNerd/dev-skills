@@ -24,7 +24,7 @@ Install one skill globally:
 npx skills add DecisionNerd/dev-skills --skill repos -g -y
 ```
 
-## Available Skills (20)
+## Available Skills (21)
 
 ### GitHub
 
@@ -32,6 +32,7 @@ Orient, repos, issues, milestones, pulls, readiness, and merge.
 
 - **`idk-now`** — When the user doesn't know what to do next: briefly survey environment, repo, docs, and git history; guide them through clarifying questions; then suggest ne…
 - **`recon`** — Scout the current work and recommend the next skill or action. Arguments: repo (whole-repo health), issue (deep implementation plan for an issue), milestone…
+- **`sitrep`** — Provide a situation report on the current work: objective, done, in progress, blocked, next, and open questions. Default window is everything since the session…
 - **`repos`** — Manage GitHub repositories: create/settings, split, combine, monorepo moves, architecture review, CI harden/simplify, and secrets (Pulumi ESC by default).
 - **`issues`** — Work GitHub issues with command arguments: create/draft, update, critique, narrow, widen, merge, clean, refine, explain, document, close, reopen, search, and…
 - **`milestones`** — Work GitHub milestones with command arguments: create, update, critique, narrow, widen, merge, clean, refine, explain, document, close, status, and plan.
