@@ -4,7 +4,7 @@ Guidance for AI coding agents working in this repository.
 
 ## Repository Overview
 
-A personal collection of agent skills for Cursor, Claude Code, Codex, and other agents compatible with the [Agent Skills](https://agentskills.io/) format and the [`npx skills`](https://github.com/vercel-labs/skills) CLI.
+A personal collection of agent skills for Cursor, Claude Code, Codex, T3 Code, and other agents compatible with the [Agent Skills](https://agentskills.io/) format and the [`npx skills`](https://github.com/vercel-labs/skills) CLI.
 
 Documentation site (Astro Starlight) lives at the repo root and deploys to GitHub Pages from `.github/workflows/deploy.yml`. Build output goes to `site/` (gitignored). Local docs commands: `npm run handbook:prepare`, `npm run dev`, `npm run build`.
 

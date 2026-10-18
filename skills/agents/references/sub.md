@@ -82,6 +82,15 @@ Sources: https://cursor.com/docs/subagents and https://cursor.com/docs/agent/ove
 
 Source: Cursor forum search (cursor.com/changelog, forum.cursor.com); official agent-model docs not confirmed.
 
+### T3 Code
+
+- **Inheritance default**: delegated subagents inherit the thread's provider and model; do not pass a model when the thread is already routed.
+- **Live catalog**: the harness exposes its provider/model catalog (`orchestrator_capabilities` in the t3-code MCP); native subagents and `delegate_task` accept an explicit provider + model from it. Tier names from other harnesses (`haiku`/`sonnet`/`opus`) do not resolve — pick from the catalog or inherit.
+- **Question tool**: the harness's structured `question` tool (multi-select) — use it for genuine user decisions.
+- **Orchestration**: parallel delegated child tasks replace the `Workflow` tool; worktree isolation gives independent verification its own checkout; PR watching replaces sleep/poll loops.
+
+Source: first-hand session evidence in the T3 Code harness (2026-10-18) — inherited routing observed, catalog read, `question` and delegation tools exercised.
+
 ### Other harnesses
 
 Children inherit the parent model. State this in status notes so the user knows which tier is running.
