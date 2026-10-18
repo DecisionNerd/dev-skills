@@ -3,7 +3,8 @@ name: architect-it
 description: >
   Design or evolve the architecture of a system, module, or feature — survey the
   codebase, frame the bet (boundaries, placement, data flow), propose options with
-  tradeoffs, record the decision as an ADR, and plan the first slice. Use when the
+  tradeoffs, record the decision where the repo keeps decisions, and plan the first
+  slice. Use when the
   user says "architect it", asks to design a system or module, review architecture,
   plan boundaries before building, or untangle a structural bet that refactoring
   alone cannot fix. Not for behavior-preserving mechanics (use refactor-it),
@@ -52,9 +53,9 @@ Shared by every DecisionNerd/dev-skills skill. Canonical copy: `handbook/concept
    - Name the quality regime (A/B/C per repo guidance) — it sets the proof bar for the plan.
 
 2. **Survey the codebase**
-   - Entry points, modules, dependency direction, data flow, deploy units; existing `AGENTS.md`, `docs/`, ADRs, runbooks.
+   - Entry points, modules, dependency direction, data flow, deploy units; existing `AGENTS.md`, `docs/`, ADRs and any decision-record convention (a `docs/adr/`-style directory, or decisions kept in a docs tool — note which exists).
    - Check `research-it` output if a prior investigation exists. Note the seams that already exist — good architecture usually amplifies them.
-   - Fan out per-area reads to parallel read-only subagents (fast tier) when the codebase is large; a top-tier adversarial subagent steelmans the option you did not pick before the ADR is written; verify each child's result before consolidating.
+   - Fan out per-area reads to parallel read-only subagents (fast tier) when the codebase is large; before the decision is recorded, stress-test it: an adversarial subagent steelmans the option you did not pick, or — when the `redteam` skill is installed — run its invert/premortem tools on the chosen option. Neither check blocks when the helper is missing or proscribed: fall back to a written steelman of the runner-up inside this skill. Verify each child's result before consolidating.
 
 3. **Propose options with tradeoffs**
    - 2–3 options max, KISS default first (simplest thing that could work — Gall's Law).
@@ -63,8 +64,11 @@ Shared by every DecisionNerd/dev-skills skill. Canonical copy: `handbook/concept
 
 4. **Decide and record**
    - Recommend one option; state the reversible/irreversible call explicitly.
-   - Reversible bets proceed. For irreversible bets (data model, public API, placement), write the ADR draft and ask one structured question: `proceed with <option> / choose <alt> / stop`. If the user's request already named the option, proceed.
-   - Write a short ADR (context, decision, consequences) in the repo's ADR location — create `docs/adr/` if none exists.
+   - Reversible bets proceed. For irreversible bets (data model, public API, placement), record the decision (below) and ask one structured question: `proceed with <option> / choose <alt> / stop`. If the user's request already named the option, proceed.
+   - Record the decision at the first rung of this ladder that exists — never scaffold a new ADR location by default:
+     1. A `docslime-adr` skill is installed → invoke it to write the next DocSlime ADR.
+     2. The repo already keeps ADRs or decision records → add a short entry (context, decision, consequences) following its format.
+     3. Neither → record inline where the work already lives: the PR description, the tracking issue, or a short section in the nearest existing doc. An ADR directory is worth proposing only when irreversible bets recur; mention it as a `Next:` option, don't create it unasked.
    - Flag future decision points instead of over-designing them now.
 
 5. **Plan the slice**
@@ -73,15 +77,16 @@ Shared by every DecisionNerd/dev-skills skill. Canonical copy: `handbook/concept
    - Strangler fig over big bang: new grows around old behind a seam; old retires by evidence.
 
 6. **Hand off**
-   - Next: `issues create` for the slice tickets, `refactor-it` for structural prep, `research-it` for open technical questions, `kiss` to pressure-test the plan.
+   - Next: `issues create` for the slice tickets, `refactor-it` for structural prep, `research-it` for open technical questions, `kiss` to pressure-test the plan, `redteam` (when installed) to premortem the chosen option.
 
 ## Guardrails
 
 - Do not scaffold the full system in one go; land the thinnest working slice.
-- Reversible bets proceed. Irreversible ones (data model, public API, placement) need the ADR draft; ask a structured question before committing only if the user's request did not already name the option.
+- Reversible bets proceed. Irreversible ones (data model, public API, placement) need the decision recorded per the ladder in step 4; ask a structured question before committing only if the user's request did not already name the option.
+- An ADR/DocSlime/`redteam` helper being missing or proscribed never blocks the run: use the next rung of the recording ladder, and fall back to a written steelman of the runner-up.
 - If the codebase already answers the question, don't invent a second architecture — follow the existing pattern or propose migrating to it explicitly.
 - Simplification is a valid outcome: sometimes the right architecture is deleting a layer (`kiss`), not adding one.
-- Done when: ADR written (or confirmed unnecessary), slice plan with a tracer bullet step, open technical questions named for `research-it`.
+- Done when: decision recorded per the ladder (or explicitly judged not worth a record, with the why), slice plan with a tracer bullet step, open technical questions named for `research-it`.
 
 ## Output
 
@@ -96,7 +101,7 @@ Shared by every DecisionNerd/dev-skills skill. Canonical copy: `handbook/concept
 **Chosen**: <option> — <why now>
 
 **Recorded**
-- ADR: <path or "none needed">
+- Decision record: <docslime-adr path | repo ADR path | "inline: PR #N / issue #N / <doc path>" | "not worth a record: <why>">
 
 **Slice plan**
 1. ...
@@ -105,7 +110,7 @@ Shared by every DecisionNerd/dev-skills skill. Canonical copy: `handbook/concept
 (irreversible-bet confirmation if not yet resolved, else "none")
 
 **Changed**
-(ADR written to `<path>`, else "nothing")
+(decision record at `<path>`, else "nothing")
 
 **Found**
 Decision, chosen option, rationale. Next: `issues create <slice tickets>` / `refactor-it <structural prep>` / `research-it <open question>`.
