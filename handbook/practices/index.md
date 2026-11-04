@@ -22,6 +22,7 @@ Browse this index when you know the pattern; browse a [strategy](../strategies/i
 - [Analyze Agents](analyze-agents.md): Read-only autopsy of agent config, traces, failure modes.
 - [Architect It](architect-it.md): Frame the architecture bet, record it as an ADR, plan the slice.
 - [Check Readiness](check-readiness.md): Is the issue done enough to PR or close?
+- [Council](council.md): Independent reviews from three model providers, reconciled against evidence.
 - [Design Agents](design-agents.md): Architecture before scaffolding: tools, memory, evals, stop conditions.
 - [Diagnose Bug](diagnose-bug.md): Backend / algo / API root-cause with a repair hypothesis.
 - [DocSlime](docslime.md): Product docs companion — init, fill, ADR, KISS.

@@ -24,7 +24,7 @@ Install one skill globally:
 npx skills add DecisionNerd/dev-skills --skill repos -g -y
 ```
 
-## Available Skills (21)
+## Available Skills (22)
 
 ### GitHub
 
@@ -53,9 +53,10 @@ KISS, research, architect, fix, refactor, test, observe, and document.
 - **`document-it`** — Improve or add repository documentation for work just done or for product-docs gaps.
 ### Agents
 
-Slap/drain runaway agents, analyze, optimize, design, and sub-agents.
+Slap/drain runaway agents, analyze, optimize, design, sub-agents, and council reviews.
 
 - **`agents`** — Work agent systems with command arguments: slap (emergency-fix stupid agent behavior and safely drain dumb workflows), analyze, optimize, design, and sub / s…
+- **`council`** — Convene independent reviews from three model providers, reconcile findings, and re-review authorized fixes with bounded rounds.
 ### Ops & Ship
 
 Live diagnosis, release path via merge-it, and local tidy-up.
