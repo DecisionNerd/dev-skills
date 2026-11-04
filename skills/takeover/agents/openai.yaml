@@ -1,0 +1,4 @@
+interface:
+  display_name: "Takeover"
+  short_description: "Continue inherited work while preserving credit"
+  default_prompt: "Use $takeover to verify this handoff and finish the original goal at the requested delivery boundary."

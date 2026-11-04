@@ -1,13 +1,28 @@
 ---
 title: Pulls
-description: "Work GitHub pull requests with command arguments: create/open, update, critique, narrow, widen, merge, clean, refine, explain, document, review, status/checks, and close. Default with only a PR identifier (and optional details) is execute Integrate completion work — fix, test, ready-check, autofix→merge — not PR-admin. Treat Stage/Ship as follow-ups; run them only when the user requests that phase. Explicit commands still do admin. No-arg defaults to completing the current-branch PR when one exists. Use when the user asks about PRs, `/pulls <command|#n|url|branch>`, or finishing a change set. For full autofix→CI→merge→issue-close, prefer merge-it (default completion often hands off to it)."
+description: "Work GitHub PRs with create/open, update, critique, scope, review, status/checks, watch/monitor, babysit, merge, and close commands. Use when the user asks about PRs or invokes pulls. Watch observes; babysit fixes verified failures and waits without merging. A bare PR identifier or no args on a current-branch PR defaults to Integrate completion via merge-it; explicit commands and ready-for-human-merge requests keep their own finish line. Stage/Ship run only when requested."
 sidebar:
   order: 7
 ---
 
 `pulls`
 
-Work GitHub pull requests with command arguments: create/open, update, critique, narrow, widen, merge, clean, refine, explain, document, review, status/checks, and close. Default with only a PR identifier (and optional details) is execute Integrate completion work — fix, test, ready-check, autofix→merge — not PR-admin. Treat Stage/Ship as follow-ups; run them only when the user requests that phase. Explicit commands still do admin. No-arg defaults to completing the current-branch PR when one exists. Use when the user asks about PRs, `/pulls <command|#n|url|branch>`, or finishing a change set. For full autofix→CI→merge→issue-close, prefer merge-it (default completion often hands off to it).
+Work GitHub PRs with create/open, update, critique, scope, review, status/checks, watch/monitor, babysit, merge, and close commands. Use when the user asks about PRs or invokes pulls. Watch observes; babysit fixes verified failures and waits without merging. A bare PR identifier or no args on a current-branch PR defaults to Integrate completion via merge-it; explicit commands and ready-for-human-merge requests keep their own finish line. Stage/Ship run only when requested.
+
+## Monitoring and handoff
+
+- `pulls watch <PR>` / `monitor` observes checks and reviews, reporting actionable failures without edits.
+- `pulls babysit <PR>` fixes verified in-scope failures and monitors the updated head without merging.
+- “Prepare for my merge” routes to `merge-it prepare` and keeps the PR open for human action.
+
+Monitoring honors the repository's actual base, required bots, and approvals.
+T3 Code uses its owning parent thread's PR watcher; other harnesses report any
+limitations when only checks can be watched. Older unresolved review findings
+are rechecked against the current code rather than discarded by timestamp.
+
+Descriptions lead with the problem and resulting behavior. Authorized comments
+identify the agent's role and cite evidence; threads are resolved only after
+an authorized reply succeeds.
 
 ## Install
 

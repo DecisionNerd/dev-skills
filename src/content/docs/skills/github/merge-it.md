@@ -1,13 +1,24 @@
 ---
 title: Merge It
-description: Drive work through the full release path per repo policy — feature PR into the next integrate target (main/trunk, release branch, staging, or another repo-defined base), staging lands with deploy/smoke verification, and production promotion with live health checks. Open or update the PR, run review/autofix, wait for CI green, merge, verify the deploy, confirm linked issue closure, and return the local checkout. Use when the user asks to open a PR and merge it, land this branch, finish a branch end-to-end, stage it, promote to staging, ship it, promote staging to production, or release to prod. The release path always comes from repository instructions, not memory.
+description: Drive delivery through the repository's actual Integrate, Stage, or Ship path. Use when asked to land, merge, stage, ship, or finish a branch end-to-end. Open or update the PR, fix verified findings, and monitor current-head checks and reviews. Use merge-it prepare for ready-for-human-merge requests; it never merges or enables automatic merging. Merge mode verifies deployment and issue closure for the requested phase. Repository instructions define the release path.
 sidebar:
   order: 9
 ---
 
 `merge-it`
 
-Drive work through the full release path per repo policy — feature PR into the next integrate target (main/trunk, release branch, staging, or another repo-defined base), staging lands with deploy/smoke verification, and production promotion with live health checks. Open or update the PR, run review/autofix, wait for CI green, merge, verify the deploy, confirm linked issue closure, and return the local checkout. Use when the user asks to open a PR and merge it, land this branch, finish a branch end-to-end, stage it, promote to staging, ship it, promote staging to production, or release to prod. The release path always comes from repository instructions, not memory.
+Drive delivery through the repository's actual Integrate, Stage, or Ship path. Use when asked to land, merge, stage, ship, or finish a branch end-to-end. Open or update the PR, fix verified findings, and monitor current-head checks and reviews. Use merge-it prepare for ready-for-human-merge requests; it never merges or enables automatic merging. Merge mode verifies deployment and issue closure for the requested phase. Repository instructions define the release path.
+
+## Completion modes
+
+- `merge-it [integrate|stage|ship]` completes the requested release phase when merging is authorized.
+- `merge-it prepare [integrate|stage|ship]` applies scoped fixes, verifies the final head, and monitors checks/reviews, then hands back the PR for human merge.
+
+Prepare mode disables unattended merging for this PR and confirms that state
+before pushes and handoff. It never merges, enters a merge queue, performs the
+post-merge deployment flow, or closes linked issues. The final verdict is
+ready, waiting for required approval, or blocked, with evidence for the current
+head. An ordinary “full stop” instruction stops work rather than starting it.
 
 ## Install
 
