@@ -1,10 +1,10 @@
 # Pulls
 
-Open and improve PRs; status/checks; hand off to merge-it when needed.
+Open, improve, and monitor PRs; babysit verified fixes without implicit merging.
 
 ## What it is
 
-Open and improve PRs; status/checks; hand off to merge-it when needed. This practice is a skill-mapped TTP: *when*, *why*, and *which command*—not a full copy of the skill. Open the skill to execute.
+PR operations with explicit finish lines: watch observes, babysit repairs and monitors, and merge requires its own authorization. Open the skill to execute.
 
 ## Why it works
 
@@ -19,7 +19,9 @@ When the situation matches the one-liner above and [Orientation](../orientation/
 - Invoke the skill; follow its safety rules
 - Keep one write owner; collect evidence before claiming done
 - With only a PR identifier (± details), or no-arg on a current-branch PR, **execute** completion work — don’t menu admin commands
-- After explicit admin shaping, offer to execute landing (`merge-it`, `fix-it`, `check-readiness`)
+- Preserve explicit watch, babysit, and ready-for-human-merge restrictions across handoffs
+- Lead PR descriptions with the problem and resulting behavior; keep authorized review replies attributed and evidence-backed
+- Use one supported watcher and report any limitations of checks-only monitoring
 - Hand off to the next practice instead of boiling the ocean
 
 ## Don't
@@ -27,6 +29,8 @@ When the situation matches the one-liner above and [Orientation](../orientation/
 - Skip orientation when you’re lost
 - Spawn overlapping agents to “go faster”
 - Treat the practice as done without evidence
+- Resolve an older review finding merely because a newer push exists
+- Treat monitoring readiness as permission to merge
 
 ## Related concepts
 
@@ -42,4 +46,4 @@ See also the handbook [Sources & grounding](../sources.md) bibliography.
 
 ## Agent skill
 
-`pulls`
+`pulls` · `pulls watch <PR>` · `pulls babysit <PR>`

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Modernize"
+  short_description: "Reassess and safely update an old PR"
+  default_prompt: "Use $modernize to assess this old PR against its actual base, then update it only if its goal and implementation still fit."

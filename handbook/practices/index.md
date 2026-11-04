@@ -35,10 +35,11 @@ Browse this index when you know the pattern; browse a [strategy](../strategies/i
 - [KISS](kiss.md): Audit complexity; simplify only when warranted; right-size the DAG.
 - [Merge It](merge-it.md): Full release path per repo policy — integrate, stage, ship with evidence.
 - [Milestones](milestones.md): Organize release-shaped work; plan and critique milestone scope.
+- [Modernize](modernize.md): Reassess an old PR's intent and architecture before updating its branch.
 - [Observe It](observe-it.md): Logs, metrics, traces, analytics — visibility without PII storms.
 - [Optimize Agents](optimize-agents.md): Measured improvements to agent loops — after analyze; never during thrash.
 - [ProductFeeling](productfeeling.md): Emotion-aware product design companion — feeling north star and audits.
-- [Pulls](pulls.md): Open and improve PRs; status/checks; hand off to merge-it when needed.
+- [Pulls](pulls.md): Open, improve, and monitor PRs; babysit verified fixes without implicit merging.
 - [Recon](recon.md): Tactical scout from git/issue/milestone → next skill in this pack.
 - [Recon Issue](recon-issue.md): Deep implementation plan for one issue before coding.
 - [Refactor It](refactor-it.md): Improve structure without changing intended behavior.
@@ -46,6 +47,7 @@ Browse this index when you know the pattern; browse a [strategy](../strategies/i
 - [Research It](research-it.md): Evidence-backed options before building; read-only by default.
 - [Skill Universe](skill-universe.md): Inventory DecisionNerd + DocSlime + ProductFeeling + Impeccable + vendored skills.
 - [Sub-Agents](sub-agents.md): Parent orchestrates; bounded parallel explore / sequential mutate.
+- [Takeover](takeover.md): Verify inherited work, preserve credit, and finish at the requested boundary.
 - [Test It](test-it.md): Make behavior provable with the repo’s real test stack.
 - [Tidy Up](tidy-up.md): Clean dangling workspaces, artifacts, caches, stale branches — inventory first.
 - [Troubleshoot App](troubleshoot-app.md): Live UI / data-plane breakage; reproduce, isolate, evidence.

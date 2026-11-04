@@ -1,4 +1,4 @@
 interface:
   display_name: "Merge It"
-  short_description: "Open, fix, verify, merge, and close PRs"
-  default_prompt: "Use $merge-it to open a PR for the current branch, apply review fixes, wait for green checks, merge it, and confirm issue closure."
+  short_description: "Deliver a verified PR or prepare it for human merge"
+  default_prompt: "Use $merge-it to verify and deliver this branch through the repository's release path; use prepare mode when the requested finish is human merge."

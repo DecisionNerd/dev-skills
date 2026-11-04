@@ -1,6 +1,6 @@
 # Merge It
 
-Drive the full release path per repo policy: integrate, stage, ship.
+Drive the release path per repo policy, or prepare a verified PR for human merge.
 
 ## What it is
 
@@ -19,6 +19,9 @@ When the situation matches the one-liner above and [Orientation](../orientation/
 - Invoke the skill; follow its safety rules
 - Read the repo’s release policy first; never invent a staging or production path a repo does not use
 - Stop at phase boundaries; collect deploy/smoke evidence before claiming shipped
+- Choose Merge or Prepare separately from the release phase; `merge-it prepare` stops before merge, deployment, and issue closure
+- In Prepare mode prevent unattended merging and verify that state before pushes and handoff
+- Verify checks/reviews on the final head, and monitor pending gates with a supported watcher
 - Keep one write owner; collect evidence before claiming done
 
 ## Don't
@@ -26,6 +29,7 @@ When the situation matches the one-liner above and [Orientation](../orientation/
 - Skip orientation when you’re lost
 - Call a merge a ship (or a stage) — name the phase
 - Treat the practice as done without evidence
+- Interpret an ordinary “full stop” instruction as a request to start delivery
 
 ## Related concepts
 
@@ -43,4 +47,4 @@ See also the handbook [Sources & grounding](../sources.md) bibliography.
 
 ## Agent skill
 
-`merge-it`
+`merge-it` · `merge-it prepare [integrate|stage|ship]`

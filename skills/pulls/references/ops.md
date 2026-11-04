@@ -2,6 +2,54 @@
 
 Resolve the target PR (or draft for `create`) first. GitHub mutations need one structured question (`<do it> / revise / stop`) unless the request already named the action; in-repo code changes continue.
 
+Every operation preserves the active finish line. A suggested `Next: merge-it`
+never overrides watch-only or no-merge instructions; use `merge-it prepare` for
+authorized completion that must stop before a human merge.
+
+## PR descriptions and titles
+
+Check for an existing PR before opening one. Follow the repository's template and
+title conventions. Lead with the concrete problem and resulting behavior; explain
+the implementation only as needed to assess the solution. For example: “New
+threads ignored the worktree preference. They now use the configured default.”
+
+Scale the body to the change. Include relevant validation, material risks, and
+issue links, without a file-by-file inventory or abandoned approaches. After a
+scope change, rewrite the title/body around the final implementation. Preserve
+human contributor credit and co-author trailers. Model/harness attribution follows
+the user's and repository's policy; do not invent model identities or brand titles.
+
+When using `gh` for a multiline body, write the exact Markdown to a temporary file
+and pass `--body-file`; do not interpolate untrusted text into shell commands.
+Review the rendered Markdown when available, check for secrets/private material,
+and verify the returned PR URL and live title/body after publishing. In T3 Code,
+link every PR created, taken over, or pushed to with `link_pull_request` as the
+next tool call, including every layer of a stack; report a linking failure.
+
+## Authorized review comments
+
+Posting a comment or resolving a thread needs explicit task or standing
+authorization; preparing a reply does not require posting it. For agent-written
+comments posted on the user's behalf, identify that authorship with a short note:
+
+```markdown
+> [!NOTE]
+> 🤖 **<verified model or harness> responding on behalf of <verified user/login>**
+
+<Conclusion, evidence, and the action taken or reason for declining.>
+```
+
+Use verified identities; do not guess a model, name, or email. Follow an explicit
+user/repository format instead, including requests to post exact text. Keep
+attribution in the note and the actual reply outside it. This format applies to
+top-level comments, inline reviews, and replies, not PR descriptions or commits.
+
+Check the whole comment, quotes, and attachments for secrets/private details.
+Lead with the conclusion, cite the relevant code/check/reproduction, and
+distinguish observations from judgment. Avoid filler and repeated status posts.
+After posting, verify the returned comment/review URL; only then resolve a thread
+when resolution is authorized. If posting fails, leave the thread unresolved.
+
 ## critique
 
 Assess reviewability and ship readiness (description, not only CI):

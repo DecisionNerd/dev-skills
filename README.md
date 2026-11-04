@@ -24,11 +24,11 @@ Install one skill globally:
 npx skills add DecisionNerd/dev-skills --skill repos -g -y
 ```
 
-## Available Skills (22)
+## Available Skills (24)
 
 ### GitHub
 
-Orient, repos, issues, milestones, pulls, readiness, and merge.
+Orient, repos, issues, milestones, pulls, takeovers, modernization, readiness, and merge.
 
 - **`idk-now`** — When the user doesn't know what to do next: briefly survey environment, repo, docs, and git history; guide them through clarifying questions; then suggest ne…
 - **`recon`** — Scout the current work and recommend the next skill or action. Arguments: repo (whole-repo health), issue (deep implementation plan for an issue), milestone…
@@ -36,9 +36,11 @@ Orient, repos, issues, milestones, pulls, readiness, and merge.
 - **`repos`** — Manage GitHub repositories: create/settings, split, combine, monorepo moves, architecture review, CI harden/simplify, and secrets (Pulumi ESC by default).
 - **`issues`** — Work GitHub issues with command arguments: create/draft, update, critique, narrow, widen, merge, clean, refine, explain, document, close, reopen, search, and…
 - **`milestones`** — Work GitHub milestones with command arguments: create, update, critique, narrow, widen, merge, clean, refine, explain, document, close, status, and plan.
-- **`pulls`** — Work GitHub pull requests with command arguments: create/open, update, critique, narrow, widen, merge, clean, refine, explain, document, review, status/check…
+- **`pulls`** — Create, shape, review, and monitor PRs. Watch observes; babysit fixes verified failures and monitors without merging.
+- **`takeover`** — Verify and continue an inherited PR, branch, or agent thread while preserving ownership, contributor credit, and the requested finish line.
+- **`modernize`** — Assess an old PR against its current base and architecture; update safely or recommend rework/closure with evidence.
 - **`check-readiness`** — Review whether a GitHub issue is complete enough for its current stage and decide the next PR or closure action. Use before PR, before closing an issue, afte…
-- **`merge-it`** — Drive work through the full release path per repo policy — feature PR into the next integrate target (main/trunk, release branch, staging, or another repo-defined base), staging lands with…
+- **`merge-it`** — Drive the repository's actual release path with proof, reviews, monitoring, and issue verification. Use `merge-it prepare` to hand back a PR for human merge.
 ### Craft
 
 KISS, research, architect, fix, refactor, test, observe, and document.
